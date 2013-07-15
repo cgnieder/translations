@@ -43,8 +43,8 @@
 % document layout and typographic features
 \docsetup{
   pkg      = {translations} ,
-  url      = {https://bitbucket.org/cgnieder/exsheets/} ,
-  subtitle = {{\small part of the \href{exsheets_en.pdf}{\ExSheets} bundle}\\[\baselineskip]a simple translator} ,
+  repo     = github ,
+  subtitle = {a simple translator} ,
   language = en ,
   modules  = true ,
   code-box = {
@@ -136,16 +136,7 @@
 
 % ----------------------------------------------------------------------------
 % custom commands
-\newcommand*\ExSheets{{\scshape\textcolor{main}{ExSheets}}\xspace}
-\newcommand*\Default[1]{%
-  \hfill\llap
-    {%
-      \ifblank{#1}%
-        {(initially~empty)}%
-        {Default:~\code{#1}}%
-    }%
-  \newline
-}
+
 \newcommand*\required{\hfill\llap{required}\newline}
 \newcommand*\optional{\hfill\llap{optional}\newline}
 
@@ -159,21 +150,6 @@
     \expsign
     \gdef\cnpkgdoctriangle{\unexpsign}}}
 
-\usepackage{marginnote}
-\makeatletter
-\newcommand*\sinceversion[1]{%
-  \@bsphack
-  \marginnote{%
-    \footnotesize\sffamily\RaggedRight
-    \textcolor{black!75}{Introduced in version~#1}}%
-  \@esphack}
-\newcommand*\changedversion[1]{%
-  \@bsphack
-  \marginnote{%
-    \footnotesize\sffamily\RaggedRight
-    \textcolor{black!75}{Changed in version~#1}}%
-  \@esphack}
-\makeatother
 
 \pdfstringdefDisableCommands{\def\llap#1{#1\space}\def\bigstar{*}}
 
