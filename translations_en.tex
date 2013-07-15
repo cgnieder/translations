@@ -1,5 +1,5 @@
-% arara: pdflatex
-% arara: pdflatex
+% arara: lualatex
+% !arara: lualatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
 % 
@@ -38,7 +38,7 @@
 % use `pdflatex' for compilation
 %
 \PassOptionsToPackage{supstfm=libertinesups}{superiors}
-\documentclass[DIV9,toc=index,toc=bib,numbers=noendperiod]{cnpkgdoc}
+\documentclass[DIV11,toc=index,toc=bib,numbers=noendperiod]{cnpkgdoc}
 % ----------------------------------------------------------------------------
 % document layout and typographic features
 \docsetup{
@@ -57,6 +57,8 @@
   gobble   = 1
 }
 \usepackage{libertinehologopatch}
+\setmonofont[Scale=MatchLowercase]{Bitstream Vera Sans Mono}
+\usepackage[english]{selnolig}
 \cnpkgusecolorscheme{friendly}
 
 \usepackage[biblatex]{embrac}[2012/06/29]
@@ -172,8 +174,8 @@ in many parts also covered by the package \paket*{translator} (part of the
 is more flexible than all of these. Unlike \paket*{translator} it detects the
 used (\paket{babel} or \paket{polyglossia}) language itself and provides
 expandable retrieving of the translated key.  \translations also provides
-support for language dialects which means package authors can distinguish
-between British, Australian, Canadian and US English, say.
+support for language dialects which means package authors can for example
+distinguish between British, Australian, Canadian and US English.
 \secidx*{Motivation}
 
 \section{License and Requirements}\label{sec:license}\secidx{Requirements}
@@ -280,6 +282,7 @@ the translation for the main language if no extra translation was declared:
 \end{beispiel}
 
 \subsection{Usage in Packages}
+\subsubsection{Basic Structure}
 A typical usage in a package would look as follows:
 \begin{beispiel}[code only]
  \RequirePackage{translations}
@@ -296,6 +299,44 @@ defines a fallback translation.  Additionally translations for as many
 languages as the author wants are defined.  A user then may add
 \cmd{DeclareTranslation}\ma{<language>}\ma{<translation>} if they find their
 translation missing.
+
+\subsubsection{The `fallback' language}
+% TODO
+If a user has neither loaded \paket{babel} nor \paket{polyglossia}
+\translations\ will use English as language and translate to English if the
+translation was provided.  If the user \emph{has} loaded one of the language
+packages but has chosen a language for which no translation is defined the
+language `fallback' will be used, i.e., the translation provided with
+\cmd{DeclareFallbackTranslation}.  If no fallback translation is provided
+either the translation will expand to the literal string.
+
+The following three examples should make this concept clear:
+
+\begin{beispiel}[code only]
+ \documentclass{article}
+ \DeclareTranslation{German}{foo-literal}{bar}
+ \begin{document}
+ \GetTranslation{foo-literal} => `foo-literal'
+ \end{document}
+\end{beispiel}
+
+\begin{beispiel}[code only]
+ \documentclass{article}
+ \DeclareTranslationFallback{foo-literal}{foo}
+ \DeclareTranslation{German}{foo-literal}{bar}
+ \begin{document}
+ \GetTranslation{foo-literal} => `foo'
+ \end{document}
+\end{beispiel}
+
+\begin{beispiel}[code only]
+ \documentclass{article}
+ \usepackage[ngerman]{babel}
+ \DeclareTranslation{German}{foo-literal}{bar}
+ \begin{document}
+ \GetTranslation{foo-literal} => `bar'
+ \end{document}
+\end{beispiel}
 
 \subsection{Dictionaries}\label{sec:dictionaries}
 A typical dictionary file should look as follows:
@@ -362,8 +403,8 @@ license statement which has already been mentioned in section~\ref{sec:license}.
 \implementation[linerange={31-1000},firstnumber=31]
 
 \indexprologue{\noindent Section titles are indicated \textbf{bold}, packages
-\textsf{sans serif}, commands \code{\textbackslash\textcolor{code}{brown}}
- and options \textcolor{key}{\code{yellow}}.\par\bigskip}
+  \textsf{sans serif} and commands
+  \code{\textbackslash\textcolor{code}{brown}}.\par\bigskip}
 
 \printindex
 

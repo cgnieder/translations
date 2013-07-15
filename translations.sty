@@ -28,8 +28,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/12}
-\def\@trnslt@version{v0.10a}
+\def\@trnslt@date{2013/07/15}
+\def\@trnslt@version{v0.10b}
 
 \ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space a simple translator]
 \RequirePackage{etoolbox}
@@ -70,7 +70,7 @@
 \AtEndPreamble{
   \@ifpackageloaded{babel}{}{
     \@ifpackageloaded{polyglossia}{}
-      {\@trnslt@warning{No language package found. I am going to use `english'
+      {\@trnslt@info{No language package found. I am going to use `english'
         as default language.}}
   }
   \ifdef\languagename{}
@@ -489,4 +489,5 @@
                       happen if neither `babel' nor `polyglossia' have been
                       loaded, i.e., no language has been chosen /and/ the
                       package writer did not provide an English translation
-
+2013/07/15 v0.10b   - removed from `exsheets' bundle - `translations' should
+                      be a package of it's own
