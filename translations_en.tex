@@ -1,5 +1,5 @@
 % arara: lualatex
-% !arara: lualatex
+% arara: lualatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
 % 
@@ -126,6 +126,7 @@
 \usepackage{csquotes}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 
+\usepackage{array,longtable,booktabs}
 
 % ----------------------------------------------------------------------------
 % example definitions that have to be done in the preamble:
@@ -135,6 +136,7 @@
 \DeclareTranslation{French}{Kueche}{cuisine}
 \DeclareTranslation{English}{farbe}{color}
 \DeclareTranslation{British}{farbe}{colour}
+\LoadDictionaryFor{German}{translations-basic-dictionary}
 
 % ----------------------------------------------------------------------------
 % custom commands
@@ -183,7 +185,8 @@ distinguish between British, Australian, Canadian and US English.
 version 1.3 or later (\url{http://www.latex-project.org/lppl.txt}). It has the
 status ``maintained.''
 
-\translations requires the \paket{etoolbox} package.
+\translations requires the packages \paket{etoolbox} and \paket*{scrlfile}
+(part of the \KOMAScript\ bundle\footnote{\CTANurl{koma-script}}).
 \secidx*{Requirements}
 
 \section{Usage}\secidx{Usage}
@@ -226,6 +229,14 @@ means that the command is expandable, \unexpsign{} means that it isn't.
  \expandable\Befehl{GetTranslation}{<key>}\newline
    Fetches and prints the translation of \code{<key>} for the currently active
    language (as for example set by \paket{babel}). This command is expandable.
+ \Befehl{GetTranslationForWarn}{<lang>}\ma{<key>}\newline
+   \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
+   the language \code{<lang>}.  Issues a warning if no translation is
+   available.
+ \Befehl{GetTranslationWarn}{<key>}\newline
+   \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
+   the currently active language (as for example set by \paket{babel}).
+   Issues a warning if no translation is available.
  \Befehl{SaveTranslationFor}{<cmd>}\ma{<lang>}\ma{<key>}\newline
    Fetches and saves the translation of \code{<key>} for the language \code{<lang>}
    in the macro \code{<cmd>}.
@@ -242,6 +253,16 @@ means that the command is expandable, \unexpsign{} means that it isn't.
  \Befehl{DeclareDictTranslation}{<key>}\ma{<translation>}\newline
    This command is to be used in a dictionary file and picks up the language
    of that file, see section~\ref{sec:dictionaries} for an example.
+ \Befehl{ProvideDictionaryFor}{<lang>}\ma{<name>}\oa{<date>}\newline
+   Needs to be in a dictionary file.  This command tells \translations\ that
+   the file indeed is a dictionary and also sets the language for the
+   dictionary which is used by \cmd{DeclareDictTranslation}.
+ \Befehl{PrintDictionaryFor}{<lang>}\ma{<name>}\ma{<pre>}\ma{<mid>}\ma{<post>}\newline
+   \sinceversion{1.0}Prints all entries of dictionary \code{<name>} in
+   language \code{<lang>} in the order the entries have been declared.  For
+   every entry the code\par
+   \code{<pre><key><mid><translation><post>}\par
+   is printed.  The dictionary must have been loaded of course.
 \end{beschreibung}
 Quite a number of languages already are defined, either directly or via an alias.
 So, before you define a language you should take a look at
@@ -339,6 +360,7 @@ The following three examples should make this concept clear:
 \end{beispiel}
 
 \subsection{Dictionaries}\label{sec:dictionaries}
+\subsubsection{Own Dictionaries}
 A typical dictionary file should look as follows:
 \begin{beispiel}[code only]
  % this is file housing-german.trsl
@@ -354,6 +376,37 @@ A typical dictionary file should look as follows:
 The usage is similar to the one in a package: unique keys are given
 translations, this time for the language the dictionary file is declared for
 only.
+
+\subsubsection{\translations' Basic Dictionaries}
+\translations\ already provides a basic dictionary for the languages English,
+French, German and Spanish.  This dictionary is loaded automatically if the
+document language is one of these four.  If you'd like to contribute and add
+the basic dictionary in your language this is more than welcome and highly
+appreciated!  The easiest way to do this would be to copy one of the existing
+files \code{translations-basic-dictionary-<lang>.trsl} and modify the file
+accordingly.  You can then send me the file via email and I'll add it to
+\translations.
+
+Table~\ref{tab:dict} lists all words provided by the basic dictionary for
+German.
+
+\begin{longtable}{ll}
+    \caption{All entries of \translations' basic dictionary in German.\label{tab:dict}} \\
+    \toprule
+    \rmfamily\bfseries key & \bfseries translation \\
+    \midrule
+  \endfirsthead
+    \toprule
+    \rmfamily\bfseries key & \bfseries translation \\
+    \midrule
+  \endhead
+    \bottomrule
+  \endlastfoot
+    \midrule
+    & \hfill\emph{continues} \\
+  \endfoot
+  \PrintDictionaryFor{German}{translations-basic-dictionary}{\ttfamily}{&}{\\}
+\end{longtable}
 
 \secidx*{Usage}
 

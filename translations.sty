@@ -29,10 +29,10 @@
 % feel free to contact me.
 % --------------------------------------------------------------------------
 \def\@trnslt@date{2013/07/15}
-\def\@trnslt@version{v0.10b}
+\def\@trnslt@version{v1.0}
 
 \ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space a simple translator]
-\RequirePackage{etoolbox}
+\RequirePackage{etoolbox,scrlfile}
 
 % --------------------------------------------------------------------------
 % message handling
@@ -70,7 +70,7 @@
 \AtEndPreamble{
   \@ifpackageloaded{babel}{}{
     \@ifpackageloaded{polyglossia}{}
-      {\@trnslt@info{No language package found. I am going to use `english'
+      {\@trnslt@warning{No language package found. I am going to use `english'
         as default language.}}
   }
   \ifdef\languagename{}
@@ -80,13 +80,14 @@
     {\long\def\bbl@afterfi#1\fi{\fi#1}}
 }
 
+% --------------------------------------------------------------------------
 % book keeping: the following macros will be used as `etoolbox' lists that
 % keep record of defined languages, dialects and aliases
-\def\@trnslt@languages{}
-\def\@trnslt@aliases@pair{}
-\def\@trnslt@aliases@single{}
-\def\@trnslt@dialects@pair{}
-\def\@trnslt@dialects@single{}
+\def\@trnslt@languages{}% all languages
+\def\@trnslt@aliases@pair{}% all aliases and their base
+\def\@trnslt@aliases@single{}% all aliases
+\def\@trnslt@dialects@pair{}% all dialects and their base
+\def\@trnslt@dialects@single{}% all dialects
 
 % --------------------------------------------------------------------------
 % \DeclareLanguage and \DeclareLanguageAlias
@@ -276,6 +277,14 @@
 \newcommand*\GetTranslation[1]{%
   \@trnslt@checkandget@translation@for{#1}{\@trnslt@current@language}}
 
+% unexpandable version of the commands that raise a warning if no translation
+% is available:
+\newcommand*\GetTranslationForWarn[2]{%
+  \@trnslt@getandwarn@translation@for{#2}{#1}}
+
+\newcommand*\GetTranslationWarn[1]{%
+  \@trnslt@getandwarn@translation@for{#1}{\@trnslt@current@language}}
+
 % #1: word #2: language
 \def\@trnslt@get@translation@for#1#2{%
   \@trnslt@if@dialect{#2}
@@ -343,9 +352,25 @@
 \def\@trnslt@load@dictionary@for#1#2{%
   \AtBeginDocument{%
     \InputIfFileExists{#1-\@trnslt@language{#2}.trsl}
-      {\@trnslt@info{loading dictionary `#1' for `#2'.}}
-      {\@trnslt@warning{File `#1-\@trnslt@language{#2}.trsl' not found.}}%
+      {\@trnslt@check@dictionary{#1}{#2}}
+      {\@trnslt@warning{dictionary file `#1-\@trnslt@language{#2}.trsl' not
+          found.}}%
   }}
+
+\def\@trnslt@check@dictionary#1#2{%
+  \AfterFile{#1-\@trnslt@language{#2}.trsl}
+    {%
+      \ifcsdef{@trnslt@dictionary@#1@\@trnslt@language{#2}}
+        {\@trnslt@info{loading dictionary `#1' for `#2'.}}
+        {%
+          \@trnslt@warning{file `#1-\@trnslt@language{#2}.trsl' does not
+            appear to be a dictionary}%
+        }%
+    }%
+}
+
+\def\@trnslt@load@dictionary@silent@for#1#2{%
+  \AtBeginDocument{\InputIfFileExists{#1-\@trnslt@language{#2}.trsl}{}{}}}
 
 \newrobustcmd*\ProvideDictionaryFor[2]{%
   \@trnslt@provide@dictionary@for{#1}{#2}}
@@ -353,10 +378,18 @@
 
 \def\@trnslt@provide@dictionary@for#1#2{%
   \def\@trnslt@dictionary@name{#2}%
-  \def\@trnslt@dictionary@lang{#1}%
+  \edef\@trnslt@dictionary@lang{\@trnslt@language{#1}}%
+  % this macro can be used to check if we have a dictionary and will also be
+  % used as a list for the dictionary entries:
+  \csdef{@trnslt@dictionary@\@trnslt@dictionary@name @\@trnslt@dictionary@lang}{}%
   \@ifnextchar[
     {\@trnslt@provide@dictionary@version}
-    {\ProvidesFile{#2-#1.trsl}[(#1 translation file `#2')]}}
+    {
+      \ProvidesFile
+        {#2-\@trnslt@dictionary@lang.trsl}%
+        [(\@trnslt@dictionary@lang\space translation file `#2')]
+    }%
+}
 
 \def\@trnslt@provide@dictionary@version[#1]{%
   \ProvidesFile
@@ -365,8 +398,46 @@
 
 % \@trnslt@dictionary@language
 \newrobustcmd*\DeclareDictTranslation[2]{%
-  \@trnslt@declare@translation{#1}{\@trnslt@dictionary@lang}{#2}}
+  \listcsadd
+    {@trnslt@dictionary@\@trnslt@dictionary@name @\@trnslt@dictionary@lang}
+    {{#1}{#2}}%
+  \@trnslt@declare@translation{#1}{\@trnslt@dictionary@lang}{#2}%
+}
 \@onlypreamble\DeclareDictTranslation
+
+% \PrintDictionaryFor
+% #1: lang
+% #2: name
+% #3: pre
+% #4: mid
+% #5: post
+\newcommand*\PrintDictionaryFor[5]{%
+  \@trnslt@print@dictionary@for{#1}{#2}{#3}{#4}{#5}}
+
+% #1: lang
+% #2: name
+% #3: pre
+% #4: mid
+% #5: post
+\def\@trnslt@print@dictionary@for#1#2#3#4#5{%
+  \forlistcsloop
+    {\@trnslt@print@dictionary@entry{#3}{#4}{#5}}
+    {@trnslt@dictionary@#2@\@trnslt@language{#1}}%
+}
+
+% #1: pre
+% #2: mid
+% #3: post
+% #4: {key}{translation}
+\def\@trnslt@print@dictionary@entry#1#2#3#4{%
+  \@trnslt@print@dictionary@entry@aux{#1}{#2}{#3}#4}
+
+% #1: pre
+% #2: mid
+% #3: post
+% #4: key
+% #5: translation
+\def\@trnslt@print@dictionary@entry@aux#1#2#3#4#5{#1#4#2#5#3}
 
 % --------------------------------------------------------------------------
 % predefined languages
@@ -399,6 +470,8 @@
 \DeclareLanguage{turkish}
 \DeclareLanguage{ukrainian}
 
+% --------------------------------------------------------------------------
+% aliases and dialects:
 \DeclareLanguageAlias  {Albanian}{albanian}
 \DeclareLanguageAlias  {Bulgarian}{bulgarian}
 \DeclareLanguageAlias  {Catalan}{catalan}
@@ -464,8 +537,17 @@
 \DeclareLanguageAlias  {Turkish}{turkish}
 \DeclareLanguageAlias  {Ukrainian}{ukrainian}
 
+% --------------------------------------------------------------------------
+% load basic dictionary if available
+\AtBeginDocument{%
+  \@trnslt@load@dictionary@silent@for
+    {translations-basic-dictionary}
+    {\@trnslt@current@language}%
+}
+
 \endinput
 
+% --------------------------------------------------------------------------
 % HISTORY:
 2012/09/30 v0.2beta - first version (as part of the `exsheets' bundle)
 2012/10/05 v0.2     - \LoadDictionary and \LoadDictionaryFor added and loads of
@@ -489,5 +571,10 @@
                       happen if neither `babel' nor `polyglossia' have been
                       loaded, i.e., no language has been chosen /and/ the
                       package writer did not provide an English translation
-2013/07/15 v0.10b   - removed from `exsheets' bundle - `translations' should
+2013/07/15 v1.0     - removed from `exsheets' bundle - `translations' should
                       be a package of it's own
+                    - load basic dictionary automatically if available
+                    - rudimentary check in \LoadDictionary if loaded file is a
+                      dictionary
+                    - new command \PrintDictionaryFor
+
