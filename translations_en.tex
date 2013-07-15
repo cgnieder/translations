@@ -1,0 +1,394 @@
+% arara: pdflatex
+% arara: pdflatex
+% --------------------------------------------------------------------------
+% the TRANSLATIONS package
+% 
+%   a simple translator
+% 
+% --------------------------------------------------------------------------
+% Clemens Niederberger
+% Web:    https://bitbucket.org/cgnieder/exsheets/
+% E-Mail: contact@mychemistry.eu
+% --------------------------------------------------------------------------
+% Copyright 2011-2013 Clemens Niederberger
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+% 
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Clemens Niederberger.
+% --------------------------------------------------------------------------
+% The translations package is part of the exsheets bundle
+% --------------------------------------------------------------------------
+% If you have any ideas, questions, suggestions or bugs to report, please
+% feel free to contact me.
+% --------------------------------------------------------------------------
+%
+% if you want to compile this documentation you'll need the document class
+% `cnpkgdoc' which you can get here:
+%    https://bitbucket.org/cgnieder/cnpkgdoc/
+% the class is licensed LPPL 1.3 or later
+%
+% use `pdflatex' for compilation
+%
+\PassOptionsToPackage{supstfm=libertinesups}{superiors}
+\documentclass[DIV9,toc=index,toc=bib,numbers=noendperiod]{cnpkgdoc}
+% ----------------------------------------------------------------------------
+% document layout and typographic features
+\docsetup{
+  pkg      = {translations} ,
+  url      = {https://bitbucket.org/cgnieder/exsheets/} ,
+  subtitle = {{\small part of the \href{exsheets_en.pdf}{\ExSheets} bundle}\\[\baselineskip]a simple translator} ,
+  language = en ,
+  modules  = true ,
+  code-box = {
+    backgroundcolor  = gray!7!white ,
+    skipbelow        = .6\baselineskip plus .5ex minus .5ex ,
+    skipabove        = .6\baselineskip plus .5ex minus .5ex ,
+    innerleftmargin  = 1.5em ,
+    innerrightmargin = 2.5em
+  } ,
+  gobble   = 1
+}
+\usepackage{libertinehologopatch}
+\cnpkgusecolorscheme{friendly}
+
+\usepackage[biblatex]{embrac}[2012/06/29]
+  \ChangeEmph{[}[,.02em]{]}[.055em,-.08em]
+  \ChangeEmph{(}[-.01em,.04em]{)}[.04em,-.05em]
+\usepackage{microtype}
+\usepackage[multiple]{fnpct}
+
+\renewcommand*\othersectionlevelsformat[3]{\textcolor{main}{#3\autodot}\enskip}
+\renewcommand*\partformat{\textcolor{main}{\partname~\thepart\autodot}}
+
+\pagestyle{headings}
+
+\setcapindent{1.5em}
+\setkomafont{caption}{\normalfont\footnotesize\sffamily}
+\setkomafont{captionlabel}{\normalfont\footnotesize\sffamily\scshape}
+
+\usepackage{booktabs,array,ragged2e}
+
+% ----------------------------------------------------------------------------
+% code examples
+\addcmds{
+  cuisine,
+  DeclareDictTranslation, DeclareLanguage, DeclareLanguageAlias,
+    DeclareLanguageDialect, DeclareTranslation, DeclareTranslationFallback,
+  GetTranslation, GetTranslationFor,
+  kitchen,
+  LoadDictionary, LoadDictionaryFor,
+  mypackage@title,
+  NewTranslation,
+  ProvideDictionaryFor,
+  RenewTranslation,RequirePackage,
+  SaveTranslation, SaveTranslationFor, selectlanguage
+}
+
+% ----------------------------------------------------------------------------
+% other packages, bibliography, index
+\usepackage{xcoffins,wasysym,enumitem,booktabs,siunitx}
+\usepackage[accsupp]{acro}
+\DeclareAcronym{id}{
+  short     = id ,
+  long      = Identifier ,
+  format    = \scshape ,
+  pdfstring = ID ,
+  accsupp   = ID
+}
+
+\usepackage{filecontents}
+\usepackage{imakeidx}
+\begin{filecontents*}{\jobname.ist}
+ heading_prefix "{\\bfseries "
+ heading_suffix "\\hfil}\\nopagebreak\n"
+ headings_flag  1
+ delim_0 "\\dotfill\\hyperpage{"
+ delim_1 "\\dotfill\\hyperpage{"
+ delim_2 "\\dotfill\\hyperpage{"
+ delim_r "}\\textendash\\hyperpage{"
+ delim_t "}"
+ suffix_2p "\\nohyperpage{\\,f.}"
+ suffix_3p "\\nohyperpage{\\,ff.}"
+\end{filecontents*}
+\indexsetup{othercode=\footnotesize}
+\makeindex[options={-s \jobname.ist},intoc,columns=3]
+
+\usepackage{csquotes}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+
+
+% ----------------------------------------------------------------------------
+% example definitions that have to be done in the preamble:
+\DeclareTranslation{English}{Kueche}{kitchen}
+\DeclareTranslation{German}{Kueche}{K\"uche}
+\DeclareTranslation{Spanish}{Kueche}{cocina}
+\DeclareTranslation{French}{Kueche}{cuisine}
+\DeclareTranslation{English}{farbe}{color}
+\DeclareTranslation{British}{farbe}{colour}
+
+% ----------------------------------------------------------------------------
+% custom commands
+\newcommand*\ExSheets{{\scshape\textcolor{main}{ExSheets}}\xspace}
+\newcommand*\Default[1]{%
+  \hfill\llap
+    {%
+      \ifblank{#1}%
+        {(initially~empty)}%
+        {Default:~\code{#1}}%
+    }%
+  \newline
+}
+\newcommand*\required{\hfill\llap{required}\newline}
+\newcommand*\optional{\hfill\llap{optional}\newline}
+
+\newcommand*\nooption[2]{\item[\code{\textcolor{key}{#1} = #2}] \cnpkgdocarrow\ }
+
+\newcommand*\unexpsign{$\RHD$}
+\newcommand*\expsign{\textcolor{red}{$\rhd$}}
+\renewcommand*\cnpkgdoctriangle{\unexpsign}
+\newcommand*\expandable{%
+  \def\cnpkgdoctriangle{%
+    \expsign
+    \gdef\cnpkgdoctriangle{\unexpsign}}}
+
+\usepackage{marginnote}
+\makeatletter
+\newcommand*\sinceversion[1]{%
+  \@bsphack
+  \marginnote{%
+    \footnotesize\sffamily\RaggedRight
+    \textcolor{black!75}{Introduced in version~#1}}%
+  \@esphack}
+\newcommand*\changedversion[1]{%
+  \@bsphack
+  \marginnote{%
+    \footnotesize\sffamily\RaggedRight
+    \textcolor{black!75}{Changed in version~#1}}%
+  \@esphack}
+\makeatother
+
+\pdfstringdefDisableCommands{\def\llap#1{#1\space}\def\bigstar{*}}
+
+% ----------------------------------------------------------------------------
+% title page
+% \TitlePicture{%
+%   \parbox{.8\linewidth}{%
+%   }%
+% }
+
+\begin{document}
+
+\section{Motivation}\secidx{Motivation}
+This package provides means for package authors to have an easy interface for
+internationalization of their packages.  The functionality of this package is
+in many parts also covered by the package \paket*{translator} (part of the
+\paket{beamer} bundle).  Internationalization is also possible with
+\paket{babel} and it's \cmd*{addto}\cmd{captions<language>} mechanism or
+\KOMAScript's \cmd{providecaptionname}.  However, I believe that \translations
+is more flexible than all of these. Unlike \paket*{translator} it detects the
+used (\paket{babel} or \paket{polyglossia}) language itself and provides
+expandable retrieving of the translated key.  \translations also provides
+support for language dialects which means package authors can distinguish
+between British, Australian, Canadian and US English, say.
+\secidx*{Motivation}
+
+\section{License and Requirements}\label{sec:license}\secidx{Requirements}
+\translations is placed under the terms of the \LaTeX{} Project Public License,
+version 1.3 or later (\url{http://www.latex-project.org/lppl.txt}). It has the
+status ``maintained.''
+
+\translations requires the \paket{etoolbox} package.
+\secidx*{Requirements}
+
+\section{Usage}\secidx{Usage}
+\subsection{Available Commands}
+Below the commands provided by \translations are explained. The symbol \expsign{}
+means that the command is expandable, \unexpsign{} means that it isn't.
+\begin{beschreibung}
+ \Befehl{DeclareLanguage}{<lang>}\newline
+   Declare a language that can be used by \translations. If the language already
+   exists it will be silently redefined. This command can only be used in the preamble.
+ \Befehl{DeclareLanguageAlias}{<lang2>}\ma{<lang1>}\newline
+   Declares \code{<lang2>} to be an alias of \code{<lang1>}. If \code{<lang1>}
+   doesn't exist yet a warning will be raised and it will be defined. This command
+   can only be used in the preamble.
+ \Befehl{DeclareLanguageDialect}{<dialect>}\ma{<lang>}\newline
+   Declares \code{<dialect>} to be a dialect of language \code{<lang>}. If a
+   translation for \code{<dialect>} is provided it is used by the translation
+   macros. If there is none the corresponding translation for \code{<lang>} is
+   used instead.
+ \Befehl{NewTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
+   Defines a translation of key \code{<key>} for the language \code{<lang>}.
+   An error will be raised if a translation of \code{<key>} already exists.
+   This command can only be used in the preamble.
+ \Befehl{RenewTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
+   Redefines a translation of key \code{<key>} for the language \code{<lang>}.
+   An error will be raised if no translation of \code{<key>} exists.
+   This command can only be used in the preamble.
+ \Befehl{DeclareTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
+   Defines a translation of key \code{<key>} for the language \code{<lang>}.
+   No error will be raised if a translation of \code{<key>} already exists.
+   This command can only be used in the preamble.
+ \Befehl{DeclareTranslationFallback}{<key>}\ma{<fallback>}\newline
+   Defines a fallback translation for key \code{<key>} that is used in case no
+   translation of \code{<key>} for the currently active language has been provided.
+   No error will be raised if a fallback for \code{<key>} already exists.
+   This command can only be used in the preamble.
+ \expandable\Befehl{GetTranslationFor}{<lang>}\ma{<key>}\newline
+   Fetches and prints the translation of \code{<key>} for the language \code{<lang>}.
+   This command is expandable.
+ \expandable\Befehl{GetTranslation}{<key>}\newline
+   Fetches and prints the translation of \code{<key>} for the currently active
+   language (as for example set by \paket{babel}). This command is expandable.
+ \Befehl{SaveTranslationFor}{<cmd>}\ma{<lang>}\ma{<key>}\newline
+   Fetches and saves the translation of \code{<key>} for the language \code{<lang>}
+   in the macro \code{<cmd>}.
+ \Befehl{SaveTranslation}{<cmd>}\ma{<key>}\newline
+   Fetches and saves the translation of \code{<key>} for the currently active
+   language (as for example set by \paket{babel}) in the macro \code{<cmd>}.
+ \Befehl{LoadDictionary}{<name>}\newline
+   Loads a file named \code{<name>-<lang>.trsl} where \code{<lang>} corresponds
+   to the lowercase name of the current language as defined with
+   \cmd{DeclareLanguage}. This file should contain the translations for the
+   specified language.
+ \Befehl{LoadDictionaryFor}{<lang>}\ma{<name>}\newline
+   Loads a file named \code{<name>-<lang>.trsl}.
+ \Befehl{DeclareDictTranslation}{<key>}\ma{<translation>}\newline
+   This command is to be used in a dictionary file and picks up the language
+   of that file, see section~\ref{sec:dictionaries} for an example.
+\end{beschreibung}
+Quite a number of languages already are defined, either directly or via an alias.
+So, before you define a language you should take a look at
+section~\ref{sec:languages} if the language doesn't already exist.
+
+\subsection{A Small Example}
+This section demonstrates with two short examples how the macros are used.
+The first example covers the basics: dlaring of translations and then
+retrieving and typesetting them.
+
+\begin{beispiel}
+ % in the preamble:
+ % \DeclareTranslation{English}{Kueche}{kitchen}
+ % \DeclareTranslation{German}{Kueche}{K\"uche}
+ % \DeclareTranslation{Spanish}{Kueche}{cocina}
+ % \DeclareTranslation{French}{Kueche}{cuisine}
+ 
+ \GetTranslation{Kueche}
+ \SaveTranslation\kitchen{Kueche}
+ \SaveTranslationFor\cuisine{french}{Kueche}
+
+ \selectlanguage{ngerman}
+ \GetTranslation{Kueche} \kitchen\ \GetTranslationFor{spanish}{Kueche}
+ \cuisine
+\end{beispiel}
+
+The next example demonstrates the use of dialects and how they fall back to
+the translation for the main language if no extra translation was declared:
+
+\begin{beispiel}
+ % in the preamble:
+ % \DeclareTranslation{English}{farbe}{color}
+ % \DeclareTranslation{British}{farbe}{colour}
+
+ \GetTranslationFor{English}{farbe} \\
+ \GetTranslationFor{British}{farbe} \\
+ \GetTranslationFor{American}{farbe}
+\end{beispiel}
+
+\subsection{Usage in Packages}
+A typical usage in a package would look as follows:
+\begin{beispiel}[code only]
+ \RequirePackage{translations}
+ \DeclareTranslationFallback{mypackage-title}{Nice Title}
+ \DeclareTranslation{English}{mypackage-title}{Nice Title}
+ \DeclareTranslation{French}{mypackage-title}{Beau Titre}
+ \DeclareTranslation{German}{mypackage-title}{Sch\"{o}ner Titel} 
+ ...
+ \def\mypackage@title{\GetTranslation{mypackage-title}}
+\end{beispiel}
+
+That is, a package defines some unique key for an expression and at least
+defines a fallback translation.  Additionally translations for as many
+languages as the author wants are defined.  A user then may add
+\cmd{DeclareTranslation}\ma{<language>}\ma{<translation>} if they find their
+translation missing.
+
+\subsection{Dictionaries}\label{sec:dictionaries}
+A typical dictionary file should look as follows:
+\begin{beispiel}[code only]
+ % this is file housing-german.trsl
+ \ProvideDictionaryFor{German}{housing}[<version info>]
+ \DeclareDictTranslation{kitchen (housing)}{K\"uche}
+ \DeclareDictTranslation{bathroom (housing)}{Bad}
+ \DeclareDictTranslation{living room (housing)}{Wohnzimmer}
+ \DeclareDictTranslation{bedroom (housing)}{Schlafzimmer}
+ ...
+ \endinput
+\end{beispiel}
+
+The usage is similar to the one in a package: unique keys are given
+translations, this time for the language the dictionary file is declared for
+only.
+
+\secidx*{Usage}
+
+\section{Defined Languages}\label{sec:languages}\secidx{Languages}
+\translations currently has these languages defined, ``fallback'' being a
+dummy language used for fallback translations:
+
+\begin{quote}
+  \makeatletter\raggedright
+  \def\comma{\gdef\comma{,\quad}}%
+  \def\do#1{\comma #1}%
+  \dolistloop\@trnslt@languages
+\end{quote}
+
+To every one of these languages at least one alias exists, the uppercase
+variant.  This is due to the fact that it is common to write language names
+uppercased.  The defined aliases are these (in parentheses the base language
+name is given):
+
+\begin{quote}
+  \makeatletter\raggedright
+  \def\comma{\gdef\comma{,\quad}}
+  \def\aliases#1#2{\comma #1 (#2)}
+  \def\do#1{\aliases#1}
+  \dolistloop\@trnslt@aliases@pair
+\end{quote}
+
+\translations also defines a few dialects.  The language to which the dialect
+belongs to is given in paretheses:
+
+\begin{quote}
+  \makeatletter\raggedright
+  \def\comma{\gdef\comma{,\quad}}
+  \def\aliases#1#2{\comma #1 (#2)}
+  \def\do#1{\aliases#1}
+  \dolistloop\@trnslt@dialects@pair
+\end{quote}
+\secidx*{Languages}
+
+These languages should cover all languages which are currently covered by
+\paket{babel} and \paket{polyglossia}.
+
+\section{Implementation}\index{Implementation@\textbf{Implementation}}
+In the following code the lines 1--30 have been omitted. They only repeat the
+license statement which has already been mentioned in section~\ref{sec:license}.
+
+\implementation[linerange={31-1000},firstnumber=31]
+
+\indexprologue{\noindent Section titles are indicated \textbf{bold}, packages
+\textsf{sans serif}, commands \code{\textbackslash\textcolor{code}{brown}}
+ and options \textcolor{key}{\code{yellow}}.\par\bigskip}
+
+\printindex
+
+\end{document}

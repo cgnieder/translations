@@ -1,0 +1,87 @@
+\ProvideDictionaryFor{Spanish}{translations-basic-dictionary}
+
+\DeclareDictTranslation{Abstract}{Resumen}
+\DeclareDictTranslation{Addresses}{Direcciones}
+\DeclareDictTranslation{addresses}{direcciones}
+\DeclareDictTranslation{Address}{Direcci\'{o}n}
+\DeclareDictTranslation{address}{direcci\'{o}n}
+\DeclareDictTranslation{and}{y}
+\DeclareDictTranslation{Appendix}{Ap\'{e}ndice}
+\DeclareDictTranslation{Authors}{Autores}
+\DeclareDictTranslation{authors}{autores}
+\DeclareDictTranslation{Author}{Autor}
+\DeclareDictTranslation{author}{autor}
+\DeclareDictTranslation{Bibliography}{Bibliograf\'{\i}a}
+\DeclareDictTranslation{cc}{c.c.}
+\DeclareDictTranslation{Chapters}{Cap\'{\i}tulos}
+\DeclareDictTranslation{chapters}{cap\'{\i}tulos}
+\DeclareDictTranslation{Chapter}{Cap\'{\i}tulo}
+\DeclareDictTranslation{chapter}{cap\'{\i}tulo}
+\DeclareDictTranslation{Conclusion}{Conclusi\'{o}n}
+\DeclareDictTranslation{conclusion}{conclusi\'{o}n}
+\DeclareDictTranslation{Contents}{Contenido}
+\DeclareDictTranslation{Continuation}{Continuaci\'{o}n}
+\DeclareDictTranslation{continuation}{continuaci\'{o}n}
+\DeclareDictTranslation{cont}{cont}
+\DeclareDictTranslation{encl (plural)}{adj.}
+\DeclareDictTranslation{encl (singular)}{adj.}
+\DeclareDictTranslation{encl}{adj.}
+\DeclareDictTranslation{Figures}{Figuras}
+\DeclareDictTranslation{figures}{figuras}
+\DeclareDictTranslation{Figure}{Figura}
+\DeclareDictTranslation{figure}{figura}
+\DeclareDictTranslation{From}{Desde}
+\DeclareDictTranslation{from}{desde}
+\DeclareDictTranslation{Glossary}{Glosario}
+\DeclareDictTranslation{Index}{\'{I}ndice}
+\DeclareDictTranslation{Introduction}{Introducci\'{o}n}
+\DeclareDictTranslation{introduction}{introducci\'{o}n}
+\DeclareDictTranslation{List of Figures and Tables}{Lista de Figuras y Tablas}
+\DeclareDictTranslation{List of Figures}{Lista de Figuras}
+\DeclareDictTranslation{List of Tables}{Lista de Tablas}
+\DeclareDictTranslation{or}{o}
+\DeclareDictTranslation{Outline}{Esbozo}
+\DeclareDictTranslation{Overview}{Visi\'{o}n General}
+\DeclareDictTranslation{Pages}{P\'{a}ginas}
+\DeclareDictTranslation{pages}{p\'{a}ginas}
+\DeclareDictTranslation{Page}{P\'{a}gina}
+\DeclareDictTranslation{page}{p\'{a}gina}
+\DeclareDictTranslation{Paragraphs}{P\'{a}rrafos}
+\DeclareDictTranslation{paragraphs}{p\'{a}rrafos}
+\DeclareDictTranslation{Paragraph}{P\'{a}rrafo}
+\DeclareDictTranslation{paragraph}{p\'{a}rrafo}
+\DeclareDictTranslation{Parts}{Partes}
+\DeclareDictTranslation{parts}{partes}
+\DeclareDictTranslation{Part}{Parte}
+\DeclareDictTranslation{part}{parte}
+\DeclareDictTranslation{Preface}{Prefacio}
+\DeclareDictTranslation{Proofs}{Demostraciones}
+\DeclareDictTranslation{proofs}{demostraciones}
+\DeclareDictTranslation{Proof}{Demostraci\'{o}n}
+\DeclareDictTranslation{proof}{demostraci\'{o}n}
+\DeclareDictTranslation{References}{Referencias}
+\DeclareDictTranslation{Related work}{Trabajo relacionado}
+\DeclareDictTranslation{Related Work}{Trabajo Relacionado}
+\DeclareDictTranslation{Sections}{Secciones}
+\DeclareDictTranslation{sections}{secciones}
+\DeclareDictTranslation{Section}{Secci\'{o}n}
+\DeclareDictTranslation{section}{secci\'{o}n}
+\DeclareDictTranslation{See also}{Ver tambi\'{e}n}
+\DeclareDictTranslation{see also}{ver tambi\'{e}n}
+\DeclareDictTranslation{See}{Ver}
+\DeclareDictTranslation{see}{ver}
+\DeclareDictTranslation{Sketch of Proofs}{Esbozo de Demostraciones}
+\DeclareDictTranslation{Sketch of proofs}{Esbozo de demostraciones}
+\DeclareDictTranslation{Sketch of Proof}{Esbozo de Demostraci\'{o}n}
+\DeclareDictTranslation{Sketch of proof}{Esbozo de demostraci\'{o}n}
+\DeclareDictTranslation{Subsections}{Subsecciones}
+\DeclareDictTranslation{subsections}{subsecciones}
+\DeclareDictTranslation{Subsection}{Subsecci\'{o}n}
+\DeclareDictTranslation{subsection}{subsecci\'{o}n}
+\DeclareDictTranslation{Summary}{Resumen}
+\DeclareDictTranslation{Tables}{Tablas}
+\DeclareDictTranslation{tables}{tablas}
+\DeclareDictTranslation{Table}{Tabla}
+\DeclareDictTranslation{table}{tabla}
+\DeclareDictTranslation{To}{Hasta}
+\DeclareDictTranslation{to}{hasta}

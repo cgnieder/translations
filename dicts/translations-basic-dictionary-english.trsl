@@ -1,0 +1,87 @@
+\ProvideDictionaryFor{English}{translations-basic-dictionary}
+
+\DeclareDictTranslation{Abstract}{Abstract}
+\DeclareDictTranslation{Addresses}{Addresses}
+\DeclareDictTranslation{addresses}{addresses}
+\DeclareDictTranslation{Address}{Address}
+\DeclareDictTranslation{address}{address}
+\DeclareDictTranslation{and}{and}
+\DeclareDictTranslation{Appendix}{Appendix}
+\DeclareDictTranslation{Authors}{Authors}
+\DeclareDictTranslation{authors}{authors}
+\DeclareDictTranslation{Author}{Author}
+\DeclareDictTranslation{author}{author}
+\DeclareDictTranslation{Bibliography}{Bibliography}
+\DeclareDictTranslation{cc}{cc}
+\DeclareDictTranslation{Chapters}{Chapters}
+\DeclareDictTranslation{chapters}{chapters}
+\DeclareDictTranslation{Chapter}{Chapter}
+\DeclareDictTranslation{chapter}{chapter}
+\DeclareDictTranslation{Conclusion}{Conclusion}
+\DeclareDictTranslation{conclusion}{conclusion}
+\DeclareDictTranslation{Contents}{Contents}
+\DeclareDictTranslation{Continuation}{Continuation}
+\DeclareDictTranslation{continuation}{continuation}
+\DeclareDictTranslation{cont}{cont}
+\DeclareDictTranslation{encl (plural)}{encl}
+\DeclareDictTranslation{encl (singular)}{encl}
+\DeclareDictTranslation{encl}{encl}
+\DeclareDictTranslation{Figures}{Figures}
+\DeclareDictTranslation{figures}{figures}
+\DeclareDictTranslation{Figure}{Figure}
+\DeclareDictTranslation{figure}{figure}
+\DeclareDictTranslation{From}{From}
+\DeclareDictTranslation{from}{from}
+\DeclareDictTranslation{Glossary}{Glossary}
+\DeclareDictTranslation{Index}{Index}
+\DeclareDictTranslation{Introduction}{Introduction}
+\DeclareDictTranslation{introduction}{introduction}
+\DeclareDictTranslation{List of Figures and Tables}{List of Figures and Tables}
+\DeclareDictTranslation{List of Figures}{List of Figures}
+\DeclareDictTranslation{List of Tables}{List of Tables}
+\DeclareDictTranslation{or}{or}
+\DeclareDictTranslation{Outline}{Outline}
+\DeclareDictTranslation{Overview}{Overview}
+\DeclareDictTranslation{Pages}{Pages}
+\DeclareDictTranslation{pages}{pages}
+\DeclareDictTranslation{Page}{Page}
+\DeclareDictTranslation{page}{page}
+\DeclareDictTranslation{Paragraphs}{Paragraphs}
+\DeclareDictTranslation{paragraphs}{paragraphs}
+\DeclareDictTranslation{Paragraph}{Paragraph}
+\DeclareDictTranslation{paragraph}{paragraph}
+\DeclareDictTranslation{Parts}{Parts}
+\DeclareDictTranslation{parts}{parts}
+\DeclareDictTranslation{Part}{Part}
+\DeclareDictTranslation{part}{part}
+\DeclareDictTranslation{Preface}{Preface}
+\DeclareDictTranslation{Proofs}{Proofs}
+\DeclareDictTranslation{proofs}{proofs}
+\DeclareDictTranslation{Proof}{Proof}
+\DeclareDictTranslation{proof}{proof}
+\DeclareDictTranslation{References}{References}
+\DeclareDictTranslation{Related work}{Related work}
+\DeclareDictTranslation{Related Work}{Related Work}
+\DeclareDictTranslation{Sections}{Sections}
+\DeclareDictTranslation{sections}{sections}
+\DeclareDictTranslation{Section}{Section}
+\DeclareDictTranslation{section}{section}
+\DeclareDictTranslation{See also}{See also}
+\DeclareDictTranslation{see also}{see also}
+\DeclareDictTranslation{See}{See}
+\DeclareDictTranslation{see}{see}
+\DeclareDictTranslation{Sketch of Proofs}{Sketch of Proofs}
+\DeclareDictTranslation{Sketch of proofs}{Sketch of proofs}
+\DeclareDictTranslation{Sketch of Proof}{Sketch of Proof}
+\DeclareDictTranslation{Sketch of proof}{Sketch of proof}
+\DeclareDictTranslation{Subsections}{Subsections}
+\DeclareDictTranslation{subsections}{subsections}
+\DeclareDictTranslation{Subsection}{Subsection}
+\DeclareDictTranslation{subsection}{subsection}
+\DeclareDictTranslation{Summary}{Summary}
+\DeclareDictTranslation{Tables}{Tables}
+\DeclareDictTranslation{tables}{tables}
+\DeclareDictTranslation{Table}{Table}
+\DeclareDictTranslation{table}{table}
+\DeclareDictTranslation{To}{To}
+\DeclareDictTranslation{to}{to}
