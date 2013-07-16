@@ -1,5 +1,5 @@
 % arara: lualatex
-% !arara: lualatex
+% arara: lualatex
 % !arara: lualatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
@@ -98,7 +98,6 @@
 
 % ----------------------------------------------------------------------------
 % other packages, bibliography, index
-\usepackage{wasysym}
 \usepackage{array,longtable,booktabs}
 
 \usepackage{filecontents}
@@ -130,29 +129,26 @@
 
 % ----------------------------------------------------------------------------
 % custom commands
+\usepackage{bbding}
 
 \newcommand*\required{\hfill\llap{required}\newline}
 \newcommand*\optional{\hfill\llap{optional}\newline}
 
-\newcommand*\nooption[2]{\item[\code{\textcolor{key}{#1} = #2}] \cnpkgdocarrow\ }
-
-\newcommand*\unexpsign{$\RHD$}
-\newcommand*\expsign{\textcolor{red}{$\rhd$}}
+\newcommand*\unexpsign{{\tiny\FiveStar}}
+\newcommand*\expsign{\textcolor{red}{{\tiny\FiveStar}}}
 \renewcommand*\cnpkgdoctriangle{\unexpsign}
 \newcommand*\expandable{%
   \def\cnpkgdoctriangle{%
     \expsign
     \gdef\cnpkgdoctriangle{\unexpsign}}}
 
+\newlength\nodewidth
+\setlength\nodewidth{.375\linewidth}
+\long\def\yes:{\textcolor{green}{\CheckmarkBold}\par}
+\long\def\no:{\textcolor{red}{\XSolidBrush}\par}
+\protected\def\fnote#1{\textsuperscript{#1}}
 
 \pdfstringdefDisableCommands{\def\llap#1{#1\space}\def\bigstar{*}}
-
-% ----------------------------------------------------------------------------
-% title page
-% \TitlePicture{%
-%   \parbox{.8\linewidth}{%
-%   }%
-% }
 
 \begin{document}
 
@@ -185,7 +181,91 @@ It has the  status ``maintained.''
 \secidx*{Requirements}
 
 \section{Usage}\secidx{Usage}
-\subsection{Available Commands}\secidx[Commands]{Usage}
+\subsection{Background}\secidx[Background]{Usage}
+The \translations\ package enables the author of a package or a class (or a
+document) to declare translations in different languages of key words and
+fetch these translations in the document depending on the active language as
+set by \paket{babel} or \paket{polxglossia}.  Since \translations\ checks
+which language is active it is generally not necessary to specify the language
+for which a translation should be fetched manually.
+
+\translations\ knows of three types of languages: main languages (see
+table~\ref{tab:languages} on page~\pageref{tab:languages}), language aliases
+(see table~\ref{tab:aliases} on page~\pageref{tab:aliases}) and language
+dialects (see table~\ref{tab:dialects} on page~\pageref{tab:dialects}).  For
+the commands declaring or fetching a translation base languages and language
+aliases are equivalent.  Dialects are similar to aliases but there are a few
+important differences.
+
+Figure~\ref{fig:scheme} shows what happens if \translations\ is asked to fetch
+a translation for a given key.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    [
+      level/.style={sibling distance=.5\linewidth/#1},
+      every node/.style={
+        draw,
+        rounded corners=3pt,
+        align=left,
+        anchor=north,
+        font=\small\sffamily
+      }
+    ]
+    \node {check if any\fnote{a}  translation is defined in given language}
+      child {
+        node[text width=\nodewidth]
+          {\yes: check if language is a dialect}
+        child {
+          node[text width=\nodewidth/2]
+            {\yes: check if dialect translation is given}
+          child {
+            node[text width=\nodewidth/2.75]
+              {\yes: use dialect translation}
+          }
+          child {
+            node[text width=\nodewidth/2.75]
+              {\no: use lan\-guage\fnote{b} translation}
+          }
+        }
+        child {
+          node[text width=\nodewidth/2]
+            {\no: use translation}}
+        }
+      child {
+        node[text width=\nodewidth]
+          {\no: check if fallback translation is given}
+        child {
+          node[text width=\nodewidth/2.75]
+            {\yes: use fallback translation}
+        }
+        child {
+          node[text width=\nodewidth/2.75]
+            {\no: use literal key}
+        }
+      } ;
+  \end{tikzpicture}
+  \caption{Schematic representation of \translations' translating
+    mechansim. Notes: \fnote{a} except for a possible fallback
+    translation. \fnote{b} \ie, the base language of the dialect.}
+  \label{fig:scheme}
+\end{figure}
+
+What happens if you declare a translation? There are three cases:
+\begin{enumerate}
+  \item You declare a translation for a base language: this is the normal case
+    where an internal macro is defined which can be fetched by the
+    \cmd{GetTranslation} command (see section~\ref{ssec:commands}).
+  \item You declare a translation for a language alias: this is the very same
+    as the first case since the same internal macro is defined.
+  \item You declare a translation for a dialect: this is two-fold.  Either a
+    translation for the base language exists so only the translation for the
+    dialect is saved.  If the translation for the base language does not exist
+    it is defined to be the same as the one for the dialect.
+\end{enumerate}
+
+\subsection{Available Commands}\label{ssec:commands}\secidx[Commands]{Usage}
 Below the commands provided by \translations\ are explained.  The symbol
 \expsign{} means that the command is expandable, \unexpsign{} means that it
 isn't.
@@ -254,7 +334,7 @@ isn't.
    Needs to be in a dictionary file.  This command tells \translations\ that
    the file indeed is a dictionary and also sets the language for the
    dictionary which is used by \cmd{DeclareDictTranslation}.
- \Befehl{PrintDictionaryFor}{<lang>}\ma{<name>}\ma{<pre>}\ma{<mid>}\ma{<post>}\newline
+ \expandable\Befehl{PrintDictionaryFor}{<lang>}\ma{<name>}\ma{<pre>}\ma{<mid>}\ma{<post>}\newline
    \sinceversion{1.0}Prints all entries of dictionary \code{<name>} in
    language \code{<lang>} in the order the entries have been declared.  For
    every entry the code\par
@@ -408,9 +488,9 @@ German.
 \section{Defined Languages}\label{sec:languages}\secidx{Languages}
 Quite a number of languages already are defined, either directly or via an
 alias.  So, before you define a language you should take a look at the tables
-below if the language doesn't already exist.  \translations\ currently has
-these languages defined, ``fallback'' being a dummy language used for fallback
-translations.  Table~\ref{tab:languages} lists all base languages.
+below if the language doesn't already exist.  Table~\ref{tab:languages} lists
+all base languages, ``fallback'' being a dummy language used for fallback
+translations.
 
 \newcounter{column}
 \gdef\seplang{%
@@ -422,7 +502,7 @@ translations.  Table~\ref{tab:languages} lists all base languages.
 \def\do#1{#1\seplang}
 \makeatletter
 \begin{longtable}{llll}
-    \caption{Languages defines by \translations.\label{tab:languages}} \\
+    \caption{Base languages defines by \translations.\label{tab:languages}} \\
     \toprule
   \endhead
     \bottomrule

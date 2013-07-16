@@ -28,7 +28,7 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/15}
+\def\@trnslt@date{2013/07/16}
 \def\@trnslt@version{v1.0}
 
 \ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space a simple translator]
@@ -90,7 +90,25 @@
 \def\@trnslt@dialects@single{}% all dialects
 
 % --------------------------------------------------------------------------
-% \DeclareLanguage and \DeclareLanguageAlias
+% define \@trnslt@if@<name> conditionals that don't leave the checked macro as
+% \relax behind and check for \@trnslt@<name>@#1.  These conditionals should
+% also be expandable in an \edef-like context:
+\def\@trnslt@newif#1{%
+  \csdef{@trnslt@if@#1}##1{%
+    \expandafter\expandafter\expandafter\expandafter
+    \expandafter\expandafter\expandafter
+    \@firstofone
+    {\expandafter\expandafter\expandafter}%
+    \ifcsname @trnslt@#1@##1\endcsname
+      \expandafter\@firstoftwo
+    \else
+      \expandafter\@secondoftwo
+    \fi
+  }%
+}
+
+% --------------------------------------------------------------------------
+% \DeclareLanguage
 % #1: language
 \newrobustcmd*\DeclareLanguage[1]{%
   \@trnslt@declare@language{#1}}
@@ -107,12 +125,10 @@
 \def\@trnslt@language#1{%
   \csuse{@trnslt@language@#1}}
 
-\def\@trnslt@if@language#1{%
-  \ifcsundef{@trnslt@language@#1}
-    {\expandafter\@secondoftwo}
-    {\expandafter\@firstoftwo}%
-}
+\@trnslt@newif{language}
 
+% --------------------------------------------------------------------------
+% \DeclareLanguageDialect
 % #1: dialect
 % #2: language
 \newrobustcmd*\DeclareLanguageDialect[2]{%
@@ -148,19 +164,20 @@
 \def\@trnslt@dialect#1{%
   \csuse{@trnslt@dialect@#1}}
 
+% this macros fetches the base language for a given dialect, expandably:
 \def\@trnslt@dialect@of#1{%
-  \expandafter\expandafter\expandafter
-    \@trnslt@dialect@of@aux
-    \csname @trnslt@dialect@#1\endcsname\@empty
-}
-\def\@trnslt@dialect@of@aux#1#2{\ifx\relax#1\@empty\else#1\fi}
-
-\def\@trnslt@if@dialect#1{%
-  \ifcsundef{@trnslt@dialect@#1}
-    {\expandafter\@secondoftwo}
-    {\expandafter\@firstoftwo}%
+  \@trnslt@if@dialect{#1}
+    {%
+      \expandafter\expandafter\expandafter
+      \@firstoftwo
+      \csname @trnslt@dialect@#1\endcsname
+    }{}%
 }
 
+\@trnslt@newif{dialect}
+
+% --------------------------------------------------------------------------
+% \DeclareLanguageAlias
 % #1: alias
 % #2: language
 \newrobustcmd*\DeclareLanguageAlias[2]{%
@@ -188,12 +205,9 @@
 \def\@trnslt@alias#1{%
   \csuse{@trnslt@alias@#1}}
 
-\def\@trnslt@if@alias#1{%
-  \ifcsundef{@trnslt@alias@#1}
-    {\expandafter\@secondoftwo}
-    {\expandafter\@firstoftwo}%
-}
+\@trnslt@newif{alias}
 
+% --------------------------------------------------------------------------
 % dummy language: `fallback':
 \DeclareLanguage{fallback}
 \DeclareLanguageAlias{Fallback}{fallback}
@@ -225,35 +239,18 @@
 \def\@trnslt@declare@translation#1#2#3{%
   \@trnslt@if@language{#2}
     {%
-      % save the <word> as <word>:
-      \csdef{@trnslt@word@#1@literal}{#1}%
-      % check if the language is a dialect:
-      \@trnslt@if@dialect{#2}
-        {\csdef{@trnslt@word@#1@\@trnslt@dialect{#2}}{#3}}
-        {}%
-      % check if translation already exists:
-      \@trnslt@if@translation{#1}{#2}
-        {}
-        {\csdef{@trnslt@word@#1@\@trnslt@language{#2}}{#3}}%
-    }
-    {\@trnslt@err@unknown@lang{#2}}%
-}
-
-\def\@trnslt@if@translation#1#2{%
-  \ifcsundef{@trnslt@word@#1@\@trnslt@language{#2}}
-    {%
       \@trnslt@if@dialect{#2}
         {%
-          \ifboolexpe{
-            test {\ifcsundef{@trnslt@word@#1@\@trnslt@dialect{#2}}} or
-            test {\ifcsundef{@trnslt@word@#1@\@trnslt@dialect@of{#2}}}
-          }
-          {\expandafter\@firstoftwo}
-          {\expandafter\@secondoftwo}%
+          \csdef{@trnslt@word@#1@\@trnslt@dialect{#2}}{#3}%
+          \@trnslt@if@word\@trnslt@dialect@of{#1}{#2}
+            {}
+            {\csdef{@trnslt@word@#1@\@trnslt@dialect@of{#2}}{#3}}%
         }
-        {\expandafter\@secondoftwo}%
+        {\csdef{@trnslt@word@#1@\@trnslt@language{#2}}{#3}}%
+      % save the <word> as <word>:
+      \csdef{@trnslt@word@#1@literal}{#1}%
     }
-    {\expandafter\@firstoftwo}%
+    {\@trnslt@err@unknown@lang{#2}}%
 }
 
 \def\@trnslt@new@translation#1#2#3{%
@@ -265,6 +262,38 @@
   \@trnslt@if@translation{#1}{#2}
     {\@trnslt@declare@translation{#1}{#2}{#3}}
     {\@trnslt@err@not@defined{#1}{#2}}}
+
+% --------------------------------------------------------------------------
+% now let's go through some trouble to check if a translation exists:
+\def\@trnslt@if@word#1#2#3{%
+  \expandafter\expandafter\expandafter\expandafter
+  \expandafter\expandafter\expandafter
+  \@firstofone
+  {\expandafter\expandafter\expandafter}%
+  \ifcsname @trnslt@word@#2@#1{#3}\endcsname
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}%
+
+\def\@trnslt@if@translation#1#2{%
+  \@trnslt@if@word\@trnslt@language{#1}{#2}
+    {\expandafter\@firstoftwo}
+    {%
+      \@trnslt@if@dialect{#2}
+        {%
+          \@trnslt@if@word\@trnslt@dialect{#1}{#2}
+            {\expandafter\@firstoftwo}
+            {%
+              \@trnslt@if@word\@trnslt@dialect@of{#1}{#2}
+                {\expandafter\@firstoftwo}
+                {\expandafter\@secondoftwo}%
+            }
+        }
+        {\expandafter\@secondoftwo}%
+    }%
+}
 
 % --------------------------------------------------------------------------
 % \GetTranslationFor and \GetTranslation
@@ -571,10 +600,12 @@
                       happen if neither `babel' nor `polyglossia' have been
                       loaded, i.e., no language has been chosen /and/ the
                       package writer did not provide an English translation
-2013/07/15 v1.0     - removed from `exsheets' bundle - `translations' should
+2013/07/16 v1.0     - removed from `exsheets' bundle - `translations' should
                       be a package of it's own
                     - load basic dictionary automatically if available
                     - rudimentary check in \LoadDictionary if loaded file is a
                       dictionary
                     - new command \PrintDictionaryFor
+                    - redefined conditionals; they still seemed to make
+                      trouble in some cases
 
