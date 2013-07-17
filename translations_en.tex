@@ -1,5 +1,5 @@
 % arara: lualatex
-% !arara: lualatex
+% arara: lualatex
 % !arara: lualatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
@@ -45,15 +45,15 @@
 \docsetup{
   pkg      = {translations} ,
   repo     = github ,
-  subtitle = {a simple translator} ,
+  subtitle = {internationalization of \LaTeXe\ packages} ,
   language = en ,
   modules  = true ,
   code-box = {
-    backgroundcolor  = gray!7!white ,
     skipbelow        = .6\baselineskip plus .5ex minus .5ex ,
     skipabove        = .6\baselineskip plus .5ex minus .5ex ,
     innerleftmargin  = 1.5em ,
-    innerrightmargin = 2.5em
+    innerrightmargin = 2.5em ,
+    roundcorner      = 3pt
   } ,
   gobble   = 1
 }
@@ -144,8 +144,8 @@
 
 \newlength\nodewidth
 \setlength\nodewidth{.375\linewidth}
-\long\def\yes:{\textcolor{green}{\CheckmarkBold}\par}
-\long\def\no:{\textcolor{red}{\XSolidBrush}\par}
+\long\def\yes:{\centering\textcolor{green}{\CheckmarkBold}\par}
+\long\def\no:{\centering\textcolor{red}{\XSolidBrush}\par}
 \protected\def\fnote#1{\textsuperscript{#1}}
 
 \pdfstringdefDisableCommands{\def\llap#1{#1\space}\def\bigstar{*}}
@@ -195,7 +195,7 @@ table~\ref{tab:languages} on page~\pageref{tab:languages}), language aliases
 dialects (see table~\ref{tab:dialects} on page~\pageref{tab:dialects}).  For
 the commands declaring or fetching a translation base languages and language
 aliases are equivalent.  Dialects are similar to aliases but there are a few
-important differences.
+important differences.  An alias can for example be an alias of a dialect.
 
 Figure~\ref{fig:scheme} shows what happens if \translations\ is asked to fetch
 a translation for a given key.
@@ -252,7 +252,7 @@ a translation for a given key.
   \label{fig:scheme}
 \end{figure}
 
-What happens if you declare a translation? There are three cases:
+What happens if you declare a translation? There are four cases:
 \begin{enumerate}
   \item You declare a translation for a base language: this is the normal case
     where an internal macro is defined which can be fetched by the
@@ -263,6 +263,8 @@ What happens if you declare a translation? There are three cases:
     translation for the base language exists so only the translation for the
     dialect is saved.  If the translation for the base language does not exist
     it is defined to be the same as the one for the dialect.
+  \item You daclare a translation for an alias of a dialect: this is the very
+    same as the third case as again the internal macros are the same.
 \end{enumerate}
 
 \subsection{Available Commands}\label{ssec:commands}\secidx[Commands]{Usage}
@@ -490,7 +492,15 @@ Quite a number of languages already are defined, either directly or via an
 alias.  So, before you define a language you should take a look at the tables
 below if the language doesn't already exist.  Table~\ref{tab:languages} lists
 all base languages, ``fallback'' being a dummy language used for fallback
-translations.
+translations.  The tables~\ref{tab:languages}, \ref{tab:aliases}
+and~\ref{tab:dialects} list \emph{all} language names known to \translations.
+Unfortunatly they're not sorted but listed in the order they have been
+defined.  Although I tried to make this alphabetically it will not always be.
+
+If you miss a language or recognize a language that has falsely been declared
+as an alias but should rather be a dialect or base language itself (or any
+variation of this theme) please let me know, preferably with a short
+explanation what's wrong and why.
 
 \newcounter{column}
 \gdef\seplang{%
@@ -502,7 +512,9 @@ translations.
 \def\do#1{#1\seplang}
 \makeatletter
 \begin{longtable}{llll}
-    \caption{Base languages defines by \translations.\label{tab:languages}} \\
+    \caption{Base languages defined by \translations.\label{tab:languages}} \\
+    \toprule
+  \endfirsthead
     \toprule
   \endhead
     \bottomrule
@@ -514,9 +526,8 @@ translations.
 \end{longtable}
 \makeatother
 
-To every one of these languages at least one alias exists, the uppercase
-variant.  This is due to the fact that it is common to write language names
-uppercased.  All defined aliases are listed in table~\ref{tab:aliases}.
+\translations\ also defines a few dialects of these base languages.  They are
+listed in table~\ref{tab:dialects}.
 
 \setcounter{column}{0}
 \gdef\seplang{%
@@ -529,31 +540,6 @@ uppercased.  All defined aliases are listed in table~\ref{tab:aliases}.
 }
 \def\aliases#1#2{#1\seplang #2\seplang}
 \def\do#1{\aliases#1}
-\makeatletter
-\begin{longtable}{ll@{\hspace*{4em}}ll}
-    \caption{All language aliases defined by \translations.\label{tab:aliases}}\\
-    \toprule
-     \bfseries alias & \bfseries language &
-     \bfseries alias & \bfseries language \\
-    \midrule
-  \endfirsthead
-    \toprule
-     \bfseries alias & \bfseries language &
-     \bfseries alias & \bfseries language \\
-    \midrule
-  \endhead
-    \bottomrule
-  \endlastfoot
-    \midrule
-    &&& \hfill\emph{continues} \\
-  \endfoot
-  \dolistloop\@trnslt@aliases@pair
-\end{longtable}
-\makeatother
-
-\translations\ also defines a few dialects.  They are listed in
-table~\ref{tab:dialects}.
-
 \makeatletter
 \begin{longtable}{ll@{\hspace*{4em}}ll}
     \caption{All dialects defined by \translations.\label{tab:dialects}}\\
@@ -576,10 +562,40 @@ table~\ref{tab:dialects}.
 \end{longtable}
 \makeatother
 
+To every one of these languages and dialects at least one alias exists, the
+uppercase variant.  This is due to the fact that it is common to write
+language names uppercased.  All defined aliases are listed in
+table~\ref{tab:aliases}.
+
+\setcounter{column}{0}
+\makeatletter
+\begin{longtable}{ll@{\hspace*{4em}}ll}
+    \caption{All language aliases defined by \translations.\label{tab:aliases}}\\
+    \toprule
+     \bfseries alias & \bfseries language &
+     \bfseries alias & \bfseries language \\
+    \midrule
+  \endfirsthead
+    \toprule
+     \bfseries alias & \bfseries language &
+     \bfseries alias & \bfseries language \\
+    \midrule
+  \endhead
+    \bottomrule
+  \endlastfoot
+    \midrule
+    &&& \hfill\emph{continues} \\
+  \endfoot
+  \dolistloop\@trnslt@aliases@pair
+\end{longtable}
+\makeatother
+
 \secidx*{Languages}
 
-These languages should cover all languages which are currently covered by
-\paket{babel} and \paket{polyglossia}.
+These languages \emph{should} cover all languages which are currently covered
+by \paket{babel} and \paket{polyglossia} but very likely this is not the
+case.  Should you miss a language please send me an email so I can add it to
+\translations.
 
 \section{Implementation}\index{Implementation@\textbf{Implementation}}
 In the following code the lines 1--30 have been omitted. They only repeat the

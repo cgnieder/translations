@@ -28,10 +28,11 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/16}
-\def\@trnslt@version{v1.0}
+\def\@trnslt@date{2013/07/17}
+\def\@trnslt@version{v1.0a}
+\def\@trnslt@info{internationalization of LaTeX2e packages}
 
-\ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space a simple translator]
+\ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space \@trnslt@info\space (CN)]
 \RequirePackage{etoolbox,scrlfile}
 
 % --------------------------------------------------------------------------
@@ -470,50 +471,86 @@
 
 % --------------------------------------------------------------------------
 % predefined languages
+\DeclareLanguage{afrikaans}
 \DeclareLanguage{albanian}
+\DeclareLanguage{arabic}
+\DeclareLanguage{basque}
+\DeclareLanguage{breton}
 \DeclareLanguage{bulgarian}
 \DeclareLanguage{catalan}
-\DeclareLanguage{croatian}
 \DeclareLanguage{czech}
 \DeclareLanguage{danish}
 \DeclareLanguage{dutch}
 \DeclareLanguage{english}
+\DeclareLanguage{esperanto}
+\DeclareLanguage{estonian}
+\DeclareLanguage{ethiop}
+\DeclareLanguage{farsi}
 \DeclareLanguage{finnish}
 \DeclareLanguage{french}
+\DeclareLanguage{friulan}
+\DeclareLanguage{gaelic}
+\DeclareLanguage{galician}
 \DeclareLanguage{german}
 \DeclareLanguage{greek}
 \DeclareLanguage{hebrew}
+\DeclareLanguage{hindi}
 \DeclareLanguage{hungarian}
 \DeclareLanguage{icelandic}
+\DeclareLanguage{interlingua}
 \DeclareLanguage{italian}
+\DeclareLanguage{japanese}
+\DeclareLanguage{ladin}
+\DeclareLanguage{latin}
+\DeclareLanguage{latvian}
+\DeclareLanguage{lithuanian}
+\DeclareLanguage{malay}
+\DeclareLanguage{mongolian}
 \DeclareLanguage{norwegian}
+\DeclareLanguage{pinyin}
 \DeclareLanguage{polish}
 \DeclareLanguage{portuges}
 \DeclareLanguage{romanian}
+\DeclareLanguage{romansh}
 \DeclareLanguage{russian}
+\DeclareLanguage{samin}
 \DeclareLanguage{serbocroatian}
 \DeclareLanguage{slovak}
 \DeclareLanguage{slovenian}
+\DeclareLanguage{sorbian}
+% not sure about this: isn't it either a Spanish or English dialect?
+\DeclareLanguage{spanglish}
 \DeclareLanguage{spanish}
 \DeclareLanguage{swedish}
+\DeclareLanguage{thai}
 \DeclareLanguage{turkish}
+\DeclareLanguage{turkmen}
 \DeclareLanguage{ukrainian}
+\DeclareLanguage{vietnamese}
+\DeclareLanguage{welsh}
 
 % --------------------------------------------------------------------------
 % aliases and dialects:
+\DeclareLanguageAlias  {Afrikaans}{afrikaans}
 \DeclareLanguageAlias  {Albanian}{albanian}
+\DeclareLanguageAlias  {Arabic}{arabic}
+\DeclareLanguageAlias  {Basque}{basque}
+\DeclareLanguageAlias  {Breton}{breton}
 \DeclareLanguageAlias  {Bulgarian}{bulgarian}
 \DeclareLanguageAlias  {Catalan}{catalan}
-\DeclareLanguageAlias  {Croatian}{croatian}
 \DeclareLanguageAlias  {Czech}{czech}
 \DeclareLanguageAlias  {Danish}{danish}
 \DeclareLanguageAlias  {Dutch}{dutch}
+\DeclareLanguageAlias  {Farsi}{farsi}
 \DeclareLanguageAlias  {Finnish}{finnish}
 \DeclareLanguageAlias  {francais}{french}
 \DeclareLanguageAlias  {Francais}{francais}
 \DeclareLanguageDialect{canadien}{french}
 \DeclareLanguageAlias  {Canadien}{canadien}
 \DeclareLanguageAlias  {French}{french}
+\DeclareLanguageDialect{acadian}{french}
+\DeclareLanguageAlias  {Acadian}{acadian}
+\DeclareLanguageAlias  {frenchle}{french}
 \DeclareLanguageDialect{american}{english}
 \DeclareLanguageAlias  {American}{american}
 \DeclareLanguageDialect{australian}{english}
@@ -525,25 +562,65 @@
 \DeclareLanguageAlias  {English}{english}
 \DeclareLanguageAlias  {UKenglish}{british}
 \DeclareLanguageAlias  {USenglish}{american}
-\DeclareLanguageDialect{austrian}{german}
-\DeclareLanguageAlias  {Austrian}{austrian}
+\DeclareLanguageDialect{newzealand}{english}
+\DeclareLanguageAlias  {Newzealand}{newzealand}
+\DeclareLanguageAlias  {Ethiop}{ethiop}
+\DeclareLanguageAlias  {Esperanto}{esperanto}
+\DeclareLanguageAlias  {Estonian}{estonian}
+\DeclareLanguageAlias  {Friulan}{friulan}
+\DeclareLanguageAlias  {Gaelic}{gaelic}
+\DeclareLanguageDialect{irish}{gaelic}
+\DeclareLanguageDialect{scottish}{gaelic}
+\DeclareLanguageAlias  {Irish}{irish}
+\DeclareLanguageAlias  {irish gaelic}{irish}
+\DeclareLanguageAlias  {Irish Gaelic}{irish}
+\DeclareLanguageAlias  {Scottish}{scottish}
+\DeclareLanguageAlias  {scottish gaelic}{scottish}
+\DeclareLanguageAlias  {Scottish Gaelic}{scottish}
+\DeclareLanguageAlias  {Galician}{galician}
 \DeclareLanguageAlias  {German}{german}
 \DeclareLanguageAlias  {germanb}{german}
-\DeclareLanguageDialect{naustrian}{austrian}
 \DeclareLanguageAlias  {ngerman}{german}
+\DeclareLanguageDialect{austrian}{german}
+\DeclareLanguageAlias  {Austrian}{austrian}
+\DeclareLanguageAlias  {naustrian}{austrian}
 \DeclareLanguageAlias  {Greek}{greek}
 \DeclareLanguageAlias  {polutonikogreek}{greek}
+\DeclareLanguageAlias  {ibygreek}{greek}
+\DeclareLanguageAlias  {bgreek}{greek}
 \DeclareLanguageAlias  {Hebrew}{hebrew}
+\DeclareLanguageAlias  {Hindi}{hindi}
 \DeclareLanguageAlias  {Hungarian}{hungarian}
-\DeclareLanguageDialect{magyar}{hungarian}
+\DeclareLanguageAlias  {magyar}{hungarian}
 \DeclareLanguageAlias  {Magyar}{magyar}
 \DeclareLanguageAlias  {Icelandic}{icelandic}
+\DeclareLanguageAlias  {Interlingua}{interlingua}
 \DeclareLanguageAlias  {Italian}{italian}
+\DeclareLanguageAlias  {Japanese}{japanese}
+\DeclareLanguageAlias  {Latin}{latin}
+\DeclareLanguageAlias  {Ladin}{ladin}
+\DeclareLanguageAlias  {Latvian}{latvian}
+\DeclareLanguageAlias  {lettish}{latvian}
+\DeclareLanguageAlias  {Lettish}{lettish}
+\DeclareLanguageAlias  {Lithuanian}{lithuanian}
+% hopefully someone who knows netter than me can comment on these
+\DeclareLanguageAlias  {Malay}{malay}
+\DeclareLanguageDialect{indonesian}{malay}
+\DeclareLanguageAlias  {Indonesian}{indonesian}
+\DeclareLanguageAlias  {indon}{indonesian}
+\DeclareLanguageAlias  {bahasa meyalu}{malay}
+\DeclareLanguageAlias  {Bahasa Meyalu}{bahasa melayu}
+\DeclareLanguageAlias  {bahasa}{bahasa melayu}
+\DeclareLanguageAlias  {Bahasa}{bahasa}
+\DeclareLanguageAlias  {bahasai}{bahasa}
+\DeclareLanguageAlias  {bahasam}{bahasa}
+\DeclareLanguageAlias  {Mongolian}{mongolian}
 \DeclareLanguageAlias  {norsk}{norwegian}
 \DeclareLanguageAlias  {Norsk}{norsk}
 \DeclareLanguageAlias  {Norwegian}{norwegian}
 \DeclareLanguageAlias  {nynorsk}{norwegian}
 \DeclareLanguageAlias  {Nynorsk}{nynorsk}
+\DeclareLanguageAlias  {Pinyin}{pinyin}
 \DeclareLanguageAlias  {Polish}{polish}
 \DeclareLanguageDialect{brazil}{portuges}
 \DeclareLanguageAlias  {Brazil}{brazil}
@@ -553,18 +630,52 @@
 \DeclareLanguageAlias  {portuguese}{portuges}
 \DeclareLanguageAlias  {Portuguese}{portuguese}
 \DeclareLanguageAlias  {Romanian}{romanian}
+\DeclareLanguageAlias  {Romansh}{romansh}
+\DeclareLanguageAlias  {Romansch}{romansh}
+\DeclareLanguageAlias  {Rumantsh}{romansh}
+\DeclareLanguageAlias  {Rumantsch}{romansh}
+\DeclareLanguageAlias  {Romanche}{romansh}
 \DeclareLanguageAlias  {Russian}{russian}
-\DeclareLanguageAlias  {Serbocroatian}{serbocroatian}
+\DeclareLanguageAlias  {Samin}{samin}
+\DeclareLanguageAlias  {north sami}{samin}
+\DeclareLanguageAlias  {North Sami}{north sami}
+\DeclareLanguageAlias  {northern sami}{north sami}
+\DeclareLanguageAlias  {Northern Sami}{northern sami}
+% this one isn't needed, is it:
+% \DeclareLanguageAlias  {Serbocroatian}{serbocroatian}
+\DeclareLanguageAlias  {serbo-croatian}{serbocroatian}
+\DeclareLanguageAlias  {Serbo-Croatian}{serbocroatian}
+\DeclareLanguageDialect{serbian}{serbocroatian}
+\DeclareLanguageAlias  {Serbian}{serbian}
+\DeclareLanguageAlias  {serbianc}{serbian}
+\DeclareLanguageDialect{croatian}{serbocroatian}
+\DeclareLanguageAlias  {Croatian}{croatian}
 \DeclareLanguageAlias  {Slovak}{slovak}
 \DeclareLanguageAlias  {Slovenian}{slovenian}
+\DeclareLanguageAlias  {Sorbian}{sorbian}
+\DeclareLanguageDialect{lowersorbian}{sorbian}
+\DeclareLanguageDialect{uppersorbian}{sorbian}
+\DeclareLanguageAlias  {Lowersorbian}{lowersorbian}
+\DeclareLanguageAlias  {Uppersorbian}{uppersorbian}
+\DeclareLanguageAlias  {lower sorbian}{lowersorbian}
+\DeclareLanguageAlias  {upper sorbian}{uppersorbian}
+\DeclareLanguageAlias  {Lower Sorbian}{lowersorbian}
+\DeclareLanguageAlias  {Upper Sorbian}{uppersorbian}
+\DeclareLanguageAlias  {Spanglish}{spanglish}
 \DeclareLanguageAlias  {Spanish}{spanish}
 \DeclareLanguageAlias  {Swedish}{swedish}
 \DeclareLanguageDialect{swissgerman}{german}
 % this maybe should be a language of it's own:
 \DeclareLanguageAlias  {Swiss}{swissgerman}
 \DeclareLanguageAlias  {Swissgerman}{swissgerman}
+\DeclareLanguageAlias  {Thai}{thai}
+\DeclareLanguageAlias  {thaicjk}{thai}
+\DeclareLanguageAlias  {Thaicjk}{thaicjk}
 \DeclareLanguageAlias  {Turkish}{turkish}
+\DeclareLanguageAlias  {Turkmen}{turkmen}
 \DeclareLanguageAlias  {Ukrainian}{ukrainian}
+\DeclareLanguageAlias  {Vietnamese}{vietnamese}
+\DeclareLanguageAlias  {Welsh}{welsh}
 
 % --------------------------------------------------------------------------
 % load basic dictionary if available
@@ -608,4 +719,6 @@
                     - new command \PrintDictionaryFor
                     - redefined conditionals; they still seemed to make
                       trouble in some cases
+2013/07/17 v1.0a    - added lot's of languages, a few languages had falsely
+                      been declared as dialect instead of an alias
 
