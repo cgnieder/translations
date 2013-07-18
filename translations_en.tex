@@ -505,14 +505,15 @@ explanation what's wrong and why.
 \newcounter{column}
 \gdef\seplang{%
   \stepcounter{column}%
-  \ifnumless{\value{column}}{4}
+  \ifnumless{\value{column}}{5}
     {&}
     {\\\setcounter{column}{0}}%
 }
 \def\do#1{#1\seplang}
 \makeatletter
-\begin{longtable}{llll}
-    \caption{Base languages defined by \translations.\label{tab:languages}} \\
+\begin{longtable}{lllll}
+    \caption{Base languages defined by \translations, from left to right in
+      the order of definition.\label{tab:languages}} \\
     \toprule
   \endfirsthead
     \toprule
@@ -542,7 +543,8 @@ listed in table~\ref{tab:dialects}.
 \def\do#1{\aliases#1}
 \makeatletter
 \begin{longtable}{ll@{\hspace*{4em}}ll}
-    \caption{All dialects defined by \translations.\label{tab:dialects}}\\
+    \caption{All dialects defined by \translations, from left to right in the
+      order of definition.\label{tab:dialects}}\\
     \toprule
      \bfseries dialect & \bfseries language &
      \bfseries dialect & \bfseries language \\
@@ -570,7 +572,8 @@ table~\ref{tab:aliases}.
 \setcounter{column}{0}
 \makeatletter
 \begin{longtable}{ll@{\hspace*{4em}}ll}
-    \caption{All language aliases defined by \translations.\label{tab:aliases}}\\
+    \caption{All language aliases defined by \translations, from left to right
+      in the order of definition.\label{tab:aliases}}\\
     \toprule
      \bfseries alias & \bfseries language &
      \bfseries alias & \bfseries language \\

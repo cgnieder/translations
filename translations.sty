@@ -28,7 +28,7 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/17}
+\def\@trnslt@date{2013/07/18}
 \def\@trnslt@version{v1.0a}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
@@ -473,11 +473,16 @@
 % predefined languages
 \DeclareLanguage{afrikaans}
 \DeclareLanguage{albanian}
+\DeclareLanguage{amharic}
 \DeclareLanguage{arabic}
+\DeclareLanguage{armenian}
+\DeclareLanguage{asturian}
 \DeclareLanguage{basque}
+\DeclareLanguage{bengali}
 \DeclareLanguage{breton}
 \DeclareLanguage{bulgarian}
 \DeclareLanguage{catalan}
+\DeclareLanguage{coptic}
 \DeclareLanguage{czech}
 \DeclareLanguage{danish}
 \DeclareLanguage{dutch}
@@ -494,19 +499,29 @@
 \DeclareLanguage{german}
 \DeclareLanguage{greek}
 \DeclareLanguage{hebrew}
-\DeclareLanguage{hindi}
+\DeclareLanguage{hindustani}
 \DeclareLanguage{hungarian}
 \DeclareLanguage{icelandic}
 \DeclareLanguage{interlingua}
 \DeclareLanguage{italian}
 \DeclareLanguage{japanese}
+\DeclareLanguage{kannada}
 \DeclareLanguage{ladin}
+\DeclareLanguage{lao}
 \DeclareLanguage{latin}
 \DeclareLanguage{latvian}
 \DeclareLanguage{lithuanian}
 \DeclareLanguage{malay}
+\DeclareLanguage{malayalam}
+\DeclareLanguage{maldivian}
+\DeclareLanguage{marathi}
 \DeclareLanguage{mongolian}
+% polyglossia seems to support this one but it is unclear which language is
+% actually meant by it:
+% \DeclareLanguage{nko}
 \DeclareLanguage{norwegian}
+\DeclareLanguage{occitan}
+\DeclareLanguage{piedmontese}
 \DeclareLanguage{pinyin}
 \DeclareLanguage{polish}
 \DeclareLanguage{portuges}
@@ -514,6 +529,7 @@
 \DeclareLanguage{romansh}
 \DeclareLanguage{russian}
 \DeclareLanguage{samin}
+\DeclareLanguage{sanskrit}
 \DeclareLanguage{serbocroatian}
 \DeclareLanguage{slovak}
 \DeclareLanguage{slovenian}
@@ -522,7 +538,13 @@
 \DeclareLanguage{spanglish}
 \DeclareLanguage{spanish}
 \DeclareLanguage{swedish}
+% polyglossia seems to support this one but it is unclear which language is
+% actually meant by it:
+% \DeclareLanguage{syriac}
+\DeclareLanguage{tamil}
+\DeclareLanguage{telugu}
 \DeclareLanguage{thai}
+\DeclareLanguage{tibetan}
 \DeclareLanguage{turkish}
 \DeclareLanguage{turkmen}
 \DeclareLanguage{ukrainian}
@@ -533,11 +555,21 @@
 % aliases and dialects:
 \DeclareLanguageAlias  {Afrikaans}{afrikaans}
 \DeclareLanguageAlias  {Albanian}{albanian}
+\DeclareLanguageAlias  {Amharic}{amharic}
 \DeclareLanguageAlias  {Arabic}{arabic}
+\DeclareLanguageAlias  {Armenian}{armenian}
+\DeclareLanguageAlias  {Asturian}{asturian}
+\DeclareLanguageAlias  {astur-leonese}{asturian}
+\DeclareLanguageAlias  {Astur-Leonese}{astur-leonese}
+\DeclareLanguageAlias  {Asturian-Leonese}{asturian-leonese}
 \DeclareLanguageAlias  {Basque}{basque}
+\DeclareLanguageAlias  {Bengali}{bengali}
 \DeclareLanguageAlias  {Breton}{breton}
 \DeclareLanguageAlias  {Bulgarian}{bulgarian}
 \DeclareLanguageAlias  {Catalan}{catalan}
+\DeclareLanguageAlias  {Coptic}{coptic}
+\DeclareLanguageAlias  {coptic egyptian}{coptic}
+\DeclareLanguageAlias  {Coptic Egyptian}{coptic egyptian}
 \DeclareLanguageAlias  {Czech}{czech}
 \DeclareLanguageAlias  {Danish}{danish}
 \DeclareLanguageAlias  {Dutch}{dutch}
@@ -589,7 +621,13 @@
 \DeclareLanguageAlias  {ibygreek}{greek}
 \DeclareLanguageAlias  {bgreek}{greek}
 \DeclareLanguageAlias  {Hebrew}{hebrew}
+\DeclareLanguageAlias  {Hindustani}{hindustani}
+\DeclareLanguageAlias  {hindi-urdu}{hindustani}
+\DeclareLanguageAlias  {Hindi-Urdu}{hindi-urdu}
+\DeclareLanguageDialect{hindi}{hindustani}
 \DeclareLanguageAlias  {Hindi}{hindi}
+\DeclareLanguageDialect{urdu}{hindustani}
+\DeclareLanguageAlias  {Urdu}{urdu}
 \DeclareLanguageAlias  {Hungarian}{hungarian}
 \DeclareLanguageAlias  {magyar}{hungarian}
 \DeclareLanguageAlias  {Magyar}{magyar}
@@ -597,8 +635,12 @@
 \DeclareLanguageAlias  {Interlingua}{interlingua}
 \DeclareLanguageAlias  {Italian}{italian}
 \DeclareLanguageAlias  {Japanese}{japanese}
-\DeclareLanguageAlias  {Latin}{latin}
+\DeclareLanguageAlias  {Kannada}{kannada}
 \DeclareLanguageAlias  {Ladin}{ladin}
+\DeclareLanguageAlias  {Lao}{lao}
+\DeclareLanguageAlias  {laotian}{lao}
+\DeclareLanguageAlias  {Laotian}{laotian}
+\DeclareLanguageAlias  {Latin}{latin}
 \DeclareLanguageAlias  {Latvian}{latvian}
 \DeclareLanguageAlias  {lettish}{latvian}
 \DeclareLanguageAlias  {Lettish}{lettish}
@@ -614,12 +656,26 @@
 \DeclareLanguageAlias  {Bahasa}{bahasa}
 \DeclareLanguageAlias  {bahasai}{bahasa}
 \DeclareLanguageAlias  {bahasam}{bahasa}
+\DeclareLanguageAlias  {Malayalam}{malayalam}
+\DeclareLanguageAlias  {Maldivian}{maldivian}
+\DeclareLanguageAlias  {divehi}{maldivian}
+\DeclareLanguageAlias  {Divehi}{divehi}
+\DeclareLanguageAlias  {Marathi}{marathi}
 \DeclareLanguageAlias  {Mongolian}{mongolian}
+% \DeclareLanguageAlias  {Syriac}{syriac}
 \DeclareLanguageAlias  {norsk}{norwegian}
 \DeclareLanguageAlias  {Norsk}{norsk}
 \DeclareLanguageAlias  {Norwegian}{norwegian}
 \DeclareLanguageAlias  {nynorsk}{norwegian}
 \DeclareLanguageAlias  {Nynorsk}{nynorsk}
+\DeclareLanguageAlias  {Occitan}{occitan}
+\DeclareLanguageAlias  {lenga d'oc}{occitan}
+\DeclareLanguageAlias  {langue d'oc}{occitan}
+\DeclareLanguageAlias  {Piedmontese}{piedmontese}
+\DeclareLanguageAlias  {piemontese}{piedmontese}
+\DeclareLanguageAlias  {Piemontese}{piemontese}
+\DeclareLanguageAlias  {piemonteis}{piedmontese}
+\DeclareLanguageAlias  {Piemonteis}{piemonteis}
 \DeclareLanguageAlias  {Pinyin}{pinyin}
 \DeclareLanguageAlias  {Polish}{polish}
 \DeclareLanguageDialect{brazil}{portuges}
@@ -641,6 +697,7 @@
 \DeclareLanguageAlias  {North Sami}{north sami}
 \DeclareLanguageAlias  {northern sami}{north sami}
 \DeclareLanguageAlias  {Northern Sami}{northern sami}
+\DeclareLanguageAlias  {Sanskrit}{sanskrit}
 % this one isn't needed, is it:
 % \DeclareLanguageAlias  {Serbocroatian}{serbocroatian}
 \DeclareLanguageAlias  {serbo-croatian}{serbocroatian}
@@ -657,6 +714,8 @@
 \DeclareLanguageDialect{uppersorbian}{sorbian}
 \DeclareLanguageAlias  {Lowersorbian}{lowersorbian}
 \DeclareLanguageAlias  {Uppersorbian}{uppersorbian}
+\DeclareLanguageAlias  {lsorbian}{lowersorbian}
+\DeclareLanguageAlias  {usorbian}{uppersorbian}
 \DeclareLanguageAlias  {lower sorbian}{lowersorbian}
 \DeclareLanguageAlias  {upper sorbian}{uppersorbian}
 \DeclareLanguageAlias  {Lower Sorbian}{lowersorbian}
@@ -668,9 +727,12 @@
 % this maybe should be a language of it's own:
 \DeclareLanguageAlias  {Swiss}{swissgerman}
 \DeclareLanguageAlias  {Swissgerman}{swissgerman}
+\DeclareLanguageAlias  {Tamil}{tamil}
+\DeclareLanguageAlias  {Telugu}{telugu}
 \DeclareLanguageAlias  {Thai}{thai}
 \DeclareLanguageAlias  {thaicjk}{thai}
 \DeclareLanguageAlias  {Thaicjk}{thaicjk}
+\DeclareLanguageAlias  {Tibetan}{tibetan}
 \DeclareLanguageAlias  {Turkish}{turkish}
 \DeclareLanguageAlias  {Turkmen}{turkmen}
 \DeclareLanguageAlias  {Ukrainian}{ukrainian}
@@ -719,6 +781,8 @@
                     - new command \PrintDictionaryFor
                     - redefined conditionals; they still seemed to make
                       trouble in some cases
-2013/07/17 v1.0a    - added lot's of languages, a few languages had falsely
-                      been declared as dialect instead of an alias
+2013/07/18 v1.0a    - added /loads/ of languages, noe the list of babel and
+                      polyglossia languages hopefully is complete
+                    - a few languages had falsely been declared as dialect
+                      instead of an alias
 
