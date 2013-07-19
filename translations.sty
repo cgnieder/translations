@@ -28,7 +28,7 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/18}
+\def\@trnslt@date{2013/07/19}
 \def\@trnslt@version{v1.0a}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
@@ -93,13 +93,10 @@
 % --------------------------------------------------------------------------
 % define \@trnslt@if@<name> conditionals that don't leave the checked macro as
 % \relax behind and check for \@trnslt@<name>@#1.  These conditionals should
-% also be expandable in an \edef-like context:
+% also be expandable in an \edef-like context.  Thanks to e-TeX there's
+% \ifcsname:
 \def\@trnslt@newif#1{%
   \csdef{@trnslt@if@#1}##1{%
-    \expandafter\expandafter\expandafter\expandafter
-    \expandafter\expandafter\expandafter
-    \@firstofone
-    {\expandafter\expandafter\expandafter}%
     \ifcsname @trnslt@#1@##1\endcsname
       \expandafter\@firstoftwo
     \else
@@ -267,10 +264,6 @@
 % --------------------------------------------------------------------------
 % now let's go through some trouble to check if a translation exists:
 \def\@trnslt@if@word#1#2#3{%
-  \expandafter\expandafter\expandafter\expandafter
-  \expandafter\expandafter\expandafter
-  \@firstofone
-  {\expandafter\expandafter\expandafter}%
   \ifcsname @trnslt@word@#2@#1{#3}\endcsname
     \expandafter\@firstoftwo
   \else
@@ -561,6 +554,7 @@
 \DeclareLanguageAlias  {Asturian}{asturian}
 \DeclareLanguageAlias  {astur-leonese}{asturian}
 \DeclareLanguageAlias  {Astur-Leonese}{astur-leonese}
+\DeclareLanguageAlias  {asturian-leonese}{asturian}
 \DeclareLanguageAlias  {Asturian-Leonese}{asturian-leonese}
 \DeclareLanguageAlias  {Basque}{basque}
 \DeclareLanguageAlias  {Bengali}{bengali}
@@ -645,14 +639,14 @@
 \DeclareLanguageAlias  {lettish}{latvian}
 \DeclareLanguageAlias  {Lettish}{lettish}
 \DeclareLanguageAlias  {Lithuanian}{lithuanian}
-% hopefully someone who knows netter than me can comment on these
+% hopefully someone who knows better than me can comment on these
 \DeclareLanguageAlias  {Malay}{malay}
 \DeclareLanguageDialect{indonesian}{malay}
 \DeclareLanguageAlias  {Indonesian}{indonesian}
 \DeclareLanguageAlias  {indon}{indonesian}
 \DeclareLanguageAlias  {bahasa meyalu}{malay}
-\DeclareLanguageAlias  {Bahasa Meyalu}{bahasa melayu}
-\DeclareLanguageAlias  {bahasa}{bahasa melayu}
+\DeclareLanguageAlias  {Bahasa Meyalu}{bahasa meyalu}
+\DeclareLanguageAlias  {bahasa}{bahasa meyalu}
 \DeclareLanguageAlias  {Bahasa}{bahasa}
 \DeclareLanguageAlias  {bahasai}{bahasa}
 \DeclareLanguageAlias  {bahasam}{bahasa}
@@ -698,7 +692,7 @@
 \DeclareLanguageAlias  {northern sami}{north sami}
 \DeclareLanguageAlias  {Northern Sami}{northern sami}
 \DeclareLanguageAlias  {Sanskrit}{sanskrit}
-% this one isn't needed, is it:
+% this one isn't needed, or is it?
 % \DeclareLanguageAlias  {Serbocroatian}{serbocroatian}
 \DeclareLanguageAlias  {serbo-croatian}{serbocroatian}
 \DeclareLanguageAlias  {Serbo-Croatian}{serbocroatian}
@@ -724,9 +718,13 @@
 \DeclareLanguageAlias  {Spanish}{spanish}
 \DeclareLanguageAlias  {Swedish}{swedish}
 \DeclareLanguageDialect{swissgerman}{german}
-% this maybe should be a language of it's own:
-\DeclareLanguageAlias  {Swiss}{swissgerman}
+% this is to be discussed: swiss could also be an alias of french, italian or
+% romansh:
+\DeclareLanguageAlias  {swiss}{swissgerman}
+\DeclareLanguageAlias  {Swiss}{swiss}
 \DeclareLanguageAlias  {Swissgerman}{swissgerman}
+\DeclareLanguageAlias  {swiss german}{swissgerman}
+\DeclareLanguageAlias  {Swiss German}{swiss german}
 \DeclareLanguageAlias  {Tamil}{tamil}
 \DeclareLanguageAlias  {Telugu}{telugu}
 \DeclareLanguageAlias  {Thai}{thai}
@@ -781,7 +779,7 @@
                     - new command \PrintDictionaryFor
                     - redefined conditionals; they still seemed to make
                       trouble in some cases
-2013/07/18 v1.0a    - added /loads/ of languages, noe the list of babel and
+2013/07/19 v1.0a    - added /loads/ of languages, noe the list of babel and
                       polyglossia languages hopefully is complete
                     - a few languages had falsely been declared as dialect
                       instead of an alias

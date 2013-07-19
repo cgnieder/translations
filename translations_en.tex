@@ -79,6 +79,7 @@
 \setkomafont{captionlabel}{\normalfont\footnotesize\sffamily\scshape}
 
 \usepackage{booktabs,array,ragged2e}
+\usepackage[sort]{cleveref}
 
 % ----------------------------------------------------------------------------
 % code examples
@@ -190,15 +191,15 @@ which language is active it is generally not necessary to specify the language
 for which a translation should be fetched manually.
 
 \translations\ knows of three types of languages: main languages (see
-table~\ref{tab:languages} on page~\pageref{tab:languages}), language aliases
-(see table~\ref{tab:aliases} on page~\pageref{tab:aliases}) and language
-dialects (see table~\ref{tab:dialects} on page~\pageref{tab:dialects}).  For
-the commands declaring or fetching a translation base languages and language
-aliases are equivalent.  Dialects are similar to aliases but there are a few
-important differences.  An alias can for example be an alias of a dialect.
+\cref{tab:languages} on \cpageref{tab:languages}), language dialects (see
+\cref{tab:dialects} on \cpageref{tab:dialects}) language aliases (see
+\cref{tab:aliases} on \cpageref{tab:aliases}).  For the commands declaring or
+fetching a translation base languages and language aliases are equivalent.
+Dialects are similar to aliases but there are a few important differences.  An
+alias can for example be an alias of a dialect.
 
-Figure~\ref{fig:scheme} shows what happens if \translations\ is asked to fetch
-a translation for a given key.
+\Cref{fig:scheme} shows what happens if \translations\ is asked to fetch a
+translation for a given key.
 
 \begin{figure}[htbp]
   \centering
@@ -256,7 +257,7 @@ What happens if you declare a translation? There are four cases:
 \begin{enumerate}
   \item You declare a translation for a base language: this is the normal case
     where an internal macro is defined which can be fetched by the
-    \cmd{GetTranslation} command (see section~\ref{ssec:commands}).
+    \cmd{GetTranslation} command (see \cref{ssec:commands}).
   \item You declare a translation for a language alias: this is the very same
     as the first case since the same internal macro is defined.
   \item You declare a translation for a dialect: this is two-fold.  Either a
@@ -331,7 +332,7 @@ isn't.
    Loads a file named \code{<name>-<lang>.trsl}.
  \Befehl{DeclareDictTranslation}{<key>}\ma{<translation>}\newline
    This command is to be used in a dictionary file and picks up the language
-   of that file, see section~\ref{sec:dictionaries} for an example.
+   of that file, see \cref{sec:dictionaries} for an example.
  \Befehl{ProvideDictionaryFor}{<lang>}\ma{<name>}\oa{<date>}\newline
    Needs to be in a dictionary file.  This command tells \translations\ that
    the file indeed is a dictionary and also sets the language for the
@@ -463,8 +464,7 @@ files \code{translations-basic-dictionary-<lang>.trsl} and modify the file
 accordingly.  You can then send me the file via email and I'll add it to
 \translations.
 
-Table~\ref{tab:dict} lists all words provided by the basic dictionary for
-German.
+\Cref{tab:dict} lists all words provided by the basic dictionary for German.
 
 \begin{longtable}{ll}
     \caption{All entries of \translations' basic dictionary in German.\label{tab:dict}} \\
@@ -488,14 +488,16 @@ German.
 \secidx*{Usage}
 
 \section{Defined Languages}\label{sec:languages}\secidx{Languages}
+\subsection{Base Languages}
 Quite a number of languages already are defined, either directly or via an
 alias.  So, before you define a language you should take a look at the tables
-below if the language doesn't already exist.  Table~\ref{tab:languages} lists
-all base languages, ``fallback'' being a dummy language used for fallback
-translations.  The tables~\ref{tab:languages}, \ref{tab:aliases}
-and~\ref{tab:dialects} list \emph{all} language names known to \translations.
-Unfortunatly they're not sorted but listed in the order they have been
-defined.  Although I tried to make this alphabetically it will not always be.
+below if the language doesn't already exist.  \Cref{tab:languages} lists all
+base languages, ``fallback'' being a dummy language used for fallback
+translations.  \Cref{tab:languages,tab:dialects,tab:aliases} list \emph{all}
+language names known to \translations.  However, they're not sorted
+alphabetically but listed in the order they have been defined.  I tried to
+make the definitions in an alphabetical order but sometimes rather grouped
+related language names together.
 
 If you miss a language or recognize a language that has falsely been declared
 as an alias but should rather be a dialect or base language itself (or any
@@ -527,8 +529,14 @@ explanation what's wrong and why.
 \end{longtable}
 \makeatother
 
-\translations\ also defines a few dialects of these base languages.  They are
-listed in table~\ref{tab:dialects}.
+\subsection{Language Dialects}
+\translations\ also defines a few dialects of thebase languages.  They are
+listed in \cref{tab:dialects}.  The decision what is a dialect and what is an
+alias is not always clear.  I am no linguist so I looked up information
+available on the internet.  A language that was described as
+\enquote{standardized register} was always defined as a dialect.  For some
+other languages it seemed to make sense, such as British or Austrian.  The
+decisions are open for debate.
 
 \setcounter{column}{0}
 \gdef\seplang{%
@@ -564,10 +572,16 @@ listed in table~\ref{tab:dialects}.
 \end{longtable}
 \makeatother
 
-To every one of these languages and dialects at least one alias exists, the
+\subsection{Language Aliases}
+To most of the base languages and dialects at least one alias exists, the
 uppercase variant.  This is due to the fact that it is common to write
-language names uppercased.  All defined aliases are listed in
-table~\ref{tab:aliases}.
+language names uppercased.  For a number of languages aliases were defined in
+order to match \paket{babel}'s or \paket{polyglossia}'s names for the
+languages.  Others are defined because there apparently exist more than one
+name for the same language.  The decisions are not consistent.  For example it
+could be argued that \enquote{deutsch} is an alias of \enquote{German}.  I am
+open to suggestions and improvements.  All defined aliases are listed in
+\cref{tab:aliases}.
 
 \setcounter{column}{0}
 \makeatletter
@@ -602,7 +616,7 @@ case.  Should you miss a language please send me an email so I can add it to
 
 \section{Implementation}\index{Implementation@\textbf{Implementation}}
 In the following code the lines 1--30 have been omitted. They only repeat the
-license statement which has already been mentioned in section~\ref{sec:license}.
+license statement which has already been mentioned in \cref{sec:license}.
 
 \implementation[linerange={31-1000},firstnumber=31]
 
