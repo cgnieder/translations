@@ -67,6 +67,17 @@
   \ChangeEmph{[}[,.02em]{]}[.055em,-.08em]
   \ChangeEmph{(}[-.01em,.04em]{)}[.04em,-.05em]
 \usepackage{microtype}
+\SetTracking[spacing={75*,166,}]{
+  encoding = *,
+  shape    = sc ,
+  family   = rm*
+}{75}
+\SetTracking[spacing={50*,166,}]{
+  encoding = *,
+  shape    = sc ,
+  family   = sf*
+}{50}
+
 \usepackage[multiple]{fnpct}
 
 \renewcommand*\othersectionlevelsformat[3]{\textcolor{main}{#3\autodot}\enskip}
@@ -184,11 +195,11 @@ It has the  status ``maintained.''
 \section{Usage}\secidx{Usage}
 \subsection{Background}\secidx[Background]{Usage}
 The \translations\ package enables the author of a package or a class (or a
-document) to declare translations in different languages of key words and
+document) to declare translations of key words in different languages and
 fetch these translations in the document depending on the active language as
 set by \paket{babel} or \paket{polyglossia}.  Since \translations\ checks
-which language is active it is generally not necessary to specify the language
-for which a translation should be fetched manually.
+which language is active it is generally not necessary (although possible) to
+specify the language for which a translation should be fetched manually.
 
 \translations\ knows of three types of languages: main languages (see
 \cref{tab:languages} on \cpageref{tab:languages}), language dialects (see
@@ -264,7 +275,7 @@ What happens if you declare a translation? There are four cases:
     translation for the base language exists so only the translation for the
     dialect is saved.  If the translation for the base language does not exist
     it is defined to be the same as the one for the dialect.
-  \item You daclare a translation for an alias of a dialect: this is the very
+  \item You declare a translation for an alias of a dialect: this is the very
     same as the third case as again the internal macros are the same.
 \end{enumerate}
 
@@ -274,18 +285,27 @@ Below the commands provided by \translations\ are explained.  The symbol
 isn't.
 \begin{beschreibung}
  \Befehl{DeclareLanguage}{<lang>}\newline
-   Declare a language that can be used by \translations. If the language
-   already exists it will be silently redefined. This command can only be used
-   in the preamble.
+   Declare a language that can be used by \translations.  If the language
+   already exists it will be silently redefined.  This command can only be
+   used in the preamble.  It should never be necessary to use this command as
+   \translations\ already declares loads of languages (\cref{sec:languages}).
+   Should you miss one please send me an email and I'll add it to
+   \translations.
  \Befehl{DeclareLanguageAlias}{<lang2>}\ma{<lang1>}\newline
-   Declares \code{<lang2>} to be an alias of \code{<lang1>}. If \code{<lang1>}
-   doesn't exist yet a warning will be raised and it will be defined. This
-   command can only be used in the preamble.
+   Declares \code{<lang2>} to be an alias of \code{<lang1>}.  If \code{<lang1>}
+   doesn't exist yet a warning will be raised and it will be defined.  This
+   command can only be used in the preamble.  It should never be necessary to
+   use this command as \translations\ already declares loads of languages
+   (\cref{sec:languages}).  Should you miss one please send me an email and
+   I'll add it to \translations.
  \Befehl{DeclareLanguageDialect}{<dialect>}\ma{<lang>}\newline
-   Declares \code{<dialect>} to be a dialect of language \code{<lang>}. If a
+   Declares \code{<dialect>} to be a dialect of language \code{<lang>}.  If a
    translation for \code{<dialect>} is provided it is used by the translation
-   macros. If there is none the corresponding translation for \code{<lang>} is
-   used instead.
+   macros.  If there is none the corresponding translation for \code{<lang>}
+   is used instead.  It should never be necessary to use this command as
+   \translations\ already declares loads of languages (\cref{sec:languages}).
+   Should you miss one please send me an email and I'll add it to
+   \translations.
  \Befehl{NewTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
    Defines a translation of key \code{<key>} for the language \code{<lang>}.
    An error will be raised if a translation of \code{<key>} already exists.
@@ -312,11 +332,12 @@ isn't.
  \Befehl{GetTranslationForWarn}{<lang>}\ma{<key>}\newline
    \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
    the language \code{<lang>}.  Issues a warning if no translation is
-   available.
+   available at the cost of expandability.
  \Befehl{GetTranslationWarn}{<key>}\newline
    \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
    the currently active language (as for example set by \paket{babel}).
-   Issues a warning if no translation is available.
+   Issues a warning if no translation is available at the cost of
+   expandability.
  \Befehl{SaveTranslationFor}{<cmd>}\ma{<lang>}\ma{<key>}\newline
    Fetches and saves the translation of \code{<key>} for the language
    \code{<lang>} in the macro \code{<cmd>}.
@@ -326,7 +347,7 @@ isn't.
  \Befehl{LoadDictionary}{<name>}\newline
    Loads a file named \code{<name>-<lang>.trsl} where \code{<lang>} corresponds
    to the lowercase name of the current language as defined with
-   \cmd{DeclareLanguage}. This file should contain the translations for the
+   \cmd{DeclareLanguage}.  This file should contain the translations for the
    specified language.
  \Befehl{LoadDictionaryFor}{<lang>}\ma{<name>}\newline
    Loads a file named \code{<name>-<lang>.trsl}.
@@ -342,12 +363,13 @@ isn't.
    language \code{<lang>} in the order the entries have been declared.  For
    every entry the code\par
    \code{<pre><key><mid><translation><post>}\par
-   is printed.  The dictionary must have been loaded of course.
+   is printed.  The dictionary must have been loaded of course.  This may be
+   of minor use but was used to print \cref{tab:dict}.
 \end{beschreibung}
 
 \subsection{A Small Example}\secidx[Example]{Usage}
 This section demonstrates with two short examples how the macros are used.
-The first example covers the basics: dlaring of translations and then
+The first example covers the basics: declaring of translations and then
 retrieving and typesetting them.
 
 \begin{beispiel}
@@ -523,7 +545,7 @@ explanation what's wrong and why.
     \bottomrule
   \endlastfoot
     \midrule
-    &&& \hfill\emph{continues} \\
+    &&&& \hfill\emph{continues} \\
   \endfoot
   \dolistloop\@trnslt@languages
 \end{longtable}
