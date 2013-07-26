@@ -3,7 +3,6 @@
 % 
 %   a simple translator
 %
-% This package is part of the exsheets bundle
 % --------------------------------------------------------------------------
 % Clemens Niederberger
 % Web:    https://github.com/cgnieder/translations
@@ -23,13 +22,11 @@
 % 
 % The Current Maintainer of this work is Clemens Niederberger.
 % --------------------------------------------------------------------------
-% The translations package is part of the exsheets bundle.
-% --------------------------------------------------------------------------
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/20}
-\def\@trnslt@version{v1.0a}
+\def\@trnslt@date{2013/07/26}
+\def\@trnslt@version{v1.1}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space \@trnslt@info\space (CN)]
@@ -122,6 +119,8 @@
 
 \def\@trnslt@language#1{%
   \csuse{@trnslt@language@#1}}
+
+\newcommand*\babellanguage[1]{\@trnslt@language{#1}}
 
 \@trnslt@newif{language}
 
@@ -779,8 +778,10 @@
                     - new command \PrintDictionaryFor
                     - redefined conditionals; they still seemed to make
                       trouble in some cases
-2013/07/20 v1.0a    - added /loads/ of languages, noe the list of babel and
+2013/07/26 v1.1     - added /loads/ of languages, noe the list of babel and
                       polyglossia languages hopefully is complete
                     - a few languages had falsely been declared as dialect
                       instead of an alias
+                    - added weekday names and month names to basic dictionary
+                    - new command \babellanguage
 

@@ -85,3 +85,45 @@
 \DeclareDictTranslation{table}{tabla}
 \DeclareDictTranslation{To}{Hasta}
 \DeclareDictTranslation{to}{hasta}
+
+\DeclareDictTranslation{Monday}{Lunes}
+\DeclareDictTranslation{Tuesday}{Martes}
+\DeclareDictTranslation{Wednesday}{Mi\'{e}rcoles}
+\DeclareDictTranslation{Thursday}{Jueves}
+\DeclareDictTranslation{Friday}{Viernes}
+\DeclareDictTranslation{Saturday}{S\'{a}bado}
+\DeclareDictTranslation{Sunday}{Domingo}
+
+\DeclareDictTranslation{Monday (lowercase)}{lunes}
+\DeclareDictTranslation{Tuesday (lowercase)}{martes}
+\DeclareDictTranslation{Wednesday (lowercase)}{mi\'{e}rcoles}
+\DeclareDictTranslation{Thursday (lowercase)}{jueves}
+\DeclareDictTranslation{Friday (lowercase)}{viernes}
+\DeclareDictTranslation{Saturday (lowercase)}{s\'{a}bado}
+\DeclareDictTranslation{Sunday (lowercase)}{domingo}
+
+\DeclareDictTranslation{January}{Enero}
+\DeclareDictTranslation{February}{Febrero}
+\DeclareDictTranslation{March}{Marzo}
+\DeclareDictTranslation{April}{Abril}
+\DeclareDictTranslation{May}{Mayo}
+\DeclareDictTranslation{June}{Junio}
+\DeclareDictTranslation{July}{Julio}
+\DeclareDictTranslation{August}{Agosto}
+\DeclareDictTranslation{September}{Septiembre}
+\DeclareDictTranslation{October}{Octubre}
+\DeclareDictTranslation{November}{Noviembre}
+\DeclareDictTranslation{December}{Diciembre}
+
+\DeclareDictTranslation{January (lowercase)}{enero}
+\DeclareDictTranslation{February (lowercase)}{febrero}
+\DeclareDictTranslation{March (lowercase)}{marzo}
+\DeclareDictTranslation{April (lowercase)}{abril}
+\DeclareDictTranslation{May (lowercase)}{mayo}
+\DeclareDictTranslation{June (lowercase)}{junio}
+\DeclareDictTranslation{July (lowercase)}{julio}
+\DeclareDictTranslation{August (lowercase)}{agosto}
+\DeclareDictTranslation{September (lowercase)}{septiembre}
+\DeclareDictTranslation{October (lowercase)}{octubre}
+\DeclareDictTranslation{November (lowercase)}{noviembre}
+\DeclareDictTranslation{December (lowercase)}{diciembre}

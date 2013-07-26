@@ -85,3 +85,45 @@
 \DeclareDictTranslation{table}{table}
 \DeclareDictTranslation{To}{Vers}%??
 \DeclareDictTranslation{to}{vers}%??
+
+\DeclareDictTranslation{Monday}{Lundi}
+\DeclareDictTranslation{Tuesday}{Mardi}
+\DeclareDictTranslation{Wednesday}{Mercredi}
+\DeclareDictTranslation{Thursday}{Jeudi}
+\DeclareDictTranslation{Friday}{Vendredi}
+\DeclareDictTranslation{Saturday}{Samedi}
+\DeclareDictTranslation{Sunday}{Dimanche}
+
+\DeclareDictTranslation{Monday (lowercase)}{lundi}
+\DeclareDictTranslation{Tuesday (lowercase)}{mardi}
+\DeclareDictTranslation{Wednesday (lowercase)}{mercredi}
+\DeclareDictTranslation{Thursday (lowercase)}{jeudi}
+\DeclareDictTranslation{Friday (lowercase)}{vendredi}
+\DeclareDictTranslation{Saturday (lowercase)}{samedi}
+\DeclareDictTranslation{Sunday (lowercase)}{dimanche}
+
+\DeclareDictTranslation{January}{Janvier}
+\DeclareDictTranslation{February}{F\'evrier}
+\DeclareDictTranslation{March}{Mars}
+\DeclareDictTranslation{April}{Avril}
+\DeclareDictTranslation{May}{Mai}
+\DeclareDictTranslation{June}{Juin}
+\DeclareDictTranslation{July}{Juillet}
+\DeclareDictTranslation{August}{Ao\^{u}t}
+\DeclareDictTranslation{September}{Septembre}
+\DeclareDictTranslation{October}{Octobre}
+\DeclareDictTranslation{November}{Novembre}
+\DeclareDictTranslation{December}{D\'ecembre}
+
+\DeclareDictTranslation{January (lowercase)}{janvier}
+\DeclareDictTranslation{February (lowercase)}{f\'evrier}
+\DeclareDictTranslation{March (lowercase)}{mars}
+\DeclareDictTranslation{April (lowercase)}{avril}
+\DeclareDictTranslation{May (lowercase)}{mai}
+\DeclareDictTranslation{June (lowercase)}{juin}
+\DeclareDictTranslation{July (lowercase)}{juillet}
+\DeclareDictTranslation{August (lowercase)}{ao\^{u}t}
+\DeclareDictTranslation{September (lowercase)}{septembre}
+\DeclareDictTranslation{October (lowercase)}{octobre}
+\DeclareDictTranslation{November (lowercase)}{novembre}
+\DeclareDictTranslation{December (lowercase)}{d\'ecembre}
