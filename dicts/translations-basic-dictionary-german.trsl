@@ -94,14 +94,6 @@
 \DeclareDictTranslation{Saturday}{Samstag}
 \DeclareDictTranslation{Sunday}{Sonntag}
 
-\DeclareDictTranslation{Monday (lowercase)}{Montag}
-\DeclareDictTranslation{Tuesday (lowercase)}{Dienstag}
-\DeclareDictTranslation{Wednesday (lowercase)}{Mittwoch}
-\DeclareDictTranslation{Thursday (lowercase)}{Donnerstag}
-\DeclareDictTranslation{Friday (lowercase)}{Freitag}
-\DeclareDictTranslation{Saturday (lowercase)}{Samstag}
-\DeclareDictTranslation{Sunday (lowercase)}{Sonntag}
-
 \DeclareDictTranslation{January}{Januar}
 \DeclareDictTranslation{February}{Februar}
 \DeclareDictTranslation{March}{M\"arz}
@@ -115,15 +107,3 @@
 \DeclareDictTranslation{November}{November}
 \DeclareDictTranslation{December}{Dezember}
 
-\DeclareDictTranslation{January (lowercase)}{Januar}
-\DeclareDictTranslation{February (lowercase)}{Februar}
-\DeclareDictTranslation{March (lowercase)}{M\"arz}
-\DeclareDictTranslation{April (lowercase)}{April}
-\DeclareDictTranslation{May (lowercase)}{Mai}
-\DeclareDictTranslation{June (lowercase)}{Juni}
-\DeclareDictTranslation{July (lowercase)}{Juli}
-\DeclareDictTranslation{August (lowercase)}{August}
-\DeclareDictTranslation{September (lowercase)}{September}
-\DeclareDictTranslation{October (lowercase)}{Oktober}
-\DeclareDictTranslation{November (lowercase)}{November}
-\DeclareDictTranslation{December (lowercase)}{Dezember}

@@ -1,5 +1,5 @@
 % arara: lualatex
-% arara: lualatex
+% !arara: lualatex
 % !arara: lualatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
@@ -170,12 +170,13 @@ internationalization of their packages.  The functionality of this package is
 in many parts also covered by the package \paket*{translator} (part of the
 \paket{beamer} bundle).  Internationalization is also possible with
 \paket{babel} and it's \cmd*{addto}\cmd{captions<language>} mechanism or
-\KOMAScript's \cmd{providecaptionname}.  However, I believe that
-\translations\ is more flexible than all of these.  Unlike \paket*{translator}
-it detects the used (\paket{babel} or \paket{polyglossia}) language itself and
-provides expandable retrieving of the translated key.  \translations\ also
-provides support for language dialects which means package authors can for
-example distinguish between British, Australian, Canadian and US English.
+\KOMAScript's \cmd{providecaptionname} and similar commands.  However, I
+believe that \translations\ is more flexible than all of these.  Unlike
+\paket*{translator} it detects the used (\paket{babel} or \paket{polyglossia})
+language itself and provides expandable retrieving of the translated key.
+\translations\ also provides support for language dialects which means package
+authors can for example distinguish between British, Australian, Canadian and
+US English.
 
 The first draft of the package was written since I missed an expandable
 version of \paket{translator}'s \cmd{translate} command.  Once I had the
@@ -203,11 +204,11 @@ specify the language for which a translation should be fetched manually.
 
 \translations\ knows of three types of languages: main languages (see
 \cref{tab:languages} on \cpageref{tab:languages}), language dialects (see
-\cref{tab:dialects} on \cpageref{tab:dialects}) language aliases (see
+\cref{tab:dialects} on \cpageref{tab:dialects}), and language aliases (see
 \cref{tab:aliases} on \cpageref{tab:aliases}).  For the commands declaring or
 fetching a translation base languages and language aliases are equivalent.
-Dialects are similar to aliases but there are a few important differences.  An
-alias can for example be an alias of a dialect.
+Dialects are similar to aliases but there are important differences.  An alias
+can for example be an alias of a dialect.
 
 \Cref{fig:scheme} shows what happens if \translations\ is asked to fetch a
 translation for a given key.
@@ -328,7 +329,17 @@ isn't.
    \code{<lang>}.  This command is expandable.
  \expandable\Befehl{GetTranslation}{<key>}\newline
    Fetches and prints the translation of \code{<key>} for the currently active
-   language (as for example set by \paket{babel}).  This command is expandable.
+   language (as for example set by \paket{babel}).  This command is
+   expandable.
+ \expandable\Befehl{GetLCTranslationFor}{<lang>}\ma{<key>}\newline
+   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
+   the language \code{<lang>}.  This command ensures that the fetched
+   translation is set lowercase.  This command is expandable.
+ \expandable\Befehl{GetLCTranslation}{<key>}\newline
+   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
+   the currently active language (as for example set by \paket{babel}).  This
+   command ensures that the fetched translation is set lowercase.  This
+   command is expandable.
  \Befehl{GetTranslationForWarn}{<lang>}\ma{<key>}\newline
    \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
    the language \code{<lang>}.  Issues a warning if no translation is
@@ -338,6 +349,16 @@ isn't.
    the currently active language (as for example set by \paket{babel}).
    Issues a warning if no translation is available at the cost of
    expandability.
+ \Befehl{GetLCTranslationForWarn}{<lang>}\ma{<key>}\newline
+   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
+   the language \code{<lang>}.  This command ensures that the fetched
+   translation is set lowercase.  Issues a warning if no translation is
+   available at the cost of expandability.
+ \Befehl{GetLCTranslationWarn}{<key>}\newline
+   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
+   the currently active language (as for example set by \paket{babel}).  This
+   command ensures that the fetched translation is set lowercase.  Issues a
+   warning if no translation is available at the cost of expandability.
  \Befehl{SaveTranslationFor}{<cmd>}\ma{<lang>}\ma{<key>}\newline
    Fetches and saves the translation of \code{<key>} for the language
    \code{<lang>} in the macro \code{<cmd>}.
@@ -365,10 +386,11 @@ isn't.
    \code{<pre><key><mid><translation><post>}\par
    is printed.  The dictionary must have been loaded of course.  This may be
    of minor use but was used to print \cref{tab:dict}.
- \expandable\Befehl{babellanguage}{<lang>}\newline
-   \sinceversion{1.1}Returns the \paket{babel} (or \paket{polyglossia}) name
-   of the language, language alias or language dialect specified by
-   \code{<lang>}.
+ \expandable\Befehl{baselanguage}{<lang>}\newline
+   \sinceversion{1.1}Returns the (internal) base name of the given language,
+   language alias or language dialect.  For a base language
+   (see section~\ref{ssec:languages:base}) this usually simply is the
+   lowercase version of the name.
 \end{beschreibung}
 
 \subsection{A Small Example}\secidx[Example]{Usage}
@@ -514,7 +536,7 @@ accordingly.  You can then send me the file via email and I'll add it to
 \secidx*{Usage}
 
 \section{Defined Languages}\label{sec:languages}\secidx{Languages}
-\subsection{Base Languages}
+\subsection{Base Languages}\label{ssec:languages:base}
 Quite a number of languages already are defined, either directly or via an
 alias.  So, before you define a language you should take a look at the tables
 below if the language doesn't already exist.  \Cref{tab:languages} lists all
@@ -555,7 +577,7 @@ explanation what's wrong and why.
 \end{longtable}
 \makeatother
 
-\subsection{Language Dialects}
+\subsection{Language Dialects}\label{ssec:languages:dialects}
 \translations\ also defines a few dialects of thebase languages.  They are
 listed in \cref{tab:dialects}.  The decision what is a dialect and what is an
 alias is not always clear.  I am no linguist so I looked up information
@@ -598,7 +620,7 @@ decisions are open for debate.
 \end{longtable}
 \makeatother
 
-\subsection{Language Aliases}
+\subsection{Language Aliases}\label{ssec:languages:aliases}
 To most of the base languages and dialects at least one alias exists, the
 uppercase variant.  This is due to the fact that it is common to write
 language names uppercased.  For a number of languages aliases were defined in

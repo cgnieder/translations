@@ -25,7 +25,7 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/07/26}
+\def\@trnslt@date{2013/08/05}
 \def\@trnslt@version{v1.1}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
@@ -64,6 +64,31 @@
   \@trnslt@error{The \@trnslt@language{#2} translation for `#1' is not defined yet.}}
 
 % --------------------------------------------------------------------------
+% catcode stuff:
+\DeclareListParser*{\@trnslt@map@tokenlist}{}
+
+\def\@trnslt@save@catcodes#1{%
+  \@trnslt@map@tokenlist\@trnslt@save@catcode{#1}%
+}
+\def\@trnslt@save@catcode#1{%
+  \csedef{@trnslt@catcode@#1}{\the\catcode`#1}%
+}
+
+\def\@trnslt@restore@catcodes#1{%
+  \@trnslt@map@tokenlist\@trnslt@restore@catcode{#1}%
+}
+\protected\def\@trnslt@restore@catcode#1{%
+  \catcode`#1=\csname @trnslt@catcode@#1\endcsname
+}
+
+\def\@trnslt@set@catcodes#1#2{%
+  \@trnslt@map@tokenlist{\@trnslt@set@catcode{#2}}{#1}%
+}
+\def\@trnslt@set@catcode#1#2{%
+  \catcode`#2=#1\relax
+}
+
+% --------------------------------------------------------------------------
 % check if babel or polyglossia is used
 \AtEndPreamble{
   \@ifpackageloaded{babel}{}{
@@ -92,7 +117,7 @@
 % \relax behind and check for \@trnslt@<name>@#1.  These conditionals should
 % also be expandable in an \edef-like context.  Thanks to e-TeX there's
 % \ifcsname:
-\def\@trnslt@newif#1{%
+\def\@trnslt@new@check#1{%
   \csdef{@trnslt@if@#1}##1{%
     \ifcsname @trnslt@#1@##1\endcsname
       \expandafter\@firstoftwo
@@ -100,6 +125,11 @@
       \expandafter\@secondoftwo
     \fi
   }%
+}
+
+% --------------------------------------------------------------------------
+\long\def\@trnslt@get@lowercase#1{%
+  \lowercase\expandafter{\romannumeral-`\Q#1}%
 }
 
 % --------------------------------------------------------------------------
@@ -120,9 +150,11 @@
 \def\@trnslt@language#1{%
   \csuse{@trnslt@language@#1}}
 
-\newcommand*\babellanguage[1]{\@trnslt@language{#1}}
+\newcommand*\baselanguage[1]{\@trnslt@language{#1}}
 
-\@trnslt@newif{language}
+% define \@trnslt@if@language{#1}{}{} that actually checks the existence of
+% \@trnslt@language@#1:
+\@trnslt@new@check{language}
 
 % --------------------------------------------------------------------------
 % \DeclareLanguageDialect
@@ -171,7 +203,9 @@
     }{}%
 }
 
-\@trnslt@newif{dialect}
+% define \@trnslt@if@dialect{#1}{}{} that actually checks the existence of
+% \@trnslt@dialect@#1: 
+\@trnslt@new@check{dialect}
 
 % --------------------------------------------------------------------------
 % \DeclareLanguageAlias
@@ -202,7 +236,9 @@
 \def\@trnslt@alias#1{%
   \csuse{@trnslt@alias@#1}}
 
-\@trnslt@newif{alias}
+% define \@trnslt@if@alias{#1}{}{} that actually checks the existence of
+% \@trnslt@alias@#1: 
+\@trnslt@new@check{alias}
 
 % --------------------------------------------------------------------------
 % dummy language: `fallback':
@@ -299,6 +335,16 @@
 \newcommand*\GetTranslation[1]{%
   \@trnslt@checkandget@translation@for{#1}{\@trnslt@current@language}}
 
+\newcommand*\GetLCTranslationFor[2]{%
+  \@trnslt@get@lowercase{\@trnslt@checkandget@translation@for{#2}{#1}}%
+}
+
+\newcommand*\GetLCTranslation[1]{%
+  \@trnslt@get@lowercase{%
+    \@trnslt@checkandget@translation@for{#1}{\@trnslt@current@language}%
+  }%
+}
+
 % unexpandable version of the commands that raise a warning if no translation
 % is available:
 \newcommand*\GetTranslationForWarn[2]{%
@@ -306,6 +352,12 @@
 
 \newcommand*\GetTranslationWarn[1]{%
   \@trnslt@getandwarn@translation@for{#1}{\@trnslt@current@language}}
+
+\newcommand*\GetLCTranslationForWarn[2]{%
+  \@trnslt@getandwarn@lctranslation@for{#2}{#1}}
+
+\newcommand*\GetLCTranslationWarn[1]{%
+  \@trnslt@getandwarn@lctranslation@for{#1}{\@trnslt@current@language}}
 
 % #1: word #2: language
 \def\@trnslt@get@translation@for#1#2{%
@@ -341,6 +393,22 @@
           \csuse{@trnslt@word@#1@fallback}
         }
         {\csuse{@trnslt@word@#1@literal}}%
+    }%
+}
+
+% lowercase version for translation with warnings:
+\protected\def\@trnslt@getandwarn@lctranslation@for#1#2{%
+  \@trnslt@if@translation{#1}{#2}
+    {\@trnslt@get@lowercase{\@trnslt@get@translation@for{#1}{#2}}}
+    {%
+      \@trnslt@warning{Translation for `#1' in #2 unknown. You may try to use
+        \string\DeclareTranslation{#2}{#1}{ ... } in your preamble.}%
+      \@trnslt@if@translation{#1}{fallback}
+        {%
+          \@trnslt@info{Using fallback translation for `#1'}%
+          \@trnslt@get@lowercase{\csuse{@trnslt@word@#1@fallback}}%
+        }
+        {\@trnslt@get@lowercase{\csuse{@trnslt@word@#1@literal}}}%
     }%
 }
 
@@ -391,8 +459,11 @@
     }%
 }
 
+\def\@trnslt@if@dictionary#1#2{%
+  \IfFileExists{#1-#2.trsl}}
+
 \def\@trnslt@load@dictionary@silent@for#1#2{%
-  \AtBeginDocument{\InputIfFileExists{#1-\@trnslt@language{#2}.trsl}{}{}}}
+  \InputIfFileExists{#1-#2.trsl}{}{}}
 
 \newrobustcmd*\ProvideDictionaryFor[2]{%
   \@trnslt@provide@dictionary@for{#1}{#2}}
@@ -739,9 +810,27 @@
 % --------------------------------------------------------------------------
 % load basic dictionary if available
 \AtBeginDocument{%
-  \@trnslt@load@dictionary@silent@for
-    {translations-basic-dictionary}
-    {\@trnslt@current@language}%
+  \@trnslt@if@dialect{\@trnslt@current@language}
+    {%
+      \@trnslt@if@dictionary
+        {translations-basic-dictionary}
+        {\@trnslt@language{\@trnslt@current@language}}%
+        {%
+          \@trnslt@load@dictionary@silent@for
+            {translations-basic-dictionary}
+            {\@trnslt@language{\@trnslt@current@language}}%
+        }%
+        {%
+          \@trnslt@load@dictionary@silent@for
+            {translations-basic-dictionary}
+            {\@trnslt@dialect@of{\@trnslt@current@language}}%
+        }
+    }
+    {%
+      \@trnslt@load@dictionary@silent@for
+        {translations-basic-dictionary}
+        {\@trnslt@language{\@trnslt@current@language}}%
+    }%
 }
 
 \endinput
@@ -778,10 +867,15 @@
                     - new command \PrintDictionaryFor
                     - redefined conditionals; they still seemed to make
                       trouble in some cases
-2013/07/26 v1.1     - added /loads/ of languages, noe the list of babel and
+2013/08/05 v1.1     - added /loads/ of languages, noe the list of babel and
                       polyglossia languages hopefully is complete
                     - a few languages had falsely been declared as dialect
                       instead of an alias
                     - added weekday names and month names to basic dictionary
-                    - new command \babellanguage
+                    - new command \baselanguage
+                    - new commands \GetLCTranslation, \GetLCTranslationFor,
+                      \GetLCTranslationWarn and \GetLCTranslationForWarn
+                    - load basic dictionary also for dialects and if it
+                      doesn't exist load it for the corresponding base
+                      language instead
 
