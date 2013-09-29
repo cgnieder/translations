@@ -1,6 +1,7 @@
-% arara: lualatex
-% !arara: lualatex
-% !arara: lualatex
+% arara: pdflatex
+% arara: biber
+% arara: pdflatex
+% arara: pdflatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
 % 
@@ -30,104 +31,53 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-%
-% if you want to compile this documentation you'll need the document class
-% `cnpkgdoc' which you can get here:
-%    https://bitbucket.org/cgnieder/cnpkgdoc/
-% the class is licensed LPPL 1.3 or later
-%
-% use `pdflatex' for compilation
-%
-\PassOptionsToPackage{supstfm=libertinesups}{superiors}
-\documentclass[DIV11,toc=index,toc=bib,numbers=noendperiod]{cnpkgdoc}
+\documentclass[load-preamble+,babel-options={french,spanish,ngerman,english}]{cnltx-doc}
 % ----------------------------------------------------------------------------
 % document layout and typographic features
-\docsetup{
-  pkg      = {translations} ,
-  repo     = github ,
-  subtitle = {internationalization of \LaTeXe\ packages} ,
-  language = en ,
-  modules  = true ,
-  code-box = {
-    skipbelow        = .6\baselineskip plus .5ex minus .5ex ,
-    skipabove        = .6\baselineskip plus .5ex minus .5ex ,
-    innerleftmargin  = 1.5em ,
-    innerrightmargin = 2.5em ,
-    roundcorner      = 3pt
+\setcnltx{
+  package  = {translations} ,
+  authors  = Clemens Niederberger ,
+  email    = contact@mychemistry.eu ,
+  url      = https://github.com/cgnieder/translations/ ,
+  info     = {Internationalization of \LaTeXe\ Packages} ,
+  add-cmds = {
+    DeclareDictTranslation,
+    DeclareLanguage,
+    DeclareLanguageAlias,
+    DeclareLanguageDialect,
+    DeclareTranslation,
+    DeclareTranslationFallback,
+    GetTranslation,
+    GetTranslationFor,
+    LoadDictionary,
+    LoadDictionaryFor,
+    NewTranslation,
+    ProvideDictionaryFor,
+    RenewTranslation,
+    SaveTranslation,
+    SaveTranslationFor
   } ,
-  gobble   = 1
+  add-silent-cmds = {
+    cuisine,kitchen,mypackage@title
+  } ,
+  makeindex-setup = {options={-s cnltx.ist},columns=3,columnsep=1em} ,
+  index-setup = {othercode=\footnotesize,level=\addsec,noclearpage}
 }
-\usepackage[oldstyle,proportional]{libertine}
-\usepackage{libertinehologopatch}
-\setmonofont[Scale=MatchLowercase]{Bitstream Vera Sans Mono}
-\usepackage[english]{selnolig}
-\cnpkgusecolorscheme{friendly}
+
+\microtypesetup{tracking=scshape}
+
+\defbibheading{bibliography}[\bibname]{\addsec{#1}}
+
+\usepackage{csquotes}
 
 \usepackage{embrac}[2012/06/29]
   \ChangeEmph{[}[,.02em]{]}[.055em,-.08em]
   \ChangeEmph{(}[-.01em,.04em]{)}[.04em,-.05em]
-\usepackage{microtype}
-\SetTracking[spacing={75*,166,}]{
-  encoding = *,
-  shape    = sc ,
-  family   = rm*
-}{75}
-\SetTracking[spacing={50*,166,}]{
-  encoding = *,
-  shape    = sc ,
-  family   = sf*
-}{50}
-
-\usepackage[multiple]{fnpct}
-
-\renewcommand*\othersectionlevelsformat[3]{\textcolor{main}{#3\autodot}\enskip}
-\renewcommand*\partformat{\textcolor{main}{\partname~\thepart\autodot}}
-
-\pagestyle{headings}
-
-\setcapindent{1.5em}
-\setkomafont{caption}{\normalfont\footnotesize\sffamily}
-\setkomafont{captionlabel}{\normalfont\footnotesize\sffamily\scshape}
-
-\usepackage{booktabs,array,ragged2e}
-\usepackage[sort]{cleveref}
-
-% ----------------------------------------------------------------------------
-% code examples
-\addcmds{
-  cuisine,
-  DeclareDictTranslation, DeclareLanguage, DeclareLanguageAlias,
-    DeclareLanguageDialect, DeclareTranslation, DeclareTranslationFallback,
-  GetTranslation, GetTranslationFor,
-  kitchen,
-  LoadDictionary, LoadDictionaryFor,
-  mypackage@title,
-  NewTranslation,
-  ProvideDictionaryFor,
-  RenewTranslation,RequirePackage,
-  SaveTranslation, SaveTranslationFor, selectlanguage
-}
 
 % ----------------------------------------------------------------------------
 % other packages, bibliography, index
 \usepackage{array,longtable,booktabs}
-
-\usepackage{filecontents}
-\usepackage{imakeidx}
-\begin{filecontents*}{\jobname.ist}
- heading_prefix "{\\bfseries "
- heading_suffix "\\hfil}\\nopagebreak\n"
- headings_flag  1
- delim_0 "\\dotfill\\hyperpage{"
- delim_1 "\\dotfill\\hyperpage{"
- delim_2 "\\dotfill\\hyperpage{"
- delim_r "}\\textendash\\hyperpage{"
- delim_t "}"
- suffix_2p "\\nohyperpage{\\,f.}"
- suffix_3p "\\nohyperpage{\\,ff.}"
-\end{filecontents*}
-\indexsetup{othercode=\footnotesize}
-\makeindex[options={-s \jobname.ist},intoc,columns=3]
+\AfterPackage!{hyperref}{\usepackage[sort]{cleveref}}
 
 % ----------------------------------------------------------------------------
 % example definitions that have to be done in the preamble:
@@ -143,63 +93,51 @@
 % custom commands
 \usepackage{bbding}
 
-\newcommand*\required{\hfill\llap{required}\newline}
-\newcommand*\optional{\hfill\llap{optional}\newline}
-
-\newcommand*\unexpsign{{\tiny\FiveStar}}
-\newcommand*\expsign{\textcolor{red}{{\tiny\FiveStar}}}
-\renewcommand*\cnpkgdoctriangle{\unexpsign}
-\newcommand*\expandable{%
-  \def\cnpkgdoctriangle{%
-    \expsign
-    \gdef\cnpkgdoctriangle{\unexpsign}}}
 
 \newlength\nodewidth
 \setlength\nodewidth{.375\linewidth}
-\long\def\yes:{\centering\textcolor{green}{\CheckmarkBold}\par}
-\long\def\no:{\centering\textcolor{red}{\XSolidBrush}\par}
+\long\def\yes{\centering\textcolor{green}{\CheckmarkBold}\par}
+\long\def\no{\centering\textcolor{red}{\XSolidBrush}\par}
 \protected\def\fnote#1{\textsuperscript{#1}}
 
-\pdfstringdefDisableCommands{\def\llap#1{#1\space}\def\bigstar{*}}
 
 \begin{document}
 
-\section{Motivation}\secidx{Motivation}
+\section{Motivation}
 This package provides means for package authors to have an easy interface for
 internationalization of their packages.  The functionality of this package is
-in many parts also covered by the package \paket*{translator} (part of the
-\paket{beamer} bundle).  Internationalization is also possible with
-\paket{babel} and it's \cmd*{addto}\cmd{captions<language>} mechanism or
-\KOMAScript's \cmd{providecaptionname} and similar commands.  However, I
-believe that \translations\ is more flexible than all of these.  Unlike
-\paket*{translator} it detects the used (\paket{babel} or \paket{polyglossia})
-language itself and provides expandable retrieving of the translated key.
-\translations\ also provides support for language dialects which means package
-authors can for example distinguish between British, Australian, Canadian and
-US English.
+in many parts also covered by the package \pkg{translator} (part of the
+\pkg*{beamer} bundle).  Internationalization is also possible with
+\pkg{babel}~\cite{pkg:babel} and it's \cs*{addto}\cs*{captions\meta{language}}
+mechanism or \KOMAScript's \cs*{providecaptionname} and similar commands.
+However, I believe that \translations\ is more flexible than all of these.
+Unlike \pkg{translator} it detects the used (\pkg{babel} or
+\pkg{polyglossia}~\cite{pkg:polyglossia}) language itself and provides
+expandable retrieving of the translated key.  \translations\ also provides
+support for language dialects which means package authors can for example
+distinguish between British, Australian, Canadian and US~English.
 
 The first draft of the package was written since I missed an expandable
-version of \paket{translator}'s \cmd{translate} command.  Once I had the
+version of \pkg{translator}'s \cs*{translate} command.  Once I had the
 package available I began using it in various of my other packages so it got
 extended to the needs I faced there.
-\secidx*{Motivation}
 
-\section{License and Requirements}\label{sec:license}\secidx{Requirements}
-\translations\ is placed under the terms of the \LaTeX{} Project Public
-License, version 1.3 or later (\url{http://www.latex-project.org/lppl.txt}).
-It has the  status ``maintained.''
 
-\translations\ requires the packages \paket{etoolbox} and \paket*{scrlfile}
-(part of the \KOMAScript\ bundle\footnote{\CTANurl{koma-script}}).
-\secidx*{Requirements}
+\section{License and Requirements}\label{sec:license}
+\license
 
-\section{Usage}\secidx{Usage}
-\subsection{Background}\secidx[Background]{Usage}
+\translations\ requires the packages
+\needpackage{etoolbox}~\cite{pkg:etoolbox} and \pkg*{scrlfile} (part of the
+\KOMAScript\ bundle\footnote{\CTANurl{koma-script}}~\cite{pkg:koma-script}).
+
+
+\section{Usage}
+\subsection{Background}
 The \translations\ package enables the author of a package or a class (or a
 document) to declare translations of key words in different languages and
 fetch these translations in the document depending on the active language as
-set by \paket{babel} or \paket{polyglossia}.  Since \translations\ checks
-which language is active it is generally not necessary (although possible) to
+set by \pkg{babel} or \pkg{polyglossia}.  Since \translations\ checks which
+language is active it is generally not necessary (although possible) to
 specify the language for which a translation should be fetched manually.
 
 \translations\ knows of three types of languages: main languages (see
@@ -229,33 +167,33 @@ translation for a given key.
     \node {check if any\fnote{a}  translation is defined in given language}
       child {
         node[text width=\nodewidth]
-          {\yes: check if language is a dialect}
+          {\yes\ check if language is a dialect}
         child {
           node[text width=\nodewidth/2]
-            {\yes: check if dialect translation is given}
+            {\yes\ check if dialect translation is given}
           child {
             node[text width=\nodewidth/2.75]
-              {\yes: use dialect translation}
+              {\yes\ use dialect translation}
           }
           child {
             node[text width=\nodewidth/2.75]
-              {\no: use lan\-guage\fnote{b} translation}
+              {\no\ use lan\-guage\fnote{b} translation}
           }
         }
         child {
           node[text width=\nodewidth/2]
-            {\no: use translation}}
+            {\no\ use translation}}
         }
       child {
         node[text width=\nodewidth]
-          {\no: check if fallback translation is given}
+          {\no\ check if fallback translation is given}
         child {
           node[text width=\nodewidth/2.75]
-            {\yes: use fallback translation}
+            {\yes\ use fallback translation}
         }
         child {
           node[text width=\nodewidth/2.75]
-            {\no: use literal key}
+            {\no\ use literal key}
         }
       } ;
   \end{tikzpicture}
@@ -269,7 +207,7 @@ What happens if you declare a translation? There are four cases:
 \begin{enumerate}
   \item You declare a translation for a base language: this is the normal case
     where an internal macro is defined which can be fetched by the
-    \cmd{GetTranslation} command (see \cref{ssec:commands}).
+    \cs{GetTranslation} command (see \cref{ssec:commands}).
   \item You declare a translation for a language alias: this is the very same
     as the first case since the same internal macro is defined.
   \item You declare a translation for a dialect: this is two-fold.  Either a
@@ -280,235 +218,235 @@ What happens if you declare a translation? There are four cases:
     same as the third case as again the internal macros are the same.
 \end{enumerate}
 
-\subsection{Available Commands}\label{ssec:commands}\secidx[Commands]{Usage}
+\subsection{Available Commands}\label{ssec:commands}
 Below the commands provided by \translations\ are explained.  The symbol
-\expsign{} means that the command is expandable, \unexpsign{} means that it
-isn't.
-\begin{beschreibung}
- \Befehl{DeclareLanguage}{<lang>}\newline
+\textcolor{expandable}{\expandablesign} means that the command is expandable.
+Commands without the marker aren't expandable.
+
+\begin{commands}
+ \command{DeclareLanguage}[\marg{lang}]
    Declare a language that can be used by \translations.  If the language
    already exists it will be silently redefined.  This command can only be
    used in the preamble.  It should never be necessary to use this command as
    \translations\ already declares loads of languages (\cref{sec:languages}).
    Should you miss one please send me an email and I'll add it to
    \translations.
- \Befehl{DeclareLanguageAlias}{<lang2>}\ma{<lang1>}\newline
-   Declares \code{<lang2>} to be an alias of \code{<lang1>}.  If \code{<lang1>}
+ \command{DeclareLanguageAlias}[\marg{lang2}\marg{lang1}]
+   Declares \meta{lang2} to be an alias of \meta{lang1}.  If \meta{lang1}
    doesn't exist yet a warning will be raised and it will be defined.  This
    command can only be used in the preamble.  It should never be necessary to
    use this command as \translations\ already declares loads of languages
    (\cref{sec:languages}).  Should you miss one please send me an email and
    I'll add it to \translations.
- \Befehl{DeclareLanguageDialect}{<dialect>}\ma{<lang>}\newline
-   Declares \code{<dialect>} to be a dialect of language \code{<lang>}.  If a
-   translation for \code{<dialect>} is provided it is used by the translation
-   macros.  If there is none the corresponding translation for \code{<lang>}
+ \command{DeclareLanguageDialect}[\marg{dialect}\marg{lang}]
+   Declares \meta{dialect} to be a dialect of language \meta{lang}.  If a
+   translation for \meta{dialect} is provided it is used by the translation
+   macros.  If there is none the corresponding translation for \meta{lang}
    is used instead.  It should never be necessary to use this command as
    \translations\ already declares loads of languages (\cref{sec:languages}).
    Should you miss one please send me an email and I'll add it to
    \translations.
- \Befehl{NewTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
-   Defines a translation of key \code{<key>} for the language \code{<lang>}.
-   An error will be raised if a translation of \code{<key>} already exists.
+ \command{NewTranslation}[\marg{lang}\marg{key}\marg{translation}]
+   Defines a translation of key \meta{key} for the language \meta{lang}.
+   An error will be raised if a translation of \meta{key} already exists.
    This command can only be used in the preamble.
- \Befehl{RenewTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
-   Redefines a translation of key \code{<key>} for the language \code{<lang>}.
-   An error will be raised if no translation of \code{<key>} exists.
+ \command{RenewTranslation}[\marg{lang}\marg{key}\marg{translation}]
+   Redefines a translation of key \meta{key} for the language \meta{lang}.
+   An error will be raised if no translation of \meta{key} exists.
    This command can only be used in the preamble.
- \Befehl{DeclareTranslation}{<lang>}\ma{<key>}\ma{<translation>}\newline
-   Defines a translation of key \code{<key>} for the language \code{<lang>}.
-   No error will be raised if a translation of \code{<key>} already exists.
+ \command{DeclareTranslation}[\marg{lang}\marg{key}\marg{translation}]
+   Defines a translation of key \meta{key} for the language \meta{lang}.
+   No error will be raised if a translation of \meta{key} already exists.
    This command can only be used in the preamble.
- \Befehl{DeclareTranslationFallback}{<key>}\ma{<fallback>}\newline
-   Defines a fallback translation for key \code{<key>} that is used in case no
-   translation of \code{<key>} for the currently active language has been
-   provided.  No error will be raised if a fallback for \code{<key>} already
+ \command{DeclareTranslationFallback}[\marg{key}\marg{fallback}]
+   Defines a fallback translation for key \meta{key} that is used in case no
+   translation of \meta{key} for the currently active language has been
+   provided.  No error will be raised if a fallback for \meta{key} already
    exists.  This command can only be used in the preamble.
- \expandable\Befehl{GetTranslationFor}{<lang>}\ma{<key>}\newline
-   Fetches and prints the translation of \code{<key>} for the language
-   \code{<lang>}.  This command is expandable.
- \expandable\Befehl{GetTranslation}{<key>}\newline
-   Fetches and prints the translation of \code{<key>} for the currently active
-   language (as for example set by \paket{babel}).  This command is
-   expandable.
- \expandable\Befehl{GetLCTranslationFor}{<lang>}\ma{<key>}\newline
-   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
-   the language \code{<lang>}.  This command ensures that the fetched
+ \expandable\command{GetTranslationFor}[\marg{lang}\marg{key}]
+   Fetches and prints the translation of \meta{key} for the language
+   \meta{lang}.  This command is expandable.
+ \expandable\command{GetTranslation}[\marg{key}]
+   Fetches and prints the translation of \meta{key} for the currently active
+   language (as for example set by \pkg{babel}).  This command is expandable.
+ \expandable\command{GetLCTranslationFor}[\marg{lang}\marg{key}]
+   \sinceversion{1.1}Fetches and prints the translation of \meta{key} for
+   the language \meta{lang}.  This command ensures that the fetched
    translation is set lowercase.  This command is expandable.
- \expandable\Befehl{GetLCTranslation}{<key>}\newline
-   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
-   the currently active language (as for example set by \paket{babel}).  This
+ \expandable\command{GetLCTranslation}[\marg{key}]
+   \sinceversion{1.1}Fetches and prints the translation of \meta{key} for
+   the currently active language (as for example set by \pkg{babel}).  This
    command ensures that the fetched translation is set lowercase.  This
    command is expandable.
- \Befehl{GetTranslationForWarn}{<lang>}\ma{<key>}\newline
-   \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
-   the language \code{<lang>}.  Issues a warning if no translation is
+ \command{GetTranslationForWarn}[\marg{lang}\marg{key}]
+   \sinceversion{1.0}Fetches and prints the translation of \meta{key} for
+   the language \meta{lang}.  Issues a warning if no translation is
    available at the cost of expandability.
- \Befehl{GetTranslationWarn}{<key>}\newline
-   \sinceversion{1.0}Fetches and prints the translation of \code{<key>} for
-   the currently active language (as for example set by \paket{babel}).
+ \command{GetTranslationWarn}[\marg{key}]
+   \sinceversion{1.0}Fetches and prints the translation of \meta{key} for
+   the currently active language (as for example set by \pkg{babel}).
    Issues a warning if no translation is available at the cost of
    expandability.
- \Befehl{GetLCTranslationForWarn}{<lang>}\ma{<key>}\newline
-   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
-   the language \code{<lang>}.  This command ensures that the fetched
+ \command{GetLCTranslationForWarn}[\marg{lang}\marg{key}]
+   \sinceversion{1.1}Fetches and prints the translation of \meta{key} for
+   the language \meta{lang}.  This command ensures that the fetched
    translation is set lowercase.  Issues a warning if no translation is
    available at the cost of expandability.
- \Befehl{GetLCTranslationWarn}{<key>}\newline
-   \sinceversion{1.1}Fetches and prints the translation of \code{<key>} for
-   the currently active language (as for example set by \paket{babel}).  This
+ \command{GetLCTranslationWarn}[\marg{key}]
+   \sinceversion{1.1}Fetches and prints the translation of \meta{key} for
+   the currently active language (as for example set by \pkg{babel}).  This
    command ensures that the fetched translation is set lowercase.  Issues a
    warning if no translation is available at the cost of expandability.
- \Befehl{SaveTranslationFor}{<cmd>}\ma{<lang>}\ma{<key>}\newline
-   Fetches and saves the translation of \code{<key>} for the language
-   \code{<lang>} in the macro \code{<cmd>}.
- \Befehl{SaveTranslation}{<cmd>}\ma{<key>}\newline
-   Fetches and saves the translation of \code{<key>} for the currently active
-   language (as for example set by \paket{babel}) in the macro \code{<cmd>}.
- \Befehl{LoadDictionary}{<name>}\newline
-   Loads a file named \code{<name>-<lang>.trsl} where \code{<lang>} corresponds
-   to the lowercase name of the current language as defined with
-   \cmd{DeclareLanguage}.  This file should contain the translations for the
+ \command{SaveTranslationFor}[\marg{cmd}\marg{lang}\marg{key}]
+   Fetches and saves the translation of \meta{key} for the language
+   \meta{lang} in the macro \meta{cmd}.
+ \command{SaveTranslation}[\marg{cmd}\marg{key}]
+   Fetches and saves the translation of \meta{key} for the currently active
+   language (as for example set by \pkg{babel}) in the macro \meta{cmd}.
+ \command{LoadDictionary}[\marg{name}]
+   Loads a file named \code{\meta{name}-\meta{lang}.trsl} where \meta{lang}
+   corresponds to the lowercase name of the current language as defined with
+   \cs{DeclareLanguage}.  This file should contain the translations for the
    specified language.
- \Befehl{LoadDictionaryFor}{<lang>}\ma{<name>}\newline
-   Loads a file named \code{<name>-<lang>.trsl}.
- \Befehl{DeclareDictTranslation}{<key>}\ma{<translation>}\newline
+ \command{LoadDictionaryFor}[\marg{lang}\marg{name}]
+   Loads a file named \code{\meta{name}-\meta{lang}.trsl}.
+ \command{DeclareDictTranslation}[\marg{key}\marg{translation}]
    This command is to be used in a dictionary file and picks up the language
    of that file, see \cref{sec:dictionaries} for an example.
- \Befehl{ProvideDictionaryFor}{<lang>}\ma{<name>}\oa{<date>}\newline
+ \command{ProvideDictionaryFor}[\marg{lang}\marg{name}\oarg{date}]
    Needs to be in a dictionary file.  This command tells \translations\ that
    the file indeed is a dictionary and also sets the language for the
-   dictionary which is used by \cmd{DeclareDictTranslation}.
- \expandable\Befehl{PrintDictionaryFor}{<lang>}\ma{<name>}\ma{<pre>}\ma{<mid>}\ma{<post>}\newline
-   \sinceversion{1.0}Prints all entries of dictionary \code{<name>} in
-   language \code{<lang>} in the order the entries have been declared.  For
+   dictionary which is used by \cs{DeclareDictTranslation}.
+ \expandable\command{PrintDictionaryFor}%
+   [\marg{lang}\marg{name}\marg{pre}\marg{mid}\marg{post}]
+   \sinceversion{1.0}Prints all entries of dictionary \meta{name} in
+   language \meta{lang} in the order the entries have been declared.  For
    every entry the code\par
-   \code{<pre><key><mid><translation><post>}\par
+   \meta{pre}\meta{key}\meta{mid}\meta{translation}\meta{post}\par
    is printed.  The dictionary must have been loaded of course.  This may be
    of minor use but was used to print \cref{tab:dict}.
- \expandable\Befehl{baselanguage}{<lang>}\newline
+ \expandable\command{baselanguage}[\marg{lang}]
    \sinceversion{1.1}Returns the (internal) base name of the given language,
    language alias or language dialect.  For a base language
    (see section~\ref{ssec:languages:base}) this usually simply is the
    lowercase version of the name.
-\end{beschreibung}
+\end{commands}
 
-\subsection{A Small Example}\secidx[Example]{Usage}
+\subsection{A Small Example}
 This section demonstrates with two short examples how the macros are used.
 The first example covers the basics: declaring of translations and then
 retrieving and typesetting them.
 
-\begin{beispiel}
- % in the preamble:
- % \DeclareTranslation{English}{Kueche}{kitchen}
- % \DeclareTranslation{German}{Kueche}{K\"uche}
- % \DeclareTranslation{Spanish}{Kueche}{cocina}
- % \DeclareTranslation{French}{Kueche}{cuisine}
- 
- \GetTranslation{Kueche}
- \SaveTranslation\kitchen{Kueche}
- \SaveTranslationFor\cuisine{french}{Kueche}
+\begin{example}
+  % in the preamble:
+  % \DeclareTranslation{English}{Kueche}{kitchen}
+  % \DeclareTranslation{German}{Kueche}{K\"uche}
+  % \DeclareTranslation{Spanish}{Kueche}{cocina}
+  % \DeclareTranslation{French}{Kueche}{cuisine}
+  
+  \GetTranslation{Kueche}
+  \SaveTranslation\kitchen{Kueche}
+  \SaveTranslationFor\cuisine{french}{Kueche}
 
- \selectlanguage{ngerman}
- \GetTranslation{Kueche} \kitchen\ \GetTranslationFor{spanish}{Kueche}
- \cuisine
-\end{beispiel}
+  \selectlanguage{ngerman}
+  \GetTranslation{Kueche} \kitchen\ \GetTranslationFor{spanish}{Kueche}
+  \cuisine
+\end{example}
 
 The next example demonstrates the use of dialects and how they fall back to
 the translation for the main language if no extra translation was declared:
 
-\begin{beispiel}
- % in the preamble:
- % \DeclareTranslation{English}{farbe}{color}
- % \DeclareTranslation{British}{farbe}{colour}
+\begin{example}
+  % in the preamble:
+  % \DeclareTranslation{English}{farbe}{color}
+  % \DeclareTranslation{British}{farbe}{colour}
 
- \GetTranslationFor{English}{farbe} \\
- \GetTranslationFor{British}{farbe} \\
- \GetTranslationFor{American}{farbe}
-\end{beispiel}
+  \GetTranslationFor{English}{farbe}
+  \GetTranslationFor{British}{farbe}
+  \GetTranslationFor{American}{farbe}
+\end{example}
 
-\subsection{Usage in Packages}\secidx[Packages]{Usage}
-\subsubsection{Basic Structure}\secidx[Packages!structure]{Usage}
+\subsection{Usage in Packages}
+\subsubsection{Basic Structure}
 A typical usage in a package would look as follows:
-\begin{beispiel}[code only]
- \RequirePackage{translations}
- \DeclareTranslationFallback{mypackage-title}{Nice Title}
- \DeclareTranslation{English}{mypackage-title}{Nice Title}
- \DeclareTranslation{French}{mypackage-title}{Beau Titre}
- \DeclareTranslation{German}{mypackage-title}{Sch\"{o}ner Titel} 
- ...
- \def\mypackage@title{\GetTranslation{mypackage-title}}
-\end{beispiel}
+\begin{sourcecode}
+  \RequirePackage{translations}
+  \DeclareTranslationFallback{mypackage-title}{Nice Title}
+  \DeclareTranslation{English}{mypackage-title}{Nice Title}
+  \DeclareTranslation{French}{mypackage-title}{Beau Titre}
+  \DeclareTranslation{German}{mypackage-title}{Sch\"{o}ner Titel} 
+  ...
+  \def\mypackage@title{\GetTranslation{mypackage-title}}
+\end{sourcecode}
 
 That is, a package defines some unique key for an expression and at least
 defines a fallback translation.  Additionally translations for as many
 languages as the author wants are defined.  A user then may add
-\cmd{DeclareTranslation}\ma{<language>}\ma{<translation>} if they find their
+\cs{DeclareTranslation}\marg{language}\marg{translation} if they find their
 translation missing.
 
-\subsubsection{The `fallback' language}\secidx[Packages!fallback]{Usage}
-If a user has neither loaded \paket{babel} nor \paket{polyglossia}
-\translations\ will use English as language and translate to English if the
-translation was provided.  If the user \emph{has} loaded one of the language
-packages but has chosen a language for which no translation is defined the
-language `fallback' will be used, i.e., the translation provided with
-\cmd{DeclareTranslationFallback}.  If no fallback translation is provided
+\subsubsection{The `fallback' language}
+If a user has neither loaded \pkg{babel} nor \pkg{polyglossia} \translations\
+will use English as language and translate to English if the translation was
+provided.  If the user \emph{has} loaded one of the language packages but has
+chosen a language for which no translation is defined the language `fallback'
+will be used, \ie, the translation provided with
+\cs{DeclareTranslationFallback}.  If no fallback translation is provided
 either the translation will expand to the literal string.
 
 The following three examples should make this concept clear:
 
-\begin{beispiel}[code only]
- \documentclass{article}
- \DeclareTranslation{German}{foo-literal}{bar}
- \begin{document}
- \GetTranslation{foo-literal} => `foo-literal'
- \end{document}
-\end{beispiel}
+\begin{sourcecode}
+  \documentclass{article}
+  \DeclareTranslation{German}{foo-literal}{bar}
+  \begin{document}
+  \GetTranslation{foo-literal} => `foo-literal'
+  \end{document}
+\end{sourcecode}
 
-\begin{beispiel}[code only]
- \documentclass{article}
- \DeclareTranslationFallback{foo-literal}{foo}
- \DeclareTranslation{German}{foo-literal}{bar}
- \begin{document}
- \GetTranslation{foo-literal} => `foo'
- \end{document}
-\end{beispiel}
+\begin{sourcecode}
+  \documentclass{article}
+  \DeclareTranslationFallback{foo-literal}{foo}
+  \DeclareTranslation{German}{foo-literal}{bar}
+  \begin{document}
+  \GetTranslation{foo-literal} => `foo'
+  \end{document}
+\end{sourcecode}
 
-\begin{beispiel}[code only]
- \documentclass{article}
- \usepackage[ngerman]{babel}
- \DeclareTranslation{German}{foo-literal}{bar}
- \begin{document}
- \GetTranslation{foo-literal} => `bar'
- \end{document}
-\end{beispiel}
+\begin{sourcecode}
+  \documentclass{article}
+  \usepackage[ngerman]{babel}
+  \DeclareTranslation{German}{foo-literal}{bar}
+  \begin{document}
+  \GetTranslation{foo-literal} => `bar'
+  \end{document}
+\end{sourcecode}
 
 \subsection{Dictionaries}\label{sec:dictionaries}
-\secidx{Dictionaries}\secidx[Dictionaries]{Usage}
-\subsubsection{Own Dictionaries}\secidx[own]{Dictionaries}
+\subsubsection{Own Dictionaries}
 A typical dictionary file should look as follows:
-\begin{beispiel}[code only]
- % this is file housing-german.trsl
- \ProvideDictionaryFor{German}{housing}[<version info>]
- \DeclareDictTranslation{kitchen (housing)}{K\"uche}
- \DeclareDictTranslation{bathroom (housing)}{Bad}
- \DeclareDictTranslation{living room (housing)}{Wohnzimmer}
- \DeclareDictTranslation{bedroom (housing)}{Schlafzimmer}
- ...
- \endinput
-\end{beispiel}
+\begin{sourcecode}
+  % this is file housing-german.trsl
+  \ProvideDictionaryFor{German}{housing}[<version info>]
+  \DeclareDictTranslation{kitchen (housing)}{K\"uche}
+  \DeclareDictTranslation{bathroom (housing)}{Bad}
+  \DeclareDictTranslation{living room (housing)}{Wohnzimmer}
+  \DeclareDictTranslation{bedroom (housing)}{Schlafzimmer}
+  ...
+  \endinput
+\end{sourcecode}
 
 The usage is similar to the one in a package: unique keys are given
 translations, this time for the language the dictionary file is declared for
 only.
 
-\subsubsection{\translations' Basic Dictionaries}\secidx[basic]{Dictionaries}
+\subsubsection{\translations' Basic Dictionaries}
 \translations\ already provides a basic dictionary for the languages English,
 French, German and Spanish.  This dictionary is loaded automatically if the
 document language is one of these four.  If you'd like to contribute and add
 the basic dictionary in your language this is more than welcome and highly
 appreciated!  The easiest way to do this would be to copy one of the existing
-files \code{translations-basic-dictionary-<lang>.trsl} and modify the file
+files \code{translations-basic-dictionary-\meta{lang}.trsl} and modify the file
 accordingly.  You can then send me the file via email and I'll add it to
 \translations.
 
@@ -532,10 +470,8 @@ accordingly.  You can then send me the file via email and I'll add it to
   \PrintDictionaryFor{German}{translations-basic-dictionary}{\ttfamily}{&}{\\}
 \end{longtable}
 
-\secidx*{Dictionaries}
-\secidx*{Usage}
 
-\section{Defined Languages}\label{sec:languages}\secidx{Languages}
+\section{Defined Languages}\label{sec:languages}
 \subsection{Base Languages}\label{ssec:languages:base}
 Quite a number of languages already are defined, either directly or via an
 alias.  So, before you define a language you should take a look at the tables
@@ -624,7 +560,7 @@ decisions are open for debate.
 To most of the base languages and dialects at least one alias exists, the
 uppercase variant.  This is due to the fact that it is common to write
 language names uppercased.  For a number of languages aliases were defined in
-order to match \paket{babel}'s or \paket{polyglossia}'s names for the
+order to match \pkg{babel}'s or \pkg{polyglossia}'s names for the
 languages.  Others are defined because there apparently exist more than one
 name for the same language.  The decisions are not consistent.  For example it
 could be argued that \enquote{deutsch} is an alias of \enquote{German}.  I am
@@ -655,23 +591,15 @@ open to suggestions and improvements.  All defined aliases are listed in
 \end{longtable}
 \makeatother
 
-\secidx*{Languages}
-
 These languages \emph{should} cover all languages which are currently covered
-by \paket{babel} and \paket{polyglossia} but very likely this is not the
+by \pkg{babel} and \pkg{polyglossia} but very likely this is not the
 case.  Should you miss a language please send me an email so I can add it to
 \translations.
 
-\section{Implementation}\index{Implementation@\textbf{Implementation}}
-In the following code the lines 1--30 have been omitted. They only repeat the
-license statement which has already been mentioned in \cref{sec:license}.
+\section{Implementation}
+\lstinputlisting[style=cnltx]{translations.sty}
 
-\implementation[linerange={31-1000},firstnumber=31]
-
-\indexprologue{\noindent Section titles are indicated \textbf{bold}, packages
-  \textsf{sans serif} and commands
-  \code{\textbackslash\textcolor{code}{brown}}.\par\bigskip}
-
-\printindex
 
 \end{document}
+
+

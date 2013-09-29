@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2013/08/05}
-\def\@trnslt@version{v1.1}
+\def\@trnslt@date{2013/09/30}
+\def\@trnslt@version{v1.1a}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[\@trnslt@date\space \@trnslt@version\space \@trnslt@info\space (CN)]
@@ -287,12 +287,12 @@
 }
 
 \def\@trnslt@new@translation#1#2#3{%
-  \@trnslt@if@translation{#1}{#2}
+  \@trnslt@if@word\@trnslt@language{#1}{#2}
     {\@trnslt@err@already@defined{#1}{#2}}
     {\@trnslt@declare@translation{#1}{#2}{#3}}}
 
 \def\@trnslt@renew@translation#1#2#3{%
-  \@trnslt@if@translation{#1}{#2}
+  \@trnslt@if@word\@trnslt@language{#1}{#2}
     {\@trnslt@declare@translation{#1}{#2}{#3}}
     {\@trnslt@err@not@defined{#1}{#2}}}
 
@@ -878,4 +878,5 @@
                     - load basic dictionary also for dialects and if it
                       doesn't exist load it for the corresponding base
                       language instead
+2013/09/30 v1.1a    - Bug fix in \NewTranslation und \RenewTranslation
 
