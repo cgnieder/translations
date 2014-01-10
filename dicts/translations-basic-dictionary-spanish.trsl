@@ -1,109 +1,109 @@
 \ProvideDictionaryFor{Spanish}{translations-basic-dictionary}
 
-\DeclareDictTranslation{Abstract}{Resumen}
-\DeclareDictTranslation{Addresses}{Direcciones}
-\DeclareDictTranslation{addresses}{direcciones}
-\DeclareDictTranslation{Address}{Direcci\'{o}n}
-\DeclareDictTranslation{address}{direcci\'{o}n}
-\DeclareDictTranslation{and}{y}
-\DeclareDictTranslation{Appendix}{Ap\'{e}ndice}
-\DeclareDictTranslation{Authors}{Autores}
-\DeclareDictTranslation{authors}{autores}
-\DeclareDictTranslation{Author}{Autor}
-\DeclareDictTranslation{author}{autor}
-\DeclareDictTranslation{Bibliography}{Bibliograf\'{\i}a}
-\DeclareDictTranslation{cc}{c.c.}
-\DeclareDictTranslation{Chapters}{Cap\'{\i}tulos}
-\DeclareDictTranslation{chapters}{cap\'{\i}tulos}
-\DeclareDictTranslation{Chapter}{Cap\'{\i}tulo}
-\DeclareDictTranslation{chapter}{cap\'{\i}tulo}
-\DeclareDictTranslation{Conclusion}{Conclusi\'{o}n}
-\DeclareDictTranslation{conclusion}{conclusi\'{o}n}
-\DeclareDictTranslation{Contents}{Contenido}
-\DeclareDictTranslation{Continuation}{Continuaci\'{o}n}
-\DeclareDictTranslation{continuation}{continuaci\'{o}n}
-\DeclareDictTranslation{cont}{cont}
-\DeclareDictTranslation{encl (plural)}{adj.}
-\DeclareDictTranslation{encl (singular)}{adj.}
-\DeclareDictTranslation{encl}{adj.}
-\DeclareDictTranslation{Figures}{Figuras}
-\DeclareDictTranslation{figures}{figuras}
-\DeclareDictTranslation{Figure}{Figura}
-\DeclareDictTranslation{figure}{figura}
-\DeclareDictTranslation{From}{Desde}
-\DeclareDictTranslation{from}{desde}
-\DeclareDictTranslation{Glossary}{Glosario}
-\DeclareDictTranslation{Index}{\'{I}ndice}
-\DeclareDictTranslation{Introduction}{Introducci\'{o}n}
-\DeclareDictTranslation{introduction}{introducci\'{o}n}
-\DeclareDictTranslation{List of Figures and Tables}{Lista de Figuras y Tablas}
-\DeclareDictTranslation{List of Figures}{Lista de Figuras}
-\DeclareDictTranslation{List of Tables}{Lista de Tablas}
-\DeclareDictTranslation{or}{o}
-\DeclareDictTranslation{Outline}{Esbozo}
-\DeclareDictTranslation{Overview}{Visi\'{o}n General}
-\DeclareDictTranslation{Pages}{P\'{a}ginas}
-\DeclareDictTranslation{pages}{p\'{a}ginas}
-\DeclareDictTranslation{Page}{P\'{a}gina}
-\DeclareDictTranslation{page}{p\'{a}gina}
-\DeclareDictTranslation{Paragraphs}{P\'{a}rrafos}
-\DeclareDictTranslation{paragraphs}{p\'{a}rrafos}
-\DeclareDictTranslation{Paragraph}{P\'{a}rrafo}
-\DeclareDictTranslation{paragraph}{p\'{a}rrafo}
-\DeclareDictTranslation{Parts}{Partes}
-\DeclareDictTranslation{parts}{partes}
-\DeclareDictTranslation{Part}{Parte}
-\DeclareDictTranslation{part}{parte}
-\DeclareDictTranslation{Preface}{Prefacio}
-\DeclareDictTranslation{Proofs}{Demostraciones}
-\DeclareDictTranslation{proofs}{demostraciones}
-\DeclareDictTranslation{Proof}{Demostraci\'{o}n}
-\DeclareDictTranslation{proof}{demostraci\'{o}n}
-\DeclareDictTranslation{References}{Referencias}
-\DeclareDictTranslation{Related work}{Trabajo relacionado}
-\DeclareDictTranslation{Related Work}{Trabajo Relacionado}
-\DeclareDictTranslation{Sections}{Secciones}
-\DeclareDictTranslation{sections}{secciones}
-\DeclareDictTranslation{Section}{Secci\'{o}n}
-\DeclareDictTranslation{section}{secci\'{o}n}
-\DeclareDictTranslation{See also}{Ver tambi\'{e}n}
-\DeclareDictTranslation{see also}{ver tambi\'{e}n}
-\DeclareDictTranslation{See}{Ver}
-\DeclareDictTranslation{see}{ver}
-\DeclareDictTranslation{Sketch of Proofs}{Esbozo de Demostraciones}
-\DeclareDictTranslation{Sketch of proofs}{Esbozo de demostraciones}
-\DeclareDictTranslation{Sketch of Proof}{Esbozo de Demostraci\'{o}n}
-\DeclareDictTranslation{Sketch of proof}{Esbozo de demostraci\'{o}n}
-\DeclareDictTranslation{Subsections}{Subsecciones}
-\DeclareDictTranslation{subsections}{subsecciones}
-\DeclareDictTranslation{Subsection}{Subsecci\'{o}n}
-\DeclareDictTranslation{subsection}{subsecci\'{o}n}
-\DeclareDictTranslation{Summary}{Resumen}
-\DeclareDictTranslation{Tables}{Tablas}
-\DeclareDictTranslation{tables}{tablas}
-\DeclareDictTranslation{Table}{Tabla}
-\DeclareDictTranslation{table}{tabla}
-\DeclareDictTranslation{To}{Hasta}
-\DeclareDictTranslation{to}{hasta}
+\ProvideDictTranslation{Abstract}{Resumen}
+\ProvideDictTranslation{Addresses}{Direcciones}
+\ProvideDictTranslation{addresses}{direcciones}
+\ProvideDictTranslation{Address}{Direcci\'{o}n}
+\ProvideDictTranslation{address}{direcci\'{o}n}
+\ProvideDictTranslation{and}{y}
+\ProvideDictTranslation{Appendix}{Ap\'{e}ndice}
+\ProvideDictTranslation{Authors}{Autores}
+\ProvideDictTranslation{authors}{autores}
+\ProvideDictTranslation{Author}{Autor}
+\ProvideDictTranslation{author}{autor}
+\ProvideDictTranslation{Bibliography}{Bibliograf\'{\i}a}
+\ProvideDictTranslation{cc}{c.c.}
+\ProvideDictTranslation{Chapters}{Cap\'{\i}tulos}
+\ProvideDictTranslation{chapters}{cap\'{\i}tulos}
+\ProvideDictTranslation{Chapter}{Cap\'{\i}tulo}
+\ProvideDictTranslation{chapter}{cap\'{\i}tulo}
+\ProvideDictTranslation{Conclusion}{Conclusi\'{o}n}
+\ProvideDictTranslation{conclusion}{conclusi\'{o}n}
+\ProvideDictTranslation{Contents}{Contenido}
+\ProvideDictTranslation{Continuation}{Continuaci\'{o}n}
+\ProvideDictTranslation{continuation}{continuaci\'{o}n}
+\ProvideDictTranslation{cont}{cont}
+\ProvideDictTranslation{encl (plural)}{adj.}
+\ProvideDictTranslation{encl (singular)}{adj.}
+\ProvideDictTranslation{encl}{adj.}
+\ProvideDictTranslation{Figures}{Figuras}
+\ProvideDictTranslation{figures}{figuras}
+\ProvideDictTranslation{Figure}{Figura}
+\ProvideDictTranslation{figure}{figura}
+\ProvideDictTranslation{From}{Desde}
+\ProvideDictTranslation{from}{desde}
+\ProvideDictTranslation{Glossary}{Glosario}
+\ProvideDictTranslation{Index}{\'{I}ndice}
+\ProvideDictTranslation{Introduction}{Introducci\'{o}n}
+\ProvideDictTranslation{introduction}{introducci\'{o}n}
+\ProvideDictTranslation{List of Figures and Tables}{Lista de Figuras y Tablas}
+\ProvideDictTranslation{List of Figures}{Lista de Figuras}
+\ProvideDictTranslation{List of Tables}{Lista de Tablas}
+\ProvideDictTranslation{or}{o}
+\ProvideDictTranslation{Outline}{Esbozo}
+\ProvideDictTranslation{Overview}{Visi\'{o}n General}
+\ProvideDictTranslation{Pages}{P\'{a}ginas}
+\ProvideDictTranslation{pages}{p\'{a}ginas}
+\ProvideDictTranslation{Page}{P\'{a}gina}
+\ProvideDictTranslation{page}{p\'{a}gina}
+\ProvideDictTranslation{Paragraphs}{P\'{a}rrafos}
+\ProvideDictTranslation{paragraphs}{p\'{a}rrafos}
+\ProvideDictTranslation{Paragraph}{P\'{a}rrafo}
+\ProvideDictTranslation{paragraph}{p\'{a}rrafo}
+\ProvideDictTranslation{Parts}{Partes}
+\ProvideDictTranslation{parts}{partes}
+\ProvideDictTranslation{Part}{Parte}
+\ProvideDictTranslation{part}{parte}
+\ProvideDictTranslation{Preface}{Prefacio}
+\ProvideDictTranslation{Proofs}{Demostraciones}
+\ProvideDictTranslation{proofs}{demostraciones}
+\ProvideDictTranslation{Proof}{Demostraci\'{o}n}
+\ProvideDictTranslation{proof}{demostraci\'{o}n}
+\ProvideDictTranslation{References}{Referencias}
+\ProvideDictTranslation{Related work}{Trabajo relacionado}
+\ProvideDictTranslation{Related Work}{Trabajo Relacionado}
+\ProvideDictTranslation{Sections}{Secciones}
+\ProvideDictTranslation{sections}{secciones}
+\ProvideDictTranslation{Section}{Secci\'{o}n}
+\ProvideDictTranslation{section}{secci\'{o}n}
+\ProvideDictTranslation{See also}{Ver tambi\'{e}n}
+\ProvideDictTranslation{see also}{ver tambi\'{e}n}
+\ProvideDictTranslation{See}{Ver}
+\ProvideDictTranslation{see}{ver}
+\ProvideDictTranslation{Sketch of Proofs}{Esbozo de Demostraciones}
+\ProvideDictTranslation{Sketch of proofs}{Esbozo de demostraciones}
+\ProvideDictTranslation{Sketch of Proof}{Esbozo de Demostraci\'{o}n}
+\ProvideDictTranslation{Sketch of proof}{Esbozo de demostraci\'{o}n}
+\ProvideDictTranslation{Subsections}{Subsecciones}
+\ProvideDictTranslation{subsections}{subsecciones}
+\ProvideDictTranslation{Subsection}{Subsecci\'{o}n}
+\ProvideDictTranslation{subsection}{subsecci\'{o}n}
+\ProvideDictTranslation{Summary}{Resumen}
+\ProvideDictTranslation{Tables}{Tablas}
+\ProvideDictTranslation{tables}{tablas}
+\ProvideDictTranslation{Table}{Tabla}
+\ProvideDictTranslation{table}{tabla}
+\ProvideDictTranslation{To}{Hasta}
+\ProvideDictTranslation{to}{hasta}
 
-\DeclareDictTranslation{Monday}{Lunes}
-\DeclareDictTranslation{Tuesday}{Martes}
-\DeclareDictTranslation{Wednesday}{Mi\'{e}rcoles}
-\DeclareDictTranslation{Thursday}{Jueves}
-\DeclareDictTranslation{Friday}{Viernes}
-\DeclareDictTranslation{Saturday}{S\'{a}bado}
-\DeclareDictTranslation{Sunday}{Domingo}
+\ProvideDictTranslation{Monday}{Lunes}
+\ProvideDictTranslation{Tuesday}{Martes}
+\ProvideDictTranslation{Wednesday}{Mi\'{e}rcoles}
+\ProvideDictTranslation{Thursday}{Jueves}
+\ProvideDictTranslation{Friday}{Viernes}
+\ProvideDictTranslation{Saturday}{S\'{a}bado}
+\ProvideDictTranslation{Sunday}{Domingo}
 
-\DeclareDictTranslation{January}{Enero}
-\DeclareDictTranslation{February}{Febrero}
-\DeclareDictTranslation{March}{Marzo}
-\DeclareDictTranslation{April}{Abril}
-\DeclareDictTranslation{May}{Mayo}
-\DeclareDictTranslation{June}{Junio}
-\DeclareDictTranslation{July}{Julio}
-\DeclareDictTranslation{August}{Agosto}
-\DeclareDictTranslation{September}{Septiembre}
-\DeclareDictTranslation{October}{Octubre}
-\DeclareDictTranslation{November}{Noviembre}
-\DeclareDictTranslation{December}{Diciembre}
+\ProvideDictTranslation{January}{Enero}
+\ProvideDictTranslation{February}{Febrero}
+\ProvideDictTranslation{March}{Marzo}
+\ProvideDictTranslation{April}{Abril}
+\ProvideDictTranslation{May}{Mayo}
+\ProvideDictTranslation{June}{Junio}
+\ProvideDictTranslation{July}{Julio}
+\ProvideDictTranslation{August}{Agosto}
+\ProvideDictTranslation{September}{Septiembre}
+\ProvideDictTranslation{October}{Octubre}
+\ProvideDictTranslation{November}{Noviembre}
+\ProvideDictTranslation{December}{Diciembre}
 

@@ -1,109 +1,109 @@
 \ProvideDictionaryFor{French}{translations-basic-dictionary}
 
-\DeclareDictTranslation{Abstract}{R\'{e}sum\'{e}}
-\DeclareDictTranslation{Addresses}{Adresses}
-\DeclareDictTranslation{addresses}{adresses}
-\DeclareDictTranslation{Address}{Adresse}
-\DeclareDictTranslation{address}{adresse}
-\DeclareDictTranslation{and}{et}
-\DeclareDictTranslation{Appendix}{Annexe}
-\DeclareDictTranslation{Authors}{Auteurs}
-\DeclareDictTranslation{authors}{auteur}
-\DeclareDictTranslation{Author}{Auteur}
-\DeclareDictTranslation{author}{auteur}
-\DeclareDictTranslation{Bibliography}{Bibliographie}
-\DeclareDictTranslation{cc}{Copie \`{a} }
-\DeclareDictTranslation{Chapters}{Chapitres}
-\DeclareDictTranslation{chapters}{chapitres}
-\DeclareDictTranslation{Chapter}{Chapitre}
-\DeclareDictTranslation{chapter}{chapitre}
-\DeclareDictTranslation{Conclusion}{Conclusion}
-\DeclareDictTranslation{conclusion}{conclusion}
-\DeclareDictTranslation{Contents}{Contenu}
-\DeclareDictTranslation{Continuation}{Suite}
-\DeclareDictTranslation{continuation}{suite}
-\DeclareDictTranslation{cont}{suite} % FIXME: unsure
-\DeclareDictTranslation{encl (plural)}{P.~J.}
-\DeclareDictTranslation{encl (singular)}{P.~J.}
-\DeclareDictTranslation{encl}{P.~J.}
-\DeclareDictTranslation{Figures}{Figures}
-\DeclareDictTranslation{figures}{figures}
-\DeclareDictTranslation{Figure}{Figure}
-\DeclareDictTranslation{figure}{figure}
-\DeclareDictTranslation{From}{De}
-\DeclareDictTranslation{from}{de}
-\DeclareDictTranslation{Glossary}{Glossaire}
-\DeclareDictTranslation{Index}{Index}
-\DeclareDictTranslation{Introduction}{Introduction}
-\DeclareDictTranslation{introduction}{introduction}
-\DeclareDictTranslation{List of Figures and Tables}{Liste des figures et des tableaux}
-\DeclareDictTranslation{List of Figures}{Liste des figures}
-\DeclareDictTranslation{List of Tables}{Liste des tableaux}
-\DeclareDictTranslation{or}{ou}
-\DeclareDictTranslation{Outline}{Plan}
-\DeclareDictTranslation{Overview}{Sommaire}
-\DeclareDictTranslation{Pages}{Pages}
-\DeclareDictTranslation{pages}{pages}
-\DeclareDictTranslation{Page}{Page}
-\DeclareDictTranslation{page}{page}
-\DeclareDictTranslation{Paragraphs}{Paragraphes}
-\DeclareDictTranslation{paragraphs}{paragraphes}
-\DeclareDictTranslation{Paragraph}{Paragraphe}
-\DeclareDictTranslation{paragraph}{paragraphe}
-\DeclareDictTranslation{Parts}{Parties}
-\DeclareDictTranslation{parts}{parties}
-\DeclareDictTranslation{Part}{Partie}
-\DeclareDictTranslation{part}{partie}
-\DeclareDictTranslation{Preface}{Pr\'{e}face}
-\DeclareDictTranslation{Proofs}{D\'{e}monstrations}
-\DeclareDictTranslation{proofs}{d\'{e}monstrations}
-\DeclareDictTranslation{Proof}{D\'{e}monstration}
-\DeclareDictTranslation{proof}{d\'{e}monstration}
-\DeclareDictTranslation{References}{R\'{e}f\'{e}rences}
-\DeclareDictTranslation{Related work}{travaux connexes}
-\DeclareDictTranslation{Related Work}{Travaux connexes}
-\DeclareDictTranslation{Sections}{Sections}
-\DeclareDictTranslation{sections}{sections}
-\DeclareDictTranslation{Section}{Section}
-\DeclareDictTranslation{section}{section}
-\DeclareDictTranslation{See also}{Voir aussi}
-\DeclareDictTranslation{see also}{voir aussi}
-\DeclareDictTranslation{See}{Voir}
-\DeclareDictTranslation{see}{voir}
-\DeclareDictTranslation{Sketch of Proofs}{Esquisse de preuves}
-\DeclareDictTranslation{Sketch of proofs}{Esquisse de preuves}
-\DeclareDictTranslation{Sketch of Proof}{Esquisse de preuve}
-\DeclareDictTranslation{Sketch of proof}{Esquisse de preuve}
-\DeclareDictTranslation{Subsections}{Sous-sections}
-\DeclareDictTranslation{subsections}{sous-sections}
-\DeclareDictTranslation{Subsection}{Sous-section}
-\DeclareDictTranslation{subsection}{sous-section}
-\DeclareDictTranslation{Summary}{R\'{e}sum\'{e}}
-\DeclareDictTranslation{Tables}{Tables}
-\DeclareDictTranslation{tables}{tables}
-\DeclareDictTranslation{Table}{Table}
-\DeclareDictTranslation{table}{table}
-\DeclareDictTranslation{To}{Vers}%??
-\DeclareDictTranslation{to}{vers}%??
+\ProvideDictTranslation{Abstract}{R\'{e}sum\'{e}}
+\ProvideDictTranslation{Addresses}{Adresses}
+\ProvideDictTranslation{addresses}{adresses}
+\ProvideDictTranslation{Address}{Adresse}
+\ProvideDictTranslation{address}{adresse}
+\ProvideDictTranslation{and}{et}
+\ProvideDictTranslation{Appendix}{Annexe}
+\ProvideDictTranslation{Authors}{Auteurs}
+\ProvideDictTranslation{authors}{auteur}
+\ProvideDictTranslation{Author}{Auteur}
+\ProvideDictTranslation{author}{auteur}
+\ProvideDictTranslation{Bibliography}{Bibliographie}
+\ProvideDictTranslation{cc}{Copie \`{a} }
+\ProvideDictTranslation{Chapters}{Chapitres}
+\ProvideDictTranslation{chapters}{chapitres}
+\ProvideDictTranslation{Chapter}{Chapitre}
+\ProvideDictTranslation{chapter}{chapitre}
+\ProvideDictTranslation{Conclusion}{Conclusion}
+\ProvideDictTranslation{conclusion}{conclusion}
+\ProvideDictTranslation{Contents}{Contenu}
+\ProvideDictTranslation{Continuation}{Suite}
+\ProvideDictTranslation{continuation}{suite}
+\ProvideDictTranslation{cont}{suite} % FIXME: unsure
+\ProvideDictTranslation{encl (plural)}{P.~J.}
+\ProvideDictTranslation{encl (singular)}{P.~J.}
+\ProvideDictTranslation{encl}{P.~J.}
+\ProvideDictTranslation{Figures}{Figures}
+\ProvideDictTranslation{figures}{figures}
+\ProvideDictTranslation{Figure}{Figure}
+\ProvideDictTranslation{figure}{figure}
+\ProvideDictTranslation{From}{De}
+\ProvideDictTranslation{from}{de}
+\ProvideDictTranslation{Glossary}{Glossaire}
+\ProvideDictTranslation{Index}{Index}
+\ProvideDictTranslation{Introduction}{Introduction}
+\ProvideDictTranslation{introduction}{introduction}
+\ProvideDictTranslation{List of Figures and Tables}{Liste des figures et des tableaux}
+\ProvideDictTranslation{List of Figures}{Liste des figures}
+\ProvideDictTranslation{List of Tables}{Liste des tableaux}
+\ProvideDictTranslation{or}{ou}
+\ProvideDictTranslation{Outline}{Plan}
+\ProvideDictTranslation{Overview}{Sommaire}
+\ProvideDictTranslation{Pages}{Pages}
+\ProvideDictTranslation{pages}{pages}
+\ProvideDictTranslation{Page}{Page}
+\ProvideDictTranslation{page}{page}
+\ProvideDictTranslation{Paragraphs}{Paragraphes}
+\ProvideDictTranslation{paragraphs}{paragraphes}
+\ProvideDictTranslation{Paragraph}{Paragraphe}
+\ProvideDictTranslation{paragraph}{paragraphe}
+\ProvideDictTranslation{Parts}{Parties}
+\ProvideDictTranslation{parts}{parties}
+\ProvideDictTranslation{Part}{Partie}
+\ProvideDictTranslation{part}{partie}
+\ProvideDictTranslation{Preface}{Pr\'{e}face}
+\ProvideDictTranslation{Proofs}{D\'{e}monstrations}
+\ProvideDictTranslation{proofs}{d\'{e}monstrations}
+\ProvideDictTranslation{Proof}{D\'{e}monstration}
+\ProvideDictTranslation{proof}{d\'{e}monstration}
+\ProvideDictTranslation{References}{R\'{e}f\'{e}rences}
+\ProvideDictTranslation{Related work}{travaux connexes}
+\ProvideDictTranslation{Related Work}{Travaux connexes}
+\ProvideDictTranslation{Sections}{Sections}
+\ProvideDictTranslation{sections}{sections}
+\ProvideDictTranslation{Section}{Section}
+\ProvideDictTranslation{section}{section}
+\ProvideDictTranslation{See also}{Voir aussi}
+\ProvideDictTranslation{see also}{voir aussi}
+\ProvideDictTranslation{See}{Voir}
+\ProvideDictTranslation{see}{voir}
+\ProvideDictTranslation{Sketch of Proofs}{Esquisse de preuves}
+\ProvideDictTranslation{Sketch of proofs}{Esquisse de preuves}
+\ProvideDictTranslation{Sketch of Proof}{Esquisse de preuve}
+\ProvideDictTranslation{Sketch of proof}{Esquisse de preuve}
+\ProvideDictTranslation{Subsections}{Sous-sections}
+\ProvideDictTranslation{subsections}{sous-sections}
+\ProvideDictTranslation{Subsection}{Sous-section}
+\ProvideDictTranslation{subsection}{sous-section}
+\ProvideDictTranslation{Summary}{R\'{e}sum\'{e}}
+\ProvideDictTranslation{Tables}{Tables}
+\ProvideDictTranslation{tables}{tables}
+\ProvideDictTranslation{Table}{Table}
+\ProvideDictTranslation{table}{table}
+\ProvideDictTranslation{To}{Vers}%??
+\ProvideDictTranslation{to}{vers}%??
 
-\DeclareDictTranslation{Monday}{Lundi}
-\DeclareDictTranslation{Tuesday}{Mardi}
-\DeclareDictTranslation{Wednesday}{Mercredi}
-\DeclareDictTranslation{Thursday}{Jeudi}
-\DeclareDictTranslation{Friday}{Vendredi}
-\DeclareDictTranslation{Saturday}{Samedi}
-\DeclareDictTranslation{Sunday}{Dimanche}
+\ProvideDictTranslation{Monday}{Lundi}
+\ProvideDictTranslation{Tuesday}{Mardi}
+\ProvideDictTranslation{Wednesday}{Mercredi}
+\ProvideDictTranslation{Thursday}{Jeudi}
+\ProvideDictTranslation{Friday}{Vendredi}
+\ProvideDictTranslation{Saturday}{Samedi}
+\ProvideDictTranslation{Sunday}{Dimanche}
 
-\DeclareDictTranslation{January}{Janvier}
-\DeclareDictTranslation{February}{F\'evrier}
-\DeclareDictTranslation{March}{Mars}
-\DeclareDictTranslation{April}{Avril}
-\DeclareDictTranslation{May}{Mai}
-\DeclareDictTranslation{June}{Juin}
-\DeclareDictTranslation{July}{Juillet}
-\DeclareDictTranslation{August}{Ao\^{u}t}
-\DeclareDictTranslation{September}{Septembre}
-\DeclareDictTranslation{October}{Octobre}
-\DeclareDictTranslation{November}{Novembre}
-\DeclareDictTranslation{December}{D\'ecembre}
+\ProvideDictTranslation{January}{Janvier}
+\ProvideDictTranslation{February}{F\'evrier}
+\ProvideDictTranslation{March}{Mars}
+\ProvideDictTranslation{April}{Avril}
+\ProvideDictTranslation{May}{Mai}
+\ProvideDictTranslation{June}{Juin}
+\ProvideDictTranslation{July}{Juillet}
+\ProvideDictTranslation{August}{Ao\^{u}t}
+\ProvideDictTranslation{September}{Septembre}
+\ProvideDictTranslation{October}{Octobre}
+\ProvideDictTranslation{November}{Novembre}
+\ProvideDictTranslation{December}{D\'ecembre}
 
