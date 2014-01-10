@@ -109,16 +109,17 @@
 \section{Motivation}
 This package provides means for package authors to have an easy interface for
 internationalization of their packages.  The functionality of this package is
-in many parts also covered by the package \pkg{translator} (part of the
-\pkg*{beamer} bundle).  Internationalization is also possible with
-\pkg{babel}~\cite{pkg:babel} and it's \cs*{addto}\cs*{captions\meta{language}}
-mechanism or \KOMAScript's \cs*{providecaptionname} and similar commands.
-However, I believe that \translations\ is more flexible than all of these.
-Unlike \pkg{translator} it detects the used (\pkg{babel} or
-\pkg{polyglossia}~\cite{pkg:polyglossia}) language itself and provides
-expandable retrieving of the translated key.  \translations\ also provides
-support for language dialects which means package authors can for example
-distinguish between British, Australian, Canadian and US~English.
+in many parts also covered by the package
+\pkg{translator}~\cite{pkg:translator} (part of the \pkg*{beamer} bundle).
+Internationalization is also possible with \pkg{babel}~\cite{pkg:babel} and
+it's \cs*{addto}\cs*{captions\meta{language}} mechanism or \KOMAScript's
+\cs*{providecaptionname} and similar commands.  However, I believe that
+\translations\ is more flexible than all of these.  Unlike \pkg{translator} it
+detects the used (\pkg{babel} or \pkg{polyglossia}~\cite{pkg:polyglossia})
+language itself and provides expandable retrieving of the translated key.
+\translations\ also provides support for language dialects which means package
+authors can for example distinguish between British, Australian, Canadian and
+US~English.
 
 The first draft of the package was written since I missed an expandable
 version of \pkg{translator}'s \cs*{translate} command.  Once I had the
