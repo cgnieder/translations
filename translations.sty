@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2014/01/10}
-\def\@trnslt@version{v1.2}
+\def\@trnslt@date{2014/01/23}
+\def\@trnslt@version{v1.2a}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -135,7 +135,7 @@
 \newcommand*\@trnslt@language[1]{\csuse{@trnslt@language@#1}}
 
 % a user-level equivalent:
-\newcommand*\baselanguage[1]{\@trnslt@language{#1}}
+% \newcommand*\baselanguage[1]{\@trnslt@language{#1}}
 
 % define \@trnslt@if@language{#1}{}{} that actually checks the existence of
 % \@trnslt@language@#1:
@@ -161,7 +161,7 @@
     {%
       \@trnslt@if@alias{#2}
         {%
-          \csedef{@trnslt@dialect@#1@trnslt@dialect@#1}{{\@trnslt@alias{#2}}{#1}}%
+          \csedef{@trnslt@dialect@#1}{{\@trnslt@alias{#2}}{#1}}%
           \@trnslt@declare@language{#1}%
           \listeadd\@trnslt@dialects@single{#1}%
           \listeadd\@trnslt@dialects@pair{{#1}{\@trnslt@alias{#2}}}%
@@ -190,10 +190,10 @@
 
 % get the underlying name of a language or the name of the base language of a
 % dialect:
-\newcommand*\baselanguagename[1]{%
+\newcommand*\baselanguage[1]{%
   \@trnslt@if@dialect{#1}
-    {\baselanguage{\@trnslt@dialect@of{#1}}}
-    {\baselanguage{#1}}%
+    {\@trnslt@language{\@trnslt@dialect@of{#1}}}
+    {\@trnslt@language{#1}}%
 }
 
 % define \@trnslt@if@dialect{#1}{}{} that actually checks the existence of
@@ -243,8 +243,8 @@
   \cnltx@braced@expanded@fully
   \cnltx@firstofone
   \cnltx@ifstrequal
-    {\baselanguage{#1}}
-    {\baselanguage{\languagename}}%
+    {\@trnslt@language{#1}}
+    {\@trnslt@language{\languagename}}%
 }
 
 % check the current /base/ language, expandably:
@@ -255,8 +255,8 @@
       \cnltx@braced@expanded@fully
       \cnltx@firstofone
       \cnltx@ifstrequal
-        {\baselanguage{\@trnslt@dialect@of{\languagename}}}
-        {\baselanguage{#1}}%
+        {\@trnslt@language{\@trnslt@dialect@of{\languagename}}}
+        {\@trnslt@language{#1}}%
     }
     {\@trnslt@iflanguage{#1}}%
 }
@@ -310,14 +310,14 @@
     {%
       \@trnslt@if@dialect{#2}
         {%
-          \csdef{@trnslt@word@#1@\@trnslt@dialect{#2}}{#3}%
+          \csdef{@trnslt@word@\detokenize{#1}@\@trnslt@dialect{#2}}{#3}%
           \@trnslt@if@word\@trnslt@dialect@of{#1}{#2}
             {}
-            {\csdef{@trnslt@word@#1@\@trnslt@dialect@of{#2}}{#3}}%
+            {\csdef{@trnslt@word@\detokenize{#1}@\@trnslt@dialect@of{#2}}{#3}}%
         }
-        {\csdef{@trnslt@word@#1@\@trnslt@language{#2}}{#3}}%
+        {\csdef{@trnslt@word@\detokenize{#1}@\@trnslt@language{#2}}{#3}}%
       % save the <word> as <word>:
-      \csdef{@trnslt@word@#1@literal}{#1}%
+      \csdef{@trnslt@word@\detokenize{#1}@literal}{#1}%
     }
     {\@trnslt@err@unknown@lang{#2}}%
 }
@@ -343,7 +343,7 @@
 % --------------------------------------------------------------------------
 % let's go through some trouble to check if a translation exists:
 \newcommand*\@trnslt@if@word[3]{%
-  \ifcsname @trnslt@word@#2@#1{#3}\endcsname
+  \ifcsname @trnslt@word@\detokenize{#2}@#1{#3}\endcsname
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
@@ -419,11 +419,11 @@
 \newcommand*\@trnslt@get@translation@for[2]{%
   \@trnslt@if@dialect{#2}
     {%
-      \ifcsdef{@trnslt@word@#1@\@trnslt@dialect{#2}}
-        {\csuse{@trnslt@word@#1@\@trnslt@dialect{#2}}}
-        {\csuse{@trnslt@word@#1@\@trnslt@dialect@of{#2}}}%
+      \ifcsdef{@trnslt@word@\detokenize{#1}@\@trnslt@dialect{#2}}
+        {\csuse{@trnslt@word@\detokenize{#1}@\@trnslt@dialect{#2}}}
+        {\csuse{@trnslt@word@\detokenize{#1}@\@trnslt@dialect@of{#2}}}%
     }
-    {\csuse{@trnslt@word@#1@\@trnslt@language{#2}}}%
+    {\csuse{@trnslt@word@\detokenize{#1}@\@trnslt@language{#2}}}%
 }
 
 \newcommand*\@trnslt@checkandget@translation@for[2]{%
@@ -431,8 +431,8 @@
     {\@trnslt@get@translation@for{#1}{#2}}
     {%
       \@trnslt@if@translation{#1}{fallback}
-        {\csuse{@trnslt@word@#1@fallback}}
-        {\csuse{@trnslt@word@#1@literal}}%
+        {\csuse{@trnslt@word@\detokenize{#1}@fallback}}
+        {\csuse{@trnslt@word@\detokenize{#1}@literal}}%
     }%
 }
 
@@ -446,9 +446,9 @@
       \@trnslt@if@translation{#1}{fallback}
         {%
           \@trnslt@info{Using fallback translation for `#1'}%
-          \csuse{@trnslt@word@#1@fallback}
+          \csuse{@trnslt@word@\detokenize{#1}@fallback}
         }
-        {\csuse{@trnslt@word@#1@literal}}%
+        {\csuse{@trnslt@word@\detokenize{#1}@literal}}%
     }%
 }
 
@@ -462,9 +462,9 @@
       \@trnslt@if@translation{#1}{fallback}
         {%
           \@trnslt@info{Using fallback translation for `#1'}%
-          \@trnslt@get@lowercase{\csuse{@trnslt@word@#1@fallback}}%
+          \@trnslt@get@lowercase{\csuse{@trnslt@word@\detokenize{#1}@fallback}}%
         }
-        {\@trnslt@get@lowercase{\csuse{@trnslt@word@#1@literal}}}%
+        {\@trnslt@get@lowercase{\csuse{@trnslt@word@\detokenize{#1}@literal}}}%
     }%
 }
 
@@ -483,7 +483,7 @@
 \newrobustcmd*\@trnslt@save@translation@for[3]{%
   \edef#1{%
     \@trnslt@if@translation{#2}{#3}
-      {\csuse{@trnslt@word@#2@\@trnslt@language{#3}}}
+      {\csuse{@trnslt@word@\detokenize{#2}@\@trnslt@language{#3}}}
       {}%
   }%
 }
@@ -1016,5 +1016,10 @@
                       \ProvideDictTranslation
                     - translations in dictionaries are provided
                     - \baselanguagename
-
+2014/01/23 v1.2a    - add \detokenize{} so that translation keys with
+                      non-ascii chars can safely be used
+                    - fix bug in dialect declaration
+                    - rename \baselanguagename => \baselanguage
+                    - drop earlier \baselanguage (it was and still is
+                      available as \@trnslt@language)
 

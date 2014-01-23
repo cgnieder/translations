@@ -42,7 +42,6 @@
   info     = {Internationalization of \LaTeXe\ Packages} ,
   add-cmds = {
     baselanguage,
-    baselanguagename,
     DeclareDictTranslation,
     DeclareLanguage,
     DeclareLanguageAlias,
@@ -357,19 +356,13 @@ Commands without the marker aren't expandable.
     probably only a very limited number of use cases for this command.  (It
     was for example used to print \cref{tab:dict}.)
   \expandable\command{baselanguage}[\marg{lang}]
-    \sinceversion{1.1}Returns the (internal) base name of the given language,
-    language alias or language dialect.  This does \emph{not} give the base
-    language for a dialect!   For a base language (see
+    \changedversion{1.2a}Returns the (internal) base name of the given language,
+    language alias or language dialect.  For a dialect this expands to the
+    name of language it is a dialect of.  For a base language (see
     section~\ref{ssec:languages:base}) this usually simply is the lowercase
-    version of the name.  The choice for the command name is not a good one in
-    retrospect but is kept for compatibility reasons.\par
+    version of the name.\par
     \verbcode+\baselanguage{English}+ $\Rightarrow$ \code{english}\\
-    \verbcode+\baselanguage{American}+ $\Rightarrow$ \code{american}
-  \expandable\command{baselanguagename}[\marg{lang}]
-    \sinceversion{1.2}The same as \cs{baselanguage} but alse gives the base
-    language name of a dialect.\par
-    \verbcode+\baselanguagename{English}+ $\Rightarrow$ \code{english}\\
-    \verbcode+\baselanguagename{American}+ $\Rightarrow$ \code{english}
+    \verbcode+\baselanguage{American}+ $\Rightarrow$ \code{english}
   \expandable\command{ifcurrentlanguage}[\marg{lang}\marg{true}\marg{false}]
     \sinceversion{1.2}Places \meta{true} in the input stream if the current
     language is \meta{lang}.  Note: a dialect counts as a language of it's own
