@@ -516,7 +516,7 @@
 \newrobustcmd*\@trnslt@load@dictionary@for[3]{%
   \AtBeginDocument{%
     \InputIfFileExists{#3#1-\@trnslt@language{#2}.trsl}
-      {\@trnslt@check@dictionary{#1}{#2}{#3#1-\@trnslt@language{#2}.trsl}}
+      {\@trnslt@check@dictionary{#1}{#2}{#3}}
       {%
         \@trnslt@warning{dictionary file `#3#1-\@trnslt@language{#2}.trsl' not
           found.}%
@@ -525,12 +525,12 @@
 }
 
 \newrobustcmd*\@trnslt@check@dictionary[3]{%
-  \AfterFile{#3}
+  \AfterFile{#3#1-\@trnslt@language{#2}.trsl}
     {%
       \ifcsdef{@trnslt@dictionary@#1@\@trnslt@language{#2}}
         {\@trnslt@info{loading dictionary `#1' for `#2'.}}
         {%
-          \@trnslt@warning{file `#3' does not
+          \@trnslt@warning{file `#3#1-\@trnslt@language{#2}.trsl' does not
             appear to be a dictionary}%
         }%
     }%
