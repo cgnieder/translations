@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2014/01/23}
-\def\@trnslt@version{v1.2a}
+\def\@trnslt@date{2015/02/05}
+\def\@trnslt@version{v1.2b}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -494,34 +494,43 @@
 % --------------------------------------------------------------------------
 % load dictionaries and check for existing ones:
 % \LoadDictionary and \LoadDictionaryFor
+\edef\@trnslt@path@prefix{}
+\newrobustcmd*\SetDictionaryPrefix[1]{%
+  \edef\@trnslt@path@prefix{#1}%
+}
+
 \newrobustcmd*\LoadDictionary[1]{%
-  \@trnslt@load@dictionary@for{#1}{\@trnslt@current@language}}
+  \edef\tempCmd{\noexpand\@trnslt@load@dictionary@for{#1}{\noexpand\@trnslt@current@language}{\@trnslt@path@prefix}}
+  \tempCmd}
 \@onlypreamble\LoadDictionary
 
 \newrobustcmd*\LoadDictionaryFor[2]{%
-  \@trnslt@load@dictionary@for{#2}{#1}}
+  \edef\tempCmd{\noexpand\@trnslt@load@dictionary@for{#1}{#2}{\@trnslt@path@prefix}}
+  \tempCmd}
 \@onlypreamble\LoadDictionaryFor
+
 
 % #1: name
 % #2: lang
-\newrobustcmd*\@trnslt@load@dictionary@for[2]{%
+% #3: prefix
+\newrobustcmd*\@trnslt@load@dictionary@for[3]{%
   \AtBeginDocument{%
-    \InputIfFileExists{#1-\@trnslt@language{#2}.trsl}
-      {\@trnslt@check@dictionary{#1}{#2}}
+    \InputIfFileExists{#3#1-\@trnslt@language{#2}.trsl}
+      {\@trnslt@check@dictionary{#1}{#2}{#3}}
       {%
-        \@trnslt@warning{dictionary file `#1-\@trnslt@language{#2}.trsl' not
+        \@trnslt@warning{dictionary file `#3#1-\@trnslt@language{#2}.trsl' not
           found.}%
       }%
   }%
 }
 
-\newrobustcmd*\@trnslt@check@dictionary[2]{%
-  \AfterFile{#1-\@trnslt@language{#2}.trsl}
+\newrobustcmd*\@trnslt@check@dictionary[3]{%
+  \AfterFile{#3#1-\@trnslt@language{#2}.trsl}
     {%
       \ifcsdef{@trnslt@dictionary@#1@\@trnslt@language{#2}}
         {\@trnslt@info{loading dictionary `#1' for `#2'.}}
         {%
-          \@trnslt@warning{file `#1-\@trnslt@language{#2}.trsl' does not
+          \@trnslt@warning{file `#3#1-\@trnslt@language{#2}.trsl' does not
             appear to be a dictionary}%
         }%
     }%
