@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2015/07/09}
-\def\@trnslt@version{v1.2b}
+\def\@trnslt@date{2015/08/29}
+\def\@trnslt@version{v1.2c}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -483,7 +483,10 @@
 \newrobustcmd*\@trnslt@save@translation@for[3]{%
   \edef#1{%
     \@trnslt@if@translation{#2}{#3}
-      {\csuse{@trnslt@word@\detokenize{#2}@\@trnslt@language{#3}}}
+      {%
+        \unexpanded\expandafter\expandafter\expandafter
+        {\csname @trnslt@word@\detokenize{#2}@\@trnslt@language{#3}\endcsname}%
+      }
       {}%
   }%
 }
@@ -1025,4 +1028,5 @@
                     - drop earlier \baselanguage (it was and still is
                       available as \@trnslt@language)
 2015/07/09 v1.2b    - add language `korean'
+2015/08/29 v1.2c    - fix bug in \@trnslt@save@translation@for
 
