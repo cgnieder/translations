@@ -50,6 +50,7 @@
     DeclareTranslationFallback,
     GetTranslation,
     GetTranslationFor,
+    IfTranslation,
     LoadDictionary,
     LoadDictionaryFor,
     NewTranslation,
@@ -92,16 +93,9 @@
 \LoadDictionaryFor{German}{translations-basic-dictionary}
 
 % ----------------------------------------------------------------------------
-% custom commands
 \usepackage{bbding}
 
-
-\newlength\nodewidth
-\setlength\nodewidth{.375\linewidth}
-\long\def\yes{\centering\textcolor{green}{\CheckmarkBold}\par}
-\long\def\no{\centering\textcolor{red}{\XSolidBrush}\par}
-\protected\def\fnote#1{\textsuperscript{#1}}
-
+\newrobustcmd\fnote[1]{\textsuperscript{#1}}
 
 \begin{document}
 
@@ -156,6 +150,10 @@ translation for a given key.
 
 \begin{figure}[htbp]
   \centering
+  \newlength\nodewidth
+  \setlength\nodewidth{.375\linewidth}
+  \newcommand*\yes{\centering\textcolor{green}{\CheckmarkBold}\par}
+  \renewcommand*\no{\centering\textcolor{red}{\XSolidBrush}\par}
   \begin{tikzpicture}
     [
       level/.style={sibling distance=.5\linewidth/#1},
@@ -271,6 +269,10 @@ Commands without the marker aren't expandable.
     translation of \meta{key} for the currently active language has been
     provided.  No error will be raised if a fallback for \meta{key} already
     exists.  This command can only be used in the preamble.
+  \expandable\command{IfTranslation}[\marg{lang}\marg{key}\marg{true}\marg{false}]
+    Checks\sinceversion{1.2d} if a translation for \meta{key} in language
+    \meta{lang} is defined or not and either leaves \meta{true} or
+    \meta{false} in the input stream.
   \expandable\command{GetTranslationFor}[\marg{lang}\marg{key}]
     Fetches and prints the translation of \meta{key} for the language
     \meta{lang}.  This command is expandable.
@@ -394,6 +396,9 @@ retrieving and typesetting them.
   \selectlanguage{ngerman}
   \GetTranslation{Kueche} \kitchen\ \GetTranslationFor{spanish}{Kueche}
   \cuisine
+
+  \IfTranslation{German}{Kueche}{true}{false} \par
+  \IfTranslation{Danish}{Kueche}{true}{false}
 \end{example}
 
 The next example demonstrates the use of dialects and how they fall back to
@@ -442,7 +447,7 @@ The following three examples should make this concept clear:
 \begin{example}[compile]
   \documentclass[margin=5mm]{standalone}
   \usepackage{translations}
-  \DeclareTranslation{German}{foo-literal}{bar}
+  \DeclareTranslation{German}{foo-literal}{foo-german}
   \begin{document}
   \GetTranslation{foo-literal} % foo-literal
   \end{document}
@@ -452,7 +457,7 @@ The following three examples should make this concept clear:
   \documentclass[margin=5mm]{standalone}
   \usepackage{translations}
   \DeclareTranslationFallback{foo-literal}{foo}
-  \DeclareTranslation{German}{foo-literal}{bar}
+  \DeclareTranslation{German}{foo-literal}{foo-german}
   \begin{document}
   \GetTranslation{foo-literal} % foo
   \end{document}
@@ -462,9 +467,10 @@ The following three examples should make this concept clear:
   \documentclass[margin=5mm]{standalone}
   \usepackage[ngerman]{babel}
   \usepackage{translations}
-  \DeclareTranslation{German}{foo-literal}{bar}
+  \DeclareTranslationFallback{foo-literal}{foo}
+  \DeclareTranslation{German}{foo-literal}{foo-german}
   \begin{document}
-  \GetTranslation{foo-literal} % bar
+  \GetTranslation{foo-literal} % foo-german
   \end{document}
 \end{example}
 

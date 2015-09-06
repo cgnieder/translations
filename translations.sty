@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2015/08/29}
-\def\@trnslt@version{v1.2c}
+\def\@trnslt@date{2015/09/06}
+\def\@trnslt@version{v1.2d}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -350,6 +350,8 @@
   \fi
 }%
 
+% #1: word
+% #2: language
 \newcommand*\@trnslt@if@translation[2]{%
   \@trnslt@if@word\@trnslt@language{#1}{#2}
     {\expandafter\@firstoftwo}
@@ -367,6 +369,10 @@
         {\expandafter\@secondoftwo}%
     }%
 }
+
+% #1: language
+% #2: word
+\newcommand*\IfTranslation[2]{\@trnslt@if@translation{#2}{#1}}
 
 % --------------------------------------------------------------------------
 % We also need to be able to look up a translation:
@@ -904,6 +910,8 @@
 \DeclareLanguageAlias  {Croatian}{croatian}
 \DeclareLanguageAlias  {Slovak}{slovak}
 \DeclareLanguageAlias  {Slovenian}{slovenian}
+\DeclareLanguageAlias  {slovene}{slovenian}
+\DeclareLanguageAlias  {Slovene}{slovene}
 \DeclareLanguageAlias  {Sorbian}{sorbian}
 \DeclareLanguageDialect{lowersorbian}{sorbian}
 \DeclareLanguageDialect{uppersorbian}{sorbian}
@@ -1029,4 +1037,5 @@
                       available as \@trnslt@language)
 2015/07/09 v1.2b    - add language `korean'
 2015/08/29 v1.2c    - fix bug in \@trnslt@save@translation@for
-
+2015/09/06 v1.2d    - add alias `slovene' for `slovenian'
+                    - add user command for \@trnslt@if@translation
