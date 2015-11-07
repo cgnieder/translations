@@ -22,7 +22,7 @@
 \ProvideDictTranslation{Contents}{Contenu}
 \ProvideDictTranslation{Continuation}{Suite}
 \ProvideDictTranslation{continuation}{suite}
-\ProvideDictTranslation{cont}{suite} % FIXME: unsure
+\ProvideDictTranslation{cont}{suite}
 \ProvideDictTranslation{encl (plural)}{P.~J.}
 \ProvideDictTranslation{encl (singular)}{P.~J.}
 \ProvideDictTranslation{encl}{P.~J.}
@@ -83,27 +83,27 @@
 \ProvideDictTranslation{tables}{tables}
 \ProvideDictTranslation{Table}{Table}
 \ProvideDictTranslation{table}{table}
-\ProvideDictTranslation{To}{Vers}%??
-\ProvideDictTranslation{to}{vers}%??
+\ProvideDictTranslation{To}{\`{A}}
+\ProvideDictTranslation{to}{\`{a}}
 
-\ProvideDictTranslation{Monday}{Lundi}
-\ProvideDictTranslation{Tuesday}{Mardi}
-\ProvideDictTranslation{Wednesday}{Mercredi}
-\ProvideDictTranslation{Thursday}{Jeudi}
-\ProvideDictTranslation{Friday}{Vendredi}
-\ProvideDictTranslation{Saturday}{Samedi}
-\ProvideDictTranslation{Sunday}{Dimanche}
+\ProvideDictTranslation{Monday}{lundi}
+\ProvideDictTranslation{Tuesday}{mardi}
+\ProvideDictTranslation{Wednesday}{mercredi}
+\ProvideDictTranslation{Thursday}{jeudi}
+\ProvideDictTranslation{Friday}{vendredi}
+\ProvideDictTranslation{Saturday}{samedi}
+\ProvideDictTranslation{Sunday}{dimanche}
 
-\ProvideDictTranslation{January}{Janvier}
-\ProvideDictTranslation{February}{F\'evrier}
-\ProvideDictTranslation{March}{Mars}
-\ProvideDictTranslation{April}{Avril}
-\ProvideDictTranslation{May}{Mai}
-\ProvideDictTranslation{June}{Juin}
-\ProvideDictTranslation{July}{Juillet}
-\ProvideDictTranslation{August}{Ao\^{u}t}
-\ProvideDictTranslation{September}{Septembre}
-\ProvideDictTranslation{October}{Octobre}
-\ProvideDictTranslation{November}{Novembre}
-\ProvideDictTranslation{December}{D\'ecembre}
+\ProvideDictTranslation{January}{janvier}
+\ProvideDictTranslation{February}{f\'{e}vrier}
+\ProvideDictTranslation{March}{mars}
+\ProvideDictTranslation{April}{avril}
+\ProvideDictTranslation{May}{mai}
+\ProvideDictTranslation{June}{juin}
+\ProvideDictTranslation{July}{juillet}
+\ProvideDictTranslation{August}{ao\^{u}t}
+\ProvideDictTranslation{September}{septembre}
+\ProvideDictTranslation{October}{octobre}
+\ProvideDictTranslation{November}{novembre}
+\ProvideDictTranslation{December}{d\'{e}cembre}
 

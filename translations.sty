@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2015/09/06}
-\def\@trnslt@version{v1.2d}
+\def\@trnslt@date{2015/11/07}
+\def\@trnslt@version{v1.2e}
 \def\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -656,7 +656,7 @@
 \newcommand*\@trnslt@print@dictionary@entry@aux[5]{#1#4#2#5#3}
 
 % ==========================================================================
-% Now that the package is finished let's us ethe above commands to provide a
+% Now that the package is finished let's us the above commands to provide a
 % basis for usage; we need all languages known to `babel' and `polyglossia'
 % as well as aliases to allow different spellings/names; we also need dialects
 % where it makes sense (e.g. British as a dialect of English)
@@ -710,6 +710,7 @@
 \DeclareLanguage{latin}
 \DeclareLanguage{latvian}
 \DeclareLanguage{lithuanian}
+\DeclareLanguage{macedonian}
 \DeclareLanguage{malay}
 \DeclareLanguage{malayalam}
 \DeclareLanguage{maldivian}
@@ -846,6 +847,7 @@
 \DeclareLanguageAlias  {lettish}{latvian}
 \DeclareLanguageAlias  {Lettish}{lettish}
 \DeclareLanguageAlias  {Lithuanian}{lithuanian}
+\DeclareLanguageAlias  {Macedonian}{macedonian}
 % hopefully someone who knows better than me can comment on these
 \DeclareLanguageAlias  {Malay}{malay}
 \DeclareLanguageDialect{indonesian}{malay}
@@ -863,7 +865,7 @@
 \DeclareLanguageAlias  {Divehi}{divehi}
 \DeclareLanguageAlias  {Marathi}{marathi}
 \DeclareLanguageAlias  {Mongolian}{mongolian}
-% \DeclareLanguageAlias  {Syriac}{syriac}
+% \DeclareLanguageAlias  {Nko}{nko}
 \DeclareLanguageAlias  {norsk}{norwegian}
 \DeclareLanguageAlias  {Norsk}{norsk}
 \DeclareLanguageAlias  {Norwegian}{norwegian}
@@ -899,7 +901,6 @@
 \DeclareLanguageAlias  {northern sami}{north sami}
 \DeclareLanguageAlias  {Northern Sami}{northern sami}
 \DeclareLanguageAlias  {Sanskrit}{sanskrit}
-% this one isn't needed, or is it? vvv
 \DeclareLanguageAlias  {Serbocroatian}{serbocroatian}
 \DeclareLanguageAlias  {serbo-croatian}{serbocroatian}
 \DeclareLanguageAlias  {Serbo-Croatian}{serbocroatian}
@@ -921,19 +922,34 @@
 \DeclareLanguageAlias  {usorbian}{uppersorbian}
 \DeclareLanguageAlias  {lower sorbian}{lowersorbian}
 \DeclareLanguageAlias  {upper sorbian}{uppersorbian}
+\DeclareLanguageAlias  {lower Sorbian}{lowersorbian}
+\DeclareLanguageAlias  {upper Sorbian}{uppersorbian}
 \DeclareLanguageAlias  {Lower Sorbian}{lowersorbian}
 \DeclareLanguageAlias  {Upper Sorbian}{uppersorbian}
 \DeclareLanguageAlias  {Spanglish}{spanglish}
 \DeclareLanguageAlias  {Spanish}{spanish}
 \DeclareLanguageAlias  {Swedish}{swedish}
 \DeclareLanguageDialect{swissgerman}{german}
+\DeclareLanguageDialect{swissfrench}{french}
+\DeclareLanguageDialect{swissitalian}{italian}
+\DeclareLanguageDialect{swissromansh}{romansh}
+\DeclareLanguageAlias  {Swissgerman}{swissgerman}
+\DeclareLanguageAlias  {swiss german}{swissgerman}
+\DeclareLanguageAlias  {Swiss German}{swissgerman}
+\DeclareLanguageAlias  {Swissfrench}{swissfrench}
+\DeclareLanguageAlias  {swiss french}{swissfrench}
+\DeclareLanguageAlias  {Swiss French}{swissfrench}
+\DeclareLanguageAlias  {Swissitalian}{swissitalian}
+\DeclareLanguageAlias  {swiss italian}{swissitalian}
+\DeclareLanguageAlias  {Swiss Italian}{swissitalian}
+\DeclareLanguageAlias  {Swissromansh}{swissromansh}
+\DeclareLanguageAlias  {swiss romansh}{swissromansh}
+\DeclareLanguageAlias  {Swiss Romansh}{swissromansh}
 % this is to be discussed: swiss could also be an alias of french, italian or
 % romansh:
 \DeclareLanguageAlias  {swiss}{swissgerman}
 \DeclareLanguageAlias  {Swiss}{swiss}
-\DeclareLanguageAlias  {Swissgerman}{swissgerman}
-\DeclareLanguageAlias  {swiss german}{swissgerman}
-\DeclareLanguageAlias  {Swiss German}{swiss german}
+% \DeclareLanguageAlias  {Syriac}{syriac}
 \DeclareLanguageAlias  {Tamil}{tamil}
 \DeclareLanguageAlias  {Telugu}{telugu}
 \DeclareLanguageAlias  {Thai}{thai}
@@ -1039,3 +1055,6 @@
 2015/08/29 v1.2c    - fix bug in \@trnslt@save@translation@for
 2015/09/06 v1.2d    - add alias `slovene' for `slovenian'
                     - add user command for \@trnslt@if@translation
+2015/11/07 v1.2e    - Some fixes to the French translations in the basic
+                      dictionary, thanks to Denis Bitouz\'e
+                    - add Macedonian language
