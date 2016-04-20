@@ -12,7 +12,7 @@
 % Web:    http://www.mychemistry.eu/forums/forum/translations
 % E-Mail: contact@mychemistry.eu
 % --------------------------------------------------------------------------
-% Copyright 2012-2015 Clemens Niederberger
+% Copyright 2012-2016 Clemens Niederberger
 % 
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -424,7 +424,7 @@ A typical usage in a package would look as follows:
   \DeclareTranslation{French}{mypackage-title}{Beau Titre}
   \DeclareTranslation{German}{mypackage-title}{Sch\"{o}ner Titel} 
   ...
-  \def\mypackage@title{\GetTranslation{mypackage-title}}
+  \newcommand*\mypackage@title{\GetTranslation{mypackage-title}}
 \end{sourcecode}
 
 That is, a package defines some unique key for an expression and at least
@@ -484,11 +484,24 @@ active language with \cs{LoadDictionary} or for a specific language with
 \begin{commands}
   \command{LoadDictionary}[\marg{name}]
     Loads a file named \code{\meta{name}-\meta{lang}.trsl} where \meta{lang}
-    corresponds to the lowercase name of the current language as defined with
-    \cs{DeclareLanguage}.  This file should contain the translations for the
-    specified language.
+    corresponds to the lowercase name of the current language or base language
+    as defined with \cs{DeclareLanguage}.  This file should contain the
+    translations for the specified language.  This means if \meta{lang} is a
+    dialect and a dictionary exists the dictionary is used.  If it doesn't
+    exist but there is a dictionary for the base language that one is used.
   \command{LoadDictionaryFor}[\marg{lang}\marg{name}]
-    Loads a file named \code{\meta{name}-\meta{lang}.trsl}.
+    Loads a file named \code{\meta{name}-\meta{lang}.trsl} where \meta{lang}
+    corresponds to the lowercase name of the current language or base language
+    as defined with \cs{DeclareLanguage}.  This file should contain the
+    translations for the specified language.  This means if \meta{lang} is a
+    dialect and a dictionary exists the dictionary is used.  If it doesn't
+    exist but there is a dictionary for the base language that one is used.
+  \command{LoadDictionaryForDialect}[\marg{lang}\marg{name}]
+    \sinceversion{1.3}Loads a file named \code{\meta{name}-\meta{lang}.trsl}
+    where \meta{lang} corresponds to the lowercase name of the current
+    language as defined with \cs{DeclareLanguage}.  This file should contain
+    the translations for the specified language.  This command \emph{does not
+      look} for a base language dictionary.
 \end{commands}
 
 A package could provide dictionary files for its language dependent settings
