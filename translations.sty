@@ -25,9 +25,9 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\def\@trnslt@date{2016/04/19}
-\def\@trnslt@version{v1.3}
-\def\@trnslt@info{internationalization of LaTeX2e packages}
+\newcommand*\@trnslt@date{2016/06/02}
+\newcommand*\@trnslt@version{v1.4}
+\newcommand*\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
   \@trnslt@date\space
@@ -38,7 +38,7 @@
 % --------------------------------------------------------------------------
 % message handling
 % generic help message:
-\def\@trnslt@error@message{%
+\newcommand*\@trnslt@error@message{%
   For details have a look at the `translations' manual.%
 }
 
@@ -277,30 +277,49 @@
 % #1: language
 % #2: word
 % #3: replacement
-\newrobustcmd*\DeclareTranslation[3]{%
+\newrobustcmd*\declaretranslation[3]{%
   \@trnslt@declare@translation{#2}{#1}{#3}%
 }
-\@onlypreamble\DeclareTranslation
-
-\newrobustcmd*\DeclareTranslationFallback[2]{%
-  \@trnslt@declare@translation{#1}{fallback}{#2}%
-}
-\@onlypreamble\DeclareTranslationFallback
-
-\newrobustcmd*\NewTranslation[3]{%
+\newrobustcmd*\newtranslation[3]{%
   \@trnslt@new@translation{#2}{#1}{#3}%
 }
-\@onlypreamble\NewTranslation
-
-\newrobustcmd*\RenewTranslation[3]{%
+\newrobustcmd*\renewtranslation[3]{%
   \@trnslt@renew@translation{#2}{#1}{#3}%
 }
-\@onlypreamble\RenewTranslation
-
-\newrobustcmd*\ProvideTranslation[3]{%
+\newrobustcmd*\providetranslation[3]{%
   \@trnslt@provide@translation{#2}{#1}{#3}%
 }
+
+\let\DeclareTranslation\declaretranslation
+\@onlypreamble\DeclareTranslation
+\let\NewTranslation\newtranslation
+\@onlypreamble\NewTranslation
+\let\RenewTranslation\renewtranslation
+\@onlypreamble\RenewTranslation
+\let\ProvideTranslation\providetranslation
 \@onlypreamble\ProvideTranslation
+
+\newrobustcmd*\declaretranslationfallback{%
+  \declaretranslation{fallback}%
+}
+\newrobustcmd*\newtranslationfallback{%
+  \newtranslation{fallback}%
+}
+\newrobustcmd*\renewtranslationfallback{%
+  \renewtranslation{fallback}%
+}
+\newrobustcmd*\providetranslationfallback{%
+  \providetranslation{fallback}%
+}
+
+\let\DeclareTranslationFallback\declaretranslationfallback
+\@onlypreamble\DeclareTranslationFallback
+\let\NewTranslationFallback\newtranslationfallback
+\@onlypreamble\NewTranslationFallback
+\let\RenewTranslationFallback\renewtranslationfallback
+\@onlypreamble\RenewTranslationFallback
+\let\ProvideTranslationFallback\providetranslationfallback
+\@onlypreamble\ProvideTranslationFallback
 
 % #1: word
 % #2: language
@@ -700,7 +719,7 @@
 \newcommand*\@trnslt@print@dictionary@entry@aux[5]{#1#4#2#5#3}
 
 % ==========================================================================
-% Now that the package is finished let's us the above commands to provide a
+% Now that the package is finished let's use the above commands to provide a
 % basis for usage; we need all languages known to `babel' and `polyglossia'
 % as well as aliases to allow different spellings/names; we also need dialects
 % where it makes sense (e.g. British as a dialect of English)
@@ -1105,10 +1124,14 @@
 2015/11/07 v1.2e    - Some fixes to the French translations in the basic
                       dictionary, thanks to Denis Bitouz\'e
                     - add Macedonian language
-2016/01/20 v1.3     - \LoadDictionary first checks if a dictionary for the
+2016/04/19 v1.3     - \LoadDictionary first checks if a dictionary for the
                       dialect exists and loads it if it does; else it looks
                       for a dictionary of the base language and loads that
                       instead
                     - New command \LoadDictionaryForDialect which only loads
                       the dictionary for a specified dialect – this doesn't
                       check if a dictionary for a baselanguage exists
+2016/06/02 v1.4     - new commands \declaretranslation, \newtranslation,
+                      \renewtranslation and \providetranslation which can be
+                      used after begin document
+                    - fallback versions for each definition command

@@ -47,16 +47,28 @@
     DeclareLanguageAlias,
     DeclareLanguageDialect,
     DeclareTranslation,
+    declaretranslation,
     DeclareTranslationFallback,
+    declaretranslationfallback,
     GetTranslation,
     GetTranslationFor,
     IfTranslation,
     LoadDictionary,
     LoadDictionaryFor,
     NewTranslation,
+    newtranslation,
+    NewTranslationFallback,
+    newtranslationfallback,
     ProvideDictionaryFor,
     ProvideDictTranslation,
+    ProvideTranslation,
+    providetranslation,
+    ProvideTranslationFallback,
+    providetranslationfallback,
     RenewTranslation,
+    renewtranslation,
+    RenewTranslationFallback,
+    renewtranslationfallback,
     SaveTranslation,
     SaveTranslationFor
   } ,
@@ -249,26 +261,59 @@ Commands without the marker aren't expandable.
     \translations.
   \command{NewTranslation}[\marg{lang}\marg{key}\marg{translation}]
     Defines a translation of key \meta{key} for the language \meta{lang}.
-    An error will be raised if a translation of \meta{key} already exists.
-    This command can only be used in the preamble.
+    An error will be raised if a translation of \meta{key} in language
+    \marg{lang} already exists. This command can only be used in the
+    preamble.
+  \command{NewTranslationFallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}Defines a fallback translation of key \meta{key} for the
+    language \meta{lang}. An error will be raised if a fallback translation of
+    \meta{key} already exists. This command can only be used in the preamble.
   \command{RenewTranslation}[\marg{lang}\marg{key}\marg{translation}]
     Redefines a translation of key \meta{key} for the language \meta{lang}.
-    An error will be raised if no translation of \meta{key} exists.
-    This command can only be used in the preamble.
+    An error will be raised if no translation of \meta{key} in language
+    \meta{lang} exists.  This command can only be used in the preamble.
+  \command{RenewTranslationFallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}Renews a fallback translation.  This command can only be
+    used in the preamble.
   \command{ProvideTranslation}[\marg{lang}\marg{key}\marg{translation}]
     \sinceversion{1.2}Provides a translation of key \meta{key} for the
-    language \meta{lang}. If a translation of \meta{key} already exists it
-    won't be overwritten and no error will be raised.  This command can only
+    language \meta{lang}. If a translation of \meta{key} in language
+    \meta{lang} already exists it won't be overwritten and no error will be
+    raised.  This command can only be used in the preamble.
+  \command{ProvideTranslationFallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}Provides a fallback translation.  This command can only
     be used in the preamble.
   \command{DeclareTranslation}[\marg{lang}\marg{key}\marg{translation}]
     Defines a translation of key \meta{key} for the language \meta{lang}.
     No error will be raised if a translation of \meta{key} already exists.
     This command can only be used in the preamble.
   \command{DeclareTranslationFallback}[\marg{key}\marg{fallback}]
-    Defines a fallback translation for key \meta{key} that is used in case no
-    translation of \meta{key} for the currently active language has been
-    provided.  No error will be raised if a fallback for \meta{key} already
-    exists.  This command can only be used in the preamble.
+    Declares a fallback translation.  This command can only be used in the
+    preamble.
+  \command{newtranslation}[\marg{lang}\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{NewTranslation} that \emph{can} be used
+    after begin document.
+  \command{newtranslationfallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{NewTranslationFallback} that \emph{can}
+    be used after begin document.
+  \command{renewtranslation}[\marg{lang}\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{RenewTranslation} that \emph{can} be
+    used after begin document.
+  \command{renewtranslationfallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{RenewTranslationFallback} that
+    \emph{can} be used after begin document.
+  \command{providetranslation}[\marg{lang}\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{ProvideTranslation} that \emph{can} be
+    used after begin document.
+  \command{providetranslationfallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{ProvideTranslationFallback} that
+    \emph{can} be used after begin document.
+  \command{declaretranslation}[\marg{lang}\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{DeclareTranslation} that \emph{can} be
+    used after begin document.
+  \command{declaretranslationfallback}[\marg{key}\marg{translation}]
+    \sinceversion{1.4}A version of \cs{DeclareTranslationFallback} that
+    \emph{can} be used after begin document.
   \expandable\command{IfTranslation}[\marg{lang}\marg{key}\marg{true}\marg{false}]
     Checks\sinceversion{1.2d} if a translation for \meta{key} in language
     \meta{lang} is defined or not and either leaves \meta{true} or
@@ -609,7 +654,7 @@ variation of this theme) please let me know, preferably with a short
 explanation what's wrong and why.
 
 \newcounter{column}
-\gdef\seplang{%
+\def\seplang{%
   \stepcounter{column}%
   \ifnumless{\value{column}}{5}
     {&}
