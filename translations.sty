@@ -26,7 +26,7 @@
 % feel free to contact me.
 % --------------------------------------------------------------------------
 \newcommand*\@trnslt@date{2016/06/02}
-\newcommand*\@trnslt@version{v1.4}
+\newcommand*\@trnslt@version{v1.4a}
 \newcommand*\@trnslt@info{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -280,45 +280,45 @@
 \newrobustcmd*\declaretranslation[3]{%
   \@trnslt@declare@translation{#2}{#1}{#3}%
 }
-\newrobustcmd*\newtranslation[3]{%
+\newrobustcmd*\definetranslation[3]{%
   \@trnslt@new@translation{#2}{#1}{#3}%
 }
-\newrobustcmd*\renewtranslation[3]{%
+\newrobustcmd*\redefinetranslation[3]{%
   \@trnslt@renew@translation{#2}{#1}{#3}%
 }
-\newrobustcmd*\providetranslation[3]{%
+\newrobustcmd*\addtranslation[3]{%
   \@trnslt@provide@translation{#2}{#1}{#3}%
 }
 
 \let\DeclareTranslation\declaretranslation
 \@onlypreamble\DeclareTranslation
-\let\NewTranslation\newtranslation
+\let\NewTranslation\definetranslation
 \@onlypreamble\NewTranslation
-\let\RenewTranslation\renewtranslation
+\let\RenewTranslation\redefinetranslation
 \@onlypreamble\RenewTranslation
-\let\ProvideTranslation\providetranslation
+\let\ProvideTranslation\addtranslation
 \@onlypreamble\ProvideTranslation
 
 \newrobustcmd*\declaretranslationfallback{%
   \declaretranslation{fallback}%
 }
-\newrobustcmd*\newtranslationfallback{%
-  \newtranslation{fallback}%
+\newrobustcmd*\definetranslationfallback{%
+  \definetranslation{fallback}%
 }
-\newrobustcmd*\renewtranslationfallback{%
-  \renewtranslation{fallback}%
+\newrobustcmd*\redefinetranslationfallback{%
+  \redefinetranslation{fallback}%
 }
-\newrobustcmd*\providetranslationfallback{%
-  \providetranslation{fallback}%
+\newrobustcmd*\addtranslationfallback{%
+  \addtranslation{fallback}%
 }
 
 \let\DeclareTranslationFallback\declaretranslationfallback
 \@onlypreamble\DeclareTranslationFallback
-\let\NewTranslationFallback\newtranslationfallback
+\let\NewTranslationFallback\definetranslationfallback
 \@onlypreamble\NewTranslationFallback
-\let\RenewTranslationFallback\renewtranslationfallback
+\let\RenewTranslationFallback\redefinetranslationfallback
 \@onlypreamble\RenewTranslationFallback
-\let\ProvideTranslationFallback\providetranslationfallback
+\let\ProvideTranslationFallback\addtranslationfallback
 \@onlypreamble\ProvideTranslationFallback
 
 % #1: word
@@ -1135,3 +1135,5 @@
                       \renewtranslation and \providetranslation which can be
                       used after begin document
                     - fallback versions for each definition command
+2016/06/02 v1.4a    - rename new commands: they conflict with the translator
+                      package!

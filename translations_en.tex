@@ -56,19 +56,19 @@
     LoadDictionary,
     LoadDictionaryFor,
     NewTranslation,
-    newtranslation,
+    definetranslation,
     NewTranslationFallback,
-    newtranslationfallback,
+    definetranslationfallback,
     ProvideDictionaryFor,
     ProvideDictTranslation,
     ProvideTranslation,
-    providetranslation,
+    addtranslation,
     ProvideTranslationFallback,
-    providetranslationfallback,
+    addtranslationfallback,
     RenewTranslation,
-    renewtranslation,
+    redefinetranslation,
     RenewTranslationFallback,
-    renewtranslationfallback,
+    redefinetranslationfallback,
     SaveTranslation,
     SaveTranslationFor
   } ,
@@ -290,22 +290,22 @@ Commands without the marker aren't expandable.
   \command{DeclareTranslationFallback}[\marg{key}\marg{fallback}]
     Declares a fallback translation.  This command can only be used in the
     preamble.
-  \command{newtranslation}[\marg{lang}\marg{key}\marg{translation}]
+  \command{definetranslation}[\marg{lang}\marg{key}\marg{translation}]
     \sinceversion{1.4}A version of \cs{NewTranslation} that \emph{can} be used
     after begin document.
-  \command{newtranslationfallback}[\marg{key}\marg{translation}]
+  \command{definetranslationfallback}[\marg{key}\marg{translation}]
     \sinceversion{1.4}A version of \cs{NewTranslationFallback} that \emph{can}
     be used after begin document.
-  \command{renewtranslation}[\marg{lang}\marg{key}\marg{translation}]
+  \command{redefinetranslation}[\marg{lang}\marg{key}\marg{translation}]
     \sinceversion{1.4}A version of \cs{RenewTranslation} that \emph{can} be
     used after begin document.
-  \command{renewtranslationfallback}[\marg{key}\marg{translation}]
+  \command{redefinetranslationfallback}[\marg{key}\marg{translation}]
     \sinceversion{1.4}A version of \cs{RenewTranslationFallback} that
     \emph{can} be used after begin document.
-  \command{providetranslation}[\marg{lang}\marg{key}\marg{translation}]
+  \command{addtranslation}[\marg{lang}\marg{key}\marg{translation}]
     \sinceversion{1.4}A version of \cs{ProvideTranslation} that \emph{can} be
     used after begin document.
-  \command{providetranslationfallback}[\marg{key}\marg{translation}]
+  \command{addtranslationfallback}[\marg{key}\marg{translation}]
     \sinceversion{1.4}A version of \cs{ProvideTranslationFallback} that
     \emph{can} be used after begin document.
   \command{declaretranslation}[\marg{lang}\marg{key}\marg{translation}]
