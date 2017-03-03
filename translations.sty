@@ -8,7 +8,7 @@
 % Web:    http://www.mychemistry.eu/forums/forum/translations
 % E-Mail: contact@mychemistry.eu
 % --------------------------------------------------------------------------
-% Copyright 2012-2016 Clemens Niederberger
+% Copyright 2012-2017 Clemens Niederberger
 % 
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3
@@ -25,15 +25,15 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\newcommand*\@trnslt@date{2016/06/02}
-\newcommand*\@trnslt@version{v1.4a}
-\newcommand*\@trnslt@info{internationalization of LaTeX2e packages}
+\newcommand*\@trnslt@date{2017/03/03}
+\newcommand*\@trnslt@version{v1.5}
+\newcommand*\@trnslt@packageinfo{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
   \@trnslt@date\space
   \@trnslt@version\space
-  \@trnslt@info\space (CN)]
-\RequirePackage{cnltx-base,scrlfile}
+  \@trnslt@packageinfo\space (CN)]
+\RequirePackage{scrlfile,etoolbox}
 
 % --------------------------------------------------------------------------
 % message handling
@@ -42,30 +42,30 @@
   For details have a look at the `translations' manual.%
 }
 
-% create message macros:
-\cnltx@create@generic@message{@trnslt}{translations}{Error}{\@trnslt@error@message}
-\cnltx@create@generic@message{@trnslt}{translations}{Warning}{}
-\cnltx@create@generic@message{@trnslt}{translations}{WarningNoLine}{}
-\cnltx@create@generic@message{@trnslt}{translations}{Info}{}
+\newrobustcmd*\@trnslt@info[1]{\PackageInfo{translations}{#1}}
+\newrobustcmd*\@trnslt@warning[1]{\PackageWarning{translations}{#1}}
+\newrobustcmd*\@trnslt@error[1]{%
+  \PackageError{translations}{#1}\@trnslt@error@message
+}
 
 % specific errors:
-\newrobustcmd*\@trnslt@err@unknown@lang[1]{\@trnslt@error{Unknown language `#1'}}
-\newrobustcmd*\@trnslt@warn@unknown@lang[1]{\@trnslt@warning{Unknown language `#1'}}
+\newrobustcmd*\@trnslt@err@unknown@lang[1]{%
+  \@trnslt@error{Unknown language `#1'}%
+}
+\newrobustcmd*\@trnslt@warn@unknown@lang[1]{%
+  \PackageWarning{translations}{Unknown language `#1'}%
+}
 \newrobustcmd*\@trnslt@err@already@defined[2]{%
   \@trnslt@error{The #2 translation for `#1' is already defined.}%
 }
 \newrobustcmd*\@trnslt@err@not@defined[2]{%
-  \@trnslt@error{%
-    The \@trnslt@language{#2} translation for `#1' is not defined yet.%
-  }%
+  \@trnslt@error{The \@trnslt@language{#2} translation for `#1' is not defined yet.}%
 }
 \newrobustcmd*\@trnslt@err@dict@already@defined[2]{%
   \@trnslt@error{The #2 dictionary entry for `#1' is already defined.}%
 }
 \newrobustcmd*\@trnslt@err@dict@not@defined[2]{%
-  \@trnslt@error{%
-    The \@trnslt@language{#2} dictionary entry for `#1' is not defined yet.%
-  }%
+  \@trnslt@error{The \@trnslt@language{#2} dictionary entry for `#1' is not defined yet.}%
 }
 
 % --------------------------------------------------------------------------
@@ -82,6 +82,40 @@
   % define \bbl@afterfi if not defined yet:
   \ifdef\bbl@afterfi{}
     {\long\def\bbl@afterfi#1\fi{\fi#1}}
+}
+
+% --------------------------------------------------------------------------
+% test string equality, expandably:
+\newcommand\@trnslt@ifstrequal[2]{%
+  \ifnum\pdf@strcmp{\unexpanded{#1}}{\unexpanded{#2}}=\z@
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+}
+
+% a check for etoolbox's lists where items may contain braces:
+\newbool{@trnslt@inlist}
+\newrobustcmd\@trnslt@ifinlist@type[5]{%
+  \def\do##1{%
+    \boolfalse{@trnslt@inlist}%
+    \ifstrequal{##1}{#2}
+      {\booltrue{@trnslt@inlist}\listbreak}
+      {}%
+  }%
+  #1{#3}%
+  \ifbool{@trnslt@inlist}
+    {#4}
+    {#5}%
+}
+\newrobustcmd*\@trnslt@ifinlist{\@trnslt@ifinlist@type\dolistloop}
+\newrobustcmd*\@trnslt@ifinlistcs{\@trnslt@ifinlist@type\dolistcsloop}
+
+\long\def\@trnslt@getnext@braced#1#2#3{#2\@trnslt@firstofone{#3{#1}}}
+\long\def\@trnslt@firstofone#1{#1}
+\long\def\@trnslt@braced@expanded@fully#1\@trnslt@firstofone#2#3{%
+  \expandafter\@trnslt@getnext@braced
+  \expandafter{\romannumeral-`0#3}{#1}{#2}%
 }
 
 % --------------------------------------------------------------------------
@@ -218,7 +252,7 @@
   \@trnslt@if@dialect{#2}
     {\csletcs{@trnslt@dialect@#1}{@trnslt@dialect@#2}}
     {}%
-  \ifinlist{#1}\@trnslt@aliases@single
+  \@trnslt@ifinlist{#1}\@trnslt@aliases@single
     {}{%
       \csdef{@trnslt@alias@#1}{#2}%
       \listeadd\@trnslt@aliases@pair{{#1}{#2}}%
@@ -239,10 +273,10 @@
 % #2: true
 % #3: false
 \newcommand*\@trnslt@iflanguage[1]{%
-  \cnltx@braced@expanded@fully
-  \cnltx@braced@expanded@fully
-  \cnltx@firstofone
-  \cnltx@ifstrequal
+  \@trnslt@braced@expanded@fully
+  \@trnslt@braced@expanded@fully
+  \@trnslt@firstofone
+  \@trnslt@ifstrequal
     {\@trnslt@language{#1}}
     {\@trnslt@language{\languagename}}%
 }
@@ -251,10 +285,10 @@
 \newcommand*\@trnslt@ifbaselanguage[1]{%
   \@trnslt@if@dialect{\languagename}
     {%
-      \cnltx@braced@expanded@fully
-      \cnltx@braced@expanded@fully
-      \cnltx@firstofone
-      \cnltx@ifstrequal
+      \@trnslt@braced@expanded@fully
+      \@trnslt@braced@expanded@fully
+      \@trnslt@firstofone
+      \@trnslt@ifstrequal
         {\@trnslt@language{\@trnslt@dialect@of{\languagename}}}
         {\@trnslt@language{#1}}%
     }
@@ -597,8 +631,6 @@
     }%
 }
 
-% \newcommand*\@trnslt@if@dictionary[2]{\IfFileExists{#1-#2.trsl}}
-
 % --------------------------------------------------------------------------
 % the contents of a dictionary; let's declare that is one.
 % #1: lang
@@ -615,7 +647,7 @@
   % this macro can be used to check if we have a dictionary and will also be
   % used as a list for the dictionary entries:
   \csdef{@trnslt@dictionary@\@trnslt@dictionary@name @\@trnslt@dictionary@lang}{}%
-  \@ifnextchar[
+  \@ifnextchar[ % ]
     {\@trnslt@provide@dictionary@version}
     {
       \ProvidesFile
@@ -631,7 +663,7 @@
 
 % change this test (we can't use braces inside the item with \ifinlist):
 \newcommand*\@trnslt@check@dictionary@entry[2]{%
-  \cnltx@ifinlistcs
+  \@trnslt@ifinlistcs
     {{#1}{#2}}
     {@trnslt@dictionary@\@trnslt@dictionary@name @\@trnslt@dictionary@lang}%
 }
@@ -1031,27 +1063,6 @@
 % --------------------------------------------------------------------------
 % load basic dictionary if available
 \AtBeginDocument{%
-  % \@trnslt@if@dialect{\@trnslt@current@language}
-  %   {%
-  %     \@trnslt@if@dictionary
-  %       {translations-basic-dictionary}
-  %       {\@trnslt@language{\@trnslt@current@language}}%
-  %       {%
-  %         \@trnslt@load@dictionary@silent@for
-  %           {translations-basic-dictionary}
-  %           {\@trnslt@language{\@trnslt@current@language}}%
-  %       }%
-  %       {%
-  %         \@trnslt@load@dictionary@silent@for
-  %           {translations-basic-dictionary}
-  %           {\@trnslt@dialect@of{\@trnslt@current@language}}%
-  %       }
-  %   }
-  %   {%
-  %     \@trnslt@load@dictionary@silent@for
-  %       {translations-basic-dictionary}
-  %       {\@trnslt@language{\@trnslt@current@language}}%
-  %   }%
   \@trnslt@load@dictionary@silent@for
     {translations-basic-dictionary}
     \@trnslt@current@language
@@ -1137,3 +1148,6 @@
                     - fallback versions for each definition command
 2016/06/02 v1.4a    - rename new commands: they conflict with the translator
                       package!
+2017/03/03 v1.5     - remove dependency on cnltx-base
+                    - add Dutch dictionary (thanks to kwikwi)
+

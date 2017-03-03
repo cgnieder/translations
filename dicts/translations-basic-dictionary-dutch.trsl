@@ -1,0 +1,136 @@
+% --------------------------------------------------------------------------
+% the TRANSLATIONS package
+% 
+%   internationalization of LaTeX2e packages
+%
+% --------------------------------------------------------------------------
+% Clemens Niederberger
+% Web:    http://www.mychemistry.eu/forums/forum/translations
+% E-Mail: contact@mychemistry.eu
+% --------------------------------------------------------------------------
+% Copyright 2012-2017 Clemens Niederberger
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+% 
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Clemens Niederberger.
+% --------------------------------------------------------------------------
+% If you have any ideas, questions, suggestions or bugs to report, please
+% feel free to contact me.
+% --------------------------------------------------------------------------
+\ProvideDictionaryFor{Dutch}{translations-basic-dictionary}
+
+\ProvideDictTranslation{Abstract}{Samenvatting}
+\ProvideDictTranslation{Addresses}{Adressen}
+\ProvideDictTranslation{addresses}{adressen}
+\ProvideDictTranslation{Address}{Adres}
+\ProvideDictTranslation{address}{adres}
+\ProvideDictTranslation{and}{en}
+\ProvideDictTranslation{Appendix}{Appendix}
+\ProvideDictTranslation{Authors}{Auteurs}
+\ProvideDictTranslation{authors}{auteurs}
+\ProvideDictTranslation{Author}{Auteur}
+\ProvideDictTranslation{author}{auteur}
+\ProvideDictTranslation{Bibliography}{Bibliografie}
+\ProvideDictTranslation{cc}{cc}
+\ProvideDictTranslation{Chapters}{Hoofdstukken}
+\ProvideDictTranslation{chapters}{hoofdstukken}
+\ProvideDictTranslation{Chapter}{Hoofdstuk}
+\ProvideDictTranslation{chapter}{hoofdstuk}
+\ProvideDictTranslation{Conclusion}{Conclusie}
+\ProvideDictTranslation{conclusion}{conclusie}
+\ProvideDictTranslation{Contents}{Inhoud}
+\ProvideDictTranslation{Continuation}{Vervolg}
+\ProvideDictTranslation{continuation}{vervolg}
+\ProvideDictTranslation{cont}{vervolg}
+\ProvideDictTranslation{encl (plural)}{B\ij lagen}
+\ProvideDictTranslation{encl (singular)}{B\ij lage}
+\ProvideDictTranslation{encl}{B\ij lage(n)}
+\ProvideDictTranslation{Figures}{Figuren}
+\ProvideDictTranslation{figures}{figuren}
+\ProvideDictTranslation{Figure}{Figuur}
+\ProvideDictTranslation{figure}{figuur}
+\ProvideDictTranslation{From}{Van}
+\ProvideDictTranslation{from}{van}
+\ProvideDictTranslation{Glossary}{Verklarende Woordenl\ij st}
+\ProvideDictTranslation{Index}{Register}
+\ProvideDictTranslation{Introduction}{Inleiding}
+\ProvideDictTranslation{introduction}{inleiding}
+\ProvideDictTranslation{List of Figures and Tables}{L\ij st van figuren en tabellen}
+\ProvideDictTranslation{List of Figures}{L\ij st van figuren}
+\ProvideDictTranslation{List of Tables}{L\ij st van tabellen}
+\ProvideDictTranslation{or}{of}
+\ProvideDictTranslation{Outline}{Indeling}
+\ProvideDictTranslation{Overview}{Overzicht}
+\ProvideDictTranslation{Pages}{Pagina's}
+\ProvideDictTranslation{pages}{pagina's}
+\ProvideDictTranslation{Page}{Pagina}
+\ProvideDictTranslation{page}{pagina}
+\ProvideDictTranslation{Paragraphs}{Alinea's}
+\ProvideDictTranslation{paragraphs}{alinea's}
+\ProvideDictTranslation{Paragraph}{Alinea}
+\ProvideDictTranslation{paragraph}{alinea}
+\ProvideDictTranslation{Parts}{Delen}
+\ProvideDictTranslation{parts}{delen}
+\ProvideDictTranslation{Part}{Deel}
+\ProvideDictTranslation{part}{deel}
+\ProvideDictTranslation{Preface}{Woord vooraf}
+\ProvideDictTranslation{Proofs}{Bew\ij zen}
+\ProvideDictTranslation{proofs}{Bew\ij zen}
+\ProvideDictTranslation{Proof}{Bew\ij s}
+\ProvideDictTranslation{proof}{bew\ij s}
+\ProvideDictTranslation{References}{Referenties}
+\ProvideDictTranslation{Related work}{Verwant werk}
+\ProvideDictTranslation{Related Work}{Verwant Werk}
+\ProvideDictTranslation{Sections}{Paragrafen}
+\ProvideDictTranslation{sections}{paragrafen}
+\ProvideDictTranslation{Section}{Paragraaf}
+\ProvideDictTranslation{section}{paragraaf}
+\ProvideDictTranslation{See also}{Zie ook}
+\ProvideDictTranslation{see also}{zie ook}
+\ProvideDictTranslation{See}{Zie}
+\ProvideDictTranslation{see}{zie}
+\ProvideDictTranslation{Sketch of Proofs}{Bew\ij schetsen}
+\ProvideDictTranslation{Sketch of proofs}{bew\ij schetsen}
+\ProvideDictTranslation{Sketch of Proof}{Bew\ij schets}
+\ProvideDictTranslation{Sketch of proof}{bew\ij schets}
+\ProvideDictTranslation{Subsections}{Subparagrafen}
+\ProvideDictTranslation{subsections}{subparagrafen}
+\ProvideDictTranslation{Subsection}{Subparagraaf}
+\ProvideDictTranslation{subsection}{subparagraaf}
+\ProvideDictTranslation{Summary}{Samenvatting}
+\ProvideDictTranslation{Tables}{Tabellen}
+\ProvideDictTranslation{tables}{tabellen}
+\ProvideDictTranslation{Table}{Tabel}
+\ProvideDictTranslation{table}{tabel}
+\ProvideDictTranslation{To}{Aan}
+\ProvideDictTranslation{to}{aan}
+
+\ProvideDictTranslation{Monday}{Maandag}
+\ProvideDictTranslation{Tuesday}{Dinsdag}
+\ProvideDictTranslation{Wednesday}{Woensdag}
+\ProvideDictTranslation{Thursday}{Donderdag}
+\ProvideDictTranslation{Friday}{Vr\ij dag}
+\ProvideDictTranslation{Saturday}{Zaterdag}
+\ProvideDictTranslation{Sunday}{Zondag}
+
+\ProvideDictTranslation{January}{Januari}
+\ProvideDictTranslation{February}{Februari}
+\ProvideDictTranslation{March}{Maart}
+\ProvideDictTranslation{April}{April}
+\ProvideDictTranslation{May}{Mei}
+\ProvideDictTranslation{June}{Juni}
+\ProvideDictTranslation{July}{Juli}
+\ProvideDictTranslation{August}{Augustus}
+\ProvideDictTranslation{September}{September}
+\ProvideDictTranslation{October}{Oktober}
+\ProvideDictTranslation{November}{November}
+\ProvideDictTranslation{December}{December}
+
