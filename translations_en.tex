@@ -9,7 +9,7 @@
 % 
 % --------------------------------------------------------------------------
 % Clemens Niederberger
-% Web:    http://www.mychemistry.eu/forums/forum/translations
+% Web:    https://github.com/cgnieder/translations
 % E-Mail: contact@mychemistry.eu
 % --------------------------------------------------------------------------
 % Copyright 2012-2017 Clemens Niederberger
@@ -38,7 +38,7 @@
   package  = {translations} ,
   authors  = Clemens Niederberger ,
   email    = contact@mychemistry.eu ,
-  url      = http://www.mychemistry.eu/forums/forum/translations/ ,
+  url      = https://github.com/cgnieder/translations ,
   info     = {Internationalization of \LaTeXe\ Packages} ,
   add-cmds = {
     baselanguage,
@@ -229,6 +229,10 @@ What happens if you declare a translation? There are four cases:
   \item You declare a translation for an alias of a dialect: this is the very
     same as the third case as again the internal macros are the same.
 \end{enumerate}
+
+\emph{Beware that if the current language is a language using a non-latin
+  font, a translation is missing for said language, and the fallback
+  translation needs a Latin script font then \emph{nothing} might be printed.}
 
 \subsection{Available Commands}\label{ssec:commands}
 Below the commands provided by \translations\ are explained.  The symbol
