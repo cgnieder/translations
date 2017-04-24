@@ -1,5 +1,5 @@
 % !arara: pdflatex: { shell: on }
-% !arara: biber
+% arara: biber
 % arara: pdflatex
 % arara: pdflatex
 % --------------------------------------------------------------------------
@@ -609,12 +609,19 @@ Every dictionary file \emph{must} contain the declaration
 \end{commands}
 
 \subsubsection{\translations' Basic Dictionaries}\label{sec:transl-basic-dict}
-\translations\ already provides a basic dictionary for the languages Catalan,
-English, Dutch, French, German and Spanish.  This dictionary is loaded
-automatically if the document language is one of these four.  If you'd like to
-contribute and add the basic dictionary in your language this is more than
-welcome and highly appreciated!  The easiest way to do this would be to copy
-one of the existing files
+\translations\ already provides a basic dictionary for the languages
+\begin{itemize}
+  \item Catalan,
+  \item English,
+  \item Dutch,
+  \item French,
+  \item German, and
+  \item Spanish.
+\end{itemize}
+The corresponding dictionary is loaded automatically if the document language
+is one of these languages.  If you'd like to contribute and add the basic
+dictionary in your language this is more than welcome and highly appreciated!
+The easiest way to do this would be to copy one of the existing files
 \code{translations-basic-dictionary-\meta{lang}.trsl} and modify the file
 accordingly.  You can then send me the file via email and I'll add it to
 \translations.
