@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\newcommand*\@trnslt@date{2017/05/16}
-\newcommand*\@trnslt@version{v1.6}
+\newcommand*\@trnslt@date{2017/07/03}
+\newcommand*\@trnslt@version{v1.6a}
 \newcommand*\@trnslt@packageinfo{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -524,14 +524,7 @@
 }
 
 \newrobustcmd*\@trnslt@save@translation@for[3]{%
-  \edef#1{%
-    \@trnslt@if@translation{#2}{#3}
-      {%
-        \unexpanded\expandafter\expandafter\expandafter
-        {\csname @trnslt@word@\detokenize{#2}@\@trnslt@language{#3}\endcsname}%
-      }
-      {}%
-  }%
+  \edef#1{\@trnslt@checkandget@translation@for{#2}{#3}}%
 }
 
 % --------------------------------------------------------------------------
@@ -1152,3 +1145,4 @@
 2017/05/06 v1.5c    - add Azerbaijani
 2017/05/16 v1.6     - allow translations to contain \par
                     - improve perfomance by replacing list checks
+2017/07/03 v1.6a    - fix issue #6 (bug in \@trnslt@save@translation@for)
