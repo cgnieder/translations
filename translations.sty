@@ -25,15 +25,15 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\newcommand*\@trnslt@date{2017/07/03}
-\newcommand*\@trnslt@version{v1.6a}
+\newcommand*\@trnslt@date{2017/08/31}
+\newcommand*\@trnslt@version{v1.7a}
 \newcommand*\@trnslt@packageinfo{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
   \@trnslt@date\space
   \@trnslt@version\space
   \@trnslt@packageinfo\space (CN)]
-\RequirePackage{scrlfile,etoolbox}
+\RequirePackage{scrlfile,etoolbox,pdftexcmds}
 
 % --------------------------------------------------------------------------
 % message handling
@@ -462,11 +462,11 @@
 \newcommand*\@trnslt@get@translation@for[2]{%
   \@trnslt@if@dialect{#2}
     {%
-      \ifcsdef{@trnslt@word@\detokenize{#1}@\@trnslt@dialect{#2}}
-        {\csuse{@trnslt@word@\detokenize{#1}@\@trnslt@dialect{#2}}}
-        {\csuse{@trnslt@word@\detokenize{#1}@\@trnslt@dialect@of{#2}}}%
+      \@trnslt@if@translation@value{#1}{\@trnslt@dialect{#2}}
+        {\@trnslt@translation@value{#1}{\@trnslt@dialect{#2}}}
+        {\@trnslt@translation@value{#1}{\@trnslt@dialect@of{#2}}}%
     }
-    {\csuse{@trnslt@word@\detokenize{#1}@\@trnslt@language{#2}}}%
+    {\@trnslt@translation@value{#1}{\@trnslt@language{#2}}}%
 }
 
 \newcommand*\@trnslt@checkandget@translation@for[2]{%
@@ -474,9 +474,19 @@
     {\@trnslt@get@translation@for{#1}{#2}}
     {%
       \@trnslt@if@translation{#1}{fallback}
-        {\csuse{@trnslt@word@\detokenize{#1}@fallback}}
-        {\csuse{@trnslt@word@\detokenize{#1}@literal}}%
+        {\@trnslt@translation@value{#1}{fallback}}
+        {\@trnslt@translation@value{#1}{literal}}%
     }%
+}
+
+\newcommand*\@trnslt@if@translation@value[2]{%
+  \ifcsdef{@trnslt@word@\detokenize{#1}@#2}%
+}
+
+\newcommand*\@trnslt@translation@value[2]{%
+  \unexpanded\expandafter\expandafter\expandafter{%
+    \csname @trnslt@word@\detokenize{#1}@#2\endcsname
+  }%
 }
 
 % this is not expandable!
@@ -1146,3 +1156,5 @@
 2017/05/16 v1.6     - allow translations to contain \par
                     - improve perfomance by replacing list checks
 2017/07/03 v1.6a    - fix issue #6 (bug in \@trnslt@save@translation@for)
+2017/07/06 v1.7     - return translation values in \unexpanded
+2017/08/31 v1.7a    - add missing dependency on pdftexcmds
