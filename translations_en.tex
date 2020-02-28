@@ -1,7 +1,7 @@
-% !arara: pdflatex: { shell: on }
+% arara: pdflatex: { shell: on, interaction: nonstopmode }
 % !arara: biber
-% arara: pdflatex
-% arara: pdflatex
+% !arara: pdflatex
+% !arara: pdflatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
 % 
@@ -31,8 +31,10 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\documentclass[load-preamble+,french,spanish,ngerman,english]{cnltx-doc}
+\documentclass[load-preamble]{cnltx-doc}
+\usepackage[french,spanish,ngerman,english]{babel}
 % ----------------------------------------------------------------------------
+\usepackage{imakeidx}
 % document layout and typographic features
 \setcnltx{
   package  = {translations} ,
@@ -81,13 +83,19 @@
 
 \microtypesetup{tracking=scshape}
 
-\defbibheading{bibliography}[\bibname]{\addsec{#1}}
-
+\usepackage[
+  backend=biber,
+  style=cnltx,
+  sortlocale=en_US,
+  indexing=cite]{biblatex}
 \usepackage{csquotes}
+\addbibresource{cnltx.bib}
 
-\usepackage{embrac}[2012/06/29]
-  \ChangeEmph{[}[,.02em]{]}[.055em,-.08em]
-  \ChangeEmph{(}[-.01em,.04em]{)}[.04em,-.05em]
+\usepackage[biblatex]{embrac}
+\ChangeEmph{[}[,.02em]{]}[.055em,-.08em]
+\ChangeEmph{(}[-.01em,.04em]{)}[.04em,-.05em]
+
+\defbibheading{bibliography}{\section{References}}
 
 % ----------------------------------------------------------------------------
 % other packages, bibliography, index
@@ -420,7 +428,7 @@ Commands without the marker aren't expandable.
     \meta{false} if the current \pkg{babel} language is \code{american}.   
   \expandable\command{ifcurrentbaselanguage}[\marg{lang}\marg{true}\marg{false}]
     \sinceversion{1.2}Places \meta{true} in the input stream if the current
-    language is \meta{lang}.  Note: a dialect does notcount as a language of
+    language is \meta{lang}.  Note: a dialect does not count as a language of
     it's own here.  If the current \pkg{babel} language is \code{american}
     then \cs{ifcurrentbaselanguage}\Marg{English} will be \meta{true}.
 \end{commands}
@@ -488,7 +496,7 @@ provided.  If the user \emph{has} loaded one of the language packages but has
 chosen a language for which no translation is defined the language `fallback'
 will be used, \ie, the translation provided with
 \cs{DeclareTranslationFallback}.  If no fallback translation is provided
-either the translation will expand to the literal string.
+either, the translation will expand to the literal string.
 
 The following three examples should make this concept clear:
 
@@ -618,10 +626,13 @@ Every dictionary file \emph{must} contain the declaration
   \item German, and
   \item Spanish.
 \end{itemize}
-The corresponding dictionary is loaded automatically if the document language
-is one of these languages.  If you'd like to contribute and add the basic
-dictionary in your language this is more than welcome and highly appreciated!
-The easiest way to do this would be to copy one of the existing files
+The corresponding dictionary\footnote{Or dictionaries if more than one of
+  these languages are loaded in a document. This works since v0.18.} is loaded
+automatically if the document language is one of these languages.
+
+\emph{If you'd like to contribute and add the basic dictionary in your
+  language this is more than welcome and highly appreciated!}  The easiest way
+to do this would be to copy one of the existing files
 \code{translations-basic-dictionary-\meta{lang}.trsl} and modify the file
 accordingly.  You can then send me the file via email and I'll add it to
 \translations.
@@ -774,5 +785,7 @@ case.  Should you miss a language please send me an email so I can add it to
 
 % \section{Implementation}
 % \lstinputlisting[style=cnltx]{translations.sty}
+
+\printbibliography
 
 \end{document}

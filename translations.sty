@@ -25,7 +25,7 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\newcommand*\@trnslt@date{2018/02/27}
+\newcommand*\@trnslt@date{2018/02/28}
 \newcommand*\@trnslt@version{v1.8}
 \newcommand*\@trnslt@packageinfo{internationalization of LaTeX2e packages}
 
@@ -143,7 +143,9 @@
   \@trnslt@if@language{#1}
     {}{%
       \csdef{@trnslt@language@#1}{#1}%
-      \listeadd\@trnslt@languages{#1}%
+      \@trnslt@if@dialect{#1}
+        {}
+        {\listeadd\@trnslt@languages{#1}}%
     }%
 }
 
@@ -838,6 +840,29 @@
 \DeclareLanguage{vietnamese}
 \DeclareLanguage{welsh}
 
+\DeclareLanguageDialect{british}{english}
+\DeclareLanguageDialect{australian}{english}
+\DeclareLanguageDialect{american}{english}
+\DeclareLanguageDialect{acadian}{french}
+\DeclareLanguageDialect{canadien}{french}
+\DeclareLanguageDialect{canadian}{english}
+\DeclareLanguageDialect{newzealand}{english}
+\DeclareLanguageDialect{irish}{gaelic}
+\DeclareLanguageDialect{scottish}{gaelic}
+\DeclareLanguageDialect{austrian}{german}
+\DeclareLanguageDialect{hindi}{hindustani}
+\DeclareLanguageDialect{urdu}{hindustani}
+\DeclareLanguageDialect{indonesian}{malay}
+\DeclareLanguageDialect{brazil}{portuges}
+\DeclareLanguageDialect{serbian}{serbocroatian}
+\DeclareLanguageDialect{croatian}{serbocroatian}
+\DeclareLanguageDialect{lowersorbian}{sorbian}
+\DeclareLanguageDialect{uppersorbian}{sorbian}
+\DeclareLanguageDialect{swissgerman}{german}
+\DeclareLanguageDialect{swissfrench}{french}
+\DeclareLanguageDialect{swissitalian}{italian}
+\DeclareLanguageDialect{swissromansh}{romansh}
+
 % --------------------------------------------------------------------------
 % aliases and dialects:
 \DeclareLanguageAlias  {Afrikaans}{afrikaans}
@@ -866,32 +891,23 @@
 \DeclareLanguageAlias  {Finnish}{finnish}
 \DeclareLanguageAlias  {francais}{french}
 \DeclareLanguageAlias  {Francais}{francais}
-\DeclareLanguageDialect{canadien}{french}
 \DeclareLanguageAlias  {Canadien}{canadien}
 \DeclareLanguageAlias  {French}{french}
-\DeclareLanguageDialect{acadian}{french}
 \DeclareLanguageAlias  {Acadian}{acadian}
 \DeclareLanguageAlias  {frenchle}{french}
-\DeclareLanguageDialect{american}{english}
 \DeclareLanguageAlias  {American}{american}
-\DeclareLanguageDialect{australian}{english}
 \DeclareLanguageAlias  {Australian}{australian}
-\DeclareLanguageDialect{british}{english}
 \DeclareLanguageAlias  {British}{british}
-\DeclareLanguageDialect{canadian}{english}
 \DeclareLanguageAlias  {Canadian}{canadian}
 \DeclareLanguageAlias  {English}{english}
 \DeclareLanguageAlias  {UKenglish}{british}
 \DeclareLanguageAlias  {USenglish}{american}
-\DeclareLanguageDialect{newzealand}{english}
 \DeclareLanguageAlias  {Newzealand}{newzealand}
 \DeclareLanguageAlias  {Ethiop}{ethiop}
 \DeclareLanguageAlias  {Esperanto}{esperanto}
 \DeclareLanguageAlias  {Estonian}{estonian}
 \DeclareLanguageAlias  {Friulan}{friulan}
 \DeclareLanguageAlias  {Gaelic}{gaelic}
-\DeclareLanguageDialect{irish}{gaelic}
-\DeclareLanguageDialect{scottish}{gaelic}
 \DeclareLanguageAlias  {Irish}{irish}
 \DeclareLanguageAlias  {irish gaelic}{irish}
 \DeclareLanguageAlias  {Irish Gaelic}{irish}
@@ -902,7 +918,6 @@
 \DeclareLanguageAlias  {German}{german}
 \DeclareLanguageAlias  {germanb}{german}
 \DeclareLanguageAlias  {ngerman}{german}
-\DeclareLanguageDialect{austrian}{german}
 \DeclareLanguageAlias  {Austrian}{austrian}
 \DeclareLanguageAlias  {naustrian}{austrian}
 \DeclareLanguageAlias  {Greek}{greek}
@@ -913,9 +928,7 @@
 \DeclareLanguageAlias  {Hindustani}{hindustani}
 \DeclareLanguageAlias  {hindi-urdu}{hindustani}
 \DeclareLanguageAlias  {Hindi-Urdu}{hindi-urdu}
-\DeclareLanguageDialect{hindi}{hindustani}
 \DeclareLanguageAlias  {Hindi}{hindi}
-\DeclareLanguageDialect{urdu}{hindustani}
 \DeclareLanguageAlias  {Urdu}{urdu}
 \DeclareLanguageAlias  {Hungarian}{hungarian}
 \DeclareLanguageAlias  {magyar}{hungarian}
@@ -949,7 +962,6 @@
 \DeclareLanguageAlias  {Bahasai}{bahasai}
 \DeclareLanguageAlias  {bahasam}{bahasa}
 \DeclareLanguageAlias  {Bahasam}{bahasam}
-\DeclareLanguageDialect{indonesian}{malay}
 \DeclareLanguageAlias  {Indonesian}{indonesian}
 \DeclareLanguageAlias  {indon}{indonesian}
 % 
@@ -975,7 +987,6 @@
 \DeclareLanguageAlias  {Piemonteis}{piemonteis}
 \DeclareLanguageAlias  {Pinyin}{pinyin}
 \DeclareLanguageAlias  {Polish}{polish}
-\DeclareLanguageDialect{brazil}{portuges}
 \DeclareLanguageAlias  {Brazil}{brazil}
 \DeclareLanguageAlias  {brazilian}{brazil}
 \DeclareLanguageAlias  {Brazilian}{brazilian}
@@ -998,18 +1009,14 @@
 \DeclareLanguageAlias  {Serbocroatian}{serbocroatian}
 \DeclareLanguageAlias  {serbo-croatian}{serbocroatian}
 \DeclareLanguageAlias  {Serbo-Croatian}{serbocroatian}
-\DeclareLanguageDialect{serbian}{serbocroatian}
 \DeclareLanguageAlias  {Serbian}{serbian}
 \DeclareLanguageAlias  {serbianc}{serbian}
-\DeclareLanguageDialect{croatian}{serbocroatian}
 \DeclareLanguageAlias  {Croatian}{croatian}
 \DeclareLanguageAlias  {Slovak}{slovak}
 \DeclareLanguageAlias  {Slovenian}{slovenian}
 \DeclareLanguageAlias  {slovene}{slovenian}
 \DeclareLanguageAlias  {Slovene}{slovene}
 \DeclareLanguageAlias  {Sorbian}{sorbian}
-\DeclareLanguageDialect{lowersorbian}{sorbian}
-\DeclareLanguageDialect{uppersorbian}{sorbian}
 \DeclareLanguageAlias  {Lowersorbian}{lowersorbian}
 \DeclareLanguageAlias  {Uppersorbian}{uppersorbian}
 \DeclareLanguageAlias  {lsorbian}{lowersorbian}
@@ -1023,10 +1030,6 @@
 \DeclareLanguageAlias  {Spanglish}{spanglish}
 \DeclareLanguageAlias  {Spanish}{spanish}
 \DeclareLanguageAlias  {Swedish}{swedish}
-\DeclareLanguageDialect{swissgerman}{german}
-\DeclareLanguageDialect{swissfrench}{french}
-\DeclareLanguageDialect{swissitalian}{italian}
-\DeclareLanguageDialect{swissromansh}{romansh}
 \DeclareLanguageAlias  {Swissgerman}{swissgerman}
 \DeclareLanguageAlias  {swiss german}{swissgerman}
 \DeclareLanguageAlias  {Swiss German}{swissgerman}
@@ -1169,5 +1172,5 @@
 2017/07/03 v1.6a    - fix issue #6 (bug in \@trnslt@save@translation@for)
 2017/07/06 v1.7     - return translation values in \unexpanded
 2017/08/31 v1.7a    - add missing dependency on pdftexcmds
-2020/02/27 v1.8     - load basic dictionary for each loaded language (if
+2020/02/28 v1.8     - load basic dictionary for each loaded language (if
                       available)
