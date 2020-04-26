@@ -25,8 +25,8 @@
 % If you have any ideas, questions, suggestions or bugs to report, please
 % feel free to contact me.
 % --------------------------------------------------------------------------
-\newcommand*\@trnslt@date{2018/02/28}
-\newcommand*\@trnslt@version{v1.8}
+\newcommand*\@trnslt@date{2020/04/26}
+\newcommand*\@trnslt@version{v1.8a}
 \newcommand*\@trnslt@packageinfo{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -557,52 +557,38 @@
   \@trnslt@load@dictionary@for@dialect{#2}{#1}}
 \@onlypreamble\LoadDictionaryFor
 
+\newcommand*\@trnslt@dictionaries{}
+
+\edef\@trnslt@catcodes{%
+  \catcode\number`\<=\the\catcode`\<\relax
+  \catcode\number`\>=\the\catcode`\>\relax
+  \catcode\number`\|=\the\catcode`\|\relax
+}
+
+\catcode`\<=3
+\catcode`\>=3
+\catcode`\|=7
+
 % #1: name
 % #2: lang
 % #3: false
-\newrobustcmd*\@trnslt@input@if@dictionary@exists[3]{%
-  \AtBeginDocument{%
-    \InputIfFileExists{#1-\@trnslt@language{#2}.trsl}
-      {\@trnslt@check@dictionary{#1}{#2}}
-      {#3}%
-  }%
+\newrobustcmd*\@trnslt@input@if@dictionary[2]{%
+  \expanded{\ifinlist{<#1|\@trnslt@language{#2}>}}{\@trnslt@dictionaries}
+    {}
+    {\listxadd\@trnslt@dictionaries{<#1|\@trnslt@language{#2}>}}%
 }
 
 % #1: name
 % #2: lang
 % #3: false
-\newrobustcmd*\@trnslt@load@dictionary@for@F[3]{%
-  \@trnslt@input@if@dictionary@exists{#1}{#2}{#3}%
+\newrobustcmd*\@trnslt@load@dictionary@for[2]{%
+  \@trnslt@input@if@dictionary{#1}{#2}%
 }
 
 % #1: name
 % #2: lang
 \newrobustcmd*\@trnslt@load@dictionary@for@dialect[2]{%
-  \@trnslt@load@dictionary@for@F{#1}{#2}
-    {%
-      \@trnslt@warning{dictionary file `#1-\@trnslt@language{#2}.trsl' not
-        found.}%
-    }%
-}
-
-% #1: name
-% #2: lang
-\newrobustcmd*\@trnslt@load@dictionary@for[2]{%
-  \@trnslt@load@dictionary@for@F{#1}{#2}
-    {%
-      \@trnslt@load@dictionary@for@F{#1}{\baselanguage{#2}}
-        {%
-          \@trnslt@warning{neither dictionary file
-            `#1-\@trnslt@language{#2}.trsl' nor `#1-\baselanguage{#2}.trsl'
-            found.}%
-        }%
-    }%
-}
-      
-\newrobustcmd*\@trnslt@load@dictionary@silent@for[2]{%
-  \@trnslt@load@dictionary@for@F{#1}{#2}{%
-    \@trnslt@load@dictionary@for@F{#1}{\baselanguage{#2}}{}%
-  }%
+  \@trnslt@load@dictionary@for{#1}{#2}
 }
 
 % #1: name
@@ -619,6 +605,22 @@
         }%
     }%
 }
+
+\protected\def\@trnslt@input@dictionary<#1|#2>\q@stop{%
+  \InputIfFileExists{#1-#2.trsl}
+    {\@trnslt@check@dictionary{#1}{#2}}
+    {%
+      \@trnslt@if@dialect{#2}
+        {%
+          \InputIfFileExists{#1-\baselanguage{#2}.trsl}
+            {\@trnslt@check@dictionary{#1}{#2}}
+            {\@trnslt@info{no dictionary file `#1-\baselanguage{#2}.trsl' found.}}
+        }%
+        {\@trnslt@info{no dictionary file `#1-#2.trsl' found.}}
+    }%
+}
+
+\@trnslt@catcodes
 
 % --------------------------------------------------------------------------
 % the contents of a dictionary; let's declare that is one.
@@ -662,7 +664,7 @@
     @trnslt@dictionary@\@trnslt@dictionary@name
     @\@trnslt@dictionary@lang @{#1}{\detokenize{#2}}%
   }{{#1}{#2}}%
-  \listcsadd
+  \listcsgadd
     {@trnslt@dictionary@\@trnslt@dictionary@name @\@trnslt@dictionary@lang}
     {{#1}{#2}}%
 }
@@ -1076,9 +1078,12 @@
   \fi
   \expanded{%
     \noexpand\forcsvlist
-    {\noexpand\@trnslt@load@dictionary@silent@for{translations-basic-dictionary}}
+    {\noexpand\@trnslt@load@dictionary@for{translations-basic-dictionary}}
     {\expandonce\@trnslt@loaded@languages}%
   }%
+  \def\do#1{\@trnslt@input@dictionary#1\q@stop}
+  \dolistloop\@trnslt@dictionaries
+  \let\do\@gobble
 }
 
 \endinput
@@ -1174,3 +1179,5 @@
 2017/08/31 v1.7a    - add missing dependency on pdftexcmds
 2020/02/28 v1.8     - load basic dictionary for each loaded language (if
                       available)
+2020/04/26 v1.8a    - fix problem with loading of dictionaries in some
+                      circumstances
