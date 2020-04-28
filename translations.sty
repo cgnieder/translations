@@ -546,7 +546,10 @@
 % load dictionaries and check for existing ones:
 % \LoadDictionary and \LoadDictionaryFor
 \newrobustcmd*\LoadDictionary[1]{%
-  \@trnslt@load@dictionary@for{#1}{\@trnslt@current@language}}
+  \AtEndPreamble{%
+    \@trnslt@load@dictionary@for{#1}{\@trnslt@current@language}%
+  }%
+}
 \@onlypreamble\LoadDictionary
 
 \newrobustcmd*\LoadDictionaryFor[2]{%
@@ -556,6 +559,8 @@
 \newrobustcmd*\LoadDictionaryForDialect[2]{%
   \@trnslt@load@dictionary@for@dialect{#2}{#1}}
 \@onlypreamble\LoadDictionaryFor
+
+\newcommand*\@trnslt@basic@dictionary{translations-basic-dictionary}
 
 \newcommand*\@trnslt@dictionaries{}
 
@@ -614,9 +619,19 @@
         {%
           \InputIfFileExists{#1-\baselanguage{#2}.trsl}
             {\@trnslt@check@dictionary{#1}{#2}}
-            {\@trnslt@info{no dictionary file `#1-\baselanguage{#2}.trsl' found.}}
+            {%
+              \ifdefstring\@trnslt@basic@dictionary{#1}
+                {\@trnslt@info}
+                {\@trnslt@warning}
+              {no dictionary file `#1-\baselanguage{#2}.trsl' found.}%
+            }%
         }%
-        {\@trnslt@info{no dictionary file `#1-#2.trsl' found.}}
+        {%
+          \ifdefstring\@trnslt@basic@dictionary{#1}
+            {\@trnslt@info}
+            {\@trnslt@warning}
+          {no dictionary file `#1-#2.trsl' found.}%
+        }%
     }%
 }
 
@@ -1078,7 +1093,7 @@
   \fi
   \expanded{%
     \noexpand\forcsvlist
-    {\noexpand\@trnslt@load@dictionary@for{translations-basic-dictionary}}
+    {\noexpand\@trnslt@load@dictionary@for{\@trnslt@basic@dictionary}}
     {\expandonce\@trnslt@loaded@languages}%
   }%
   \def\do#1{\@trnslt@input@dictionary#1\q@stop}
