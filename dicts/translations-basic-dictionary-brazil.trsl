@@ -1,0 +1,136 @@
+% --------------------------------------------------------------------------
+% the TRANSLATIONS package
+% 
+%   internationalization of LaTeX2e packages
+%
+% --------------------------------------------------------------------------
+% Clemens Niederberger
+% Web:    https://github.com/cgnieder/translations
+% E-Mail: contact@mychemistry.eu
+% --------------------------------------------------------------------------
+% Copyright 2012--2020 Clemens Niederberger
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+% 
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Clemens Niederberger.
+% --------------------------------------------------------------------------
+% If you have any ideas, questions, suggestions or bugs to report, please
+% feel free to contact me.
+% --------------------------------------------------------------------------
+\ProvideDictionaryFor{Brazil}{translations-basic-dictionary}
+
+\ProvideDictTranslation{Abstract}{Resumo}
+\ProvideDictTranslation{Addresses}{Endere\c{c}os}
+\ProvideDictTranslation{addresses}{endere\c{c}os}
+\ProvideDictTranslation{Address}{Endere\c{c}o}
+\ProvideDictTranslation{address}{Endere\c{c}o}
+\ProvideDictTranslation{and}{e}
+\ProvideDictTranslation{Appendix}{Ap\^{e}ndice}
+\ProvideDictTranslation{Authors}{Autores}
+\ProvideDictTranslation{authors}{autores}
+\ProvideDictTranslation{Author}{Autor}
+\ProvideDictTranslation{author}{autor}
+\ProvideDictTranslation{Bibliography}{Bibliografia}
+\ProvideDictTranslation{cc}{c\slash{c}}
+\ProvideDictTranslation{Chapters}{Cap\'{i}tulos}
+\ProvideDictTranslation{chapters}{cap\'{i}tulos}
+\ProvideDictTranslation{Chapter}{Cap\'{i}tulo}
+\ProvideDictTranslation{chapter}{cap\'{i}tulo}
+\ProvideDictTranslation{Conclusion}{Conclus\~{a}o}
+\ProvideDictTranslation{conclusion}{conclus\~{a}o}
+\ProvideDictTranslation{Contents}{Conte\'{u}do}
+\ProvideDictTranslation{Continuation}{Continua\c{c}\~{a}o}
+\ProvideDictTranslation{continuation}{continua\c{c}\~{a}o}
+\ProvideDictTranslation{cont}{cont.}
+\ProvideDictTranslation{encl (plural)}{anexos}
+\ProvideDictTranslation{encl (singular)}{anexo}
+\ProvideDictTranslation{encl}{anexo}
+\ProvideDictTranslation{Figures}{Figuras}
+\ProvideDictTranslation{figures}{figuras}
+\ProvideDictTranslation{Figure}{Figura}
+\ProvideDictTranslation{figure}{figura}
+\ProvideDictTranslation{From}{De}
+\ProvideDictTranslation{from}{de}
+\ProvideDictTranslation{Glossary}{Gloss\'{a}rio}
+\ProvideDictTranslation{Index}{\'{I}ndice}
+\ProvideDictTranslation{Introduction}{Introdu\c{c}\~{a}o}
+\ProvideDictTranslation{introduction}{introdu\c{c}\~{a}o}
+\ProvideDictTranslation{List of Figures and Tables}{Lista de Figuras e Tabelas}
+\ProvideDictTranslation{List of Figures}{Lista de Figuras}
+\ProvideDictTranslation{List of Tables}{Lista de Tabelas}
+\ProvideDictTranslation{or}{ou}
+\ProvideDictTranslation{Outline}{T\'{o}picos}
+\ProvideDictTranslation{Overview}{Vis\~{a}o Geral}
+\ProvideDictTranslation{Pages}{P\'{a}ginas}
+\ProvideDictTranslation{pages}{p\'{a}ginas}
+\ProvideDictTranslation{Page}{P\'{a}gina}
+\ProvideDictTranslation{page}{p\'{a}gina}
+\ProvideDictTranslation{Paragraphs}{Par\'{a}grafos}
+\ProvideDictTranslation{paragraphs}{par\'{a}grafos}
+\ProvideDictTranslation{Paragraph}{Par\'{a}grafo}
+\ProvideDictTranslation{paragraph}{par\'{a}grafo}
+\ProvideDictTranslation{Parts}{Partes}
+\ProvideDictTranslation{parts}{partes}
+\ProvideDictTranslation{Part}{Parte}
+\ProvideDictTranslation{part}{parte}
+\ProvideDictTranslation{Preface}{Pref\'{a}cio}
+\ProvideDictTranslation{Proofs}{Demonstra\c{c}\~{o}es}
+\ProvideDictTranslation{proofs}{demonstra\c{c}\~{o}es}
+\ProvideDictTranslation{Proof}{Demonstra\c{c}\~{a}o}
+\ProvideDictTranslation{proof}{demonstra\c{c}\~{a}o}
+\ProvideDictTranslation{References}{Refer\^{e}ncias}
+\ProvideDictTranslation{Related work}{Trabalho Relacionado}
+\ProvideDictTranslation{Related Work}{Trabalho relacionado}
+\ProvideDictTranslation{Sections}{Se\c{c}\~{o}es}
+\ProvideDictTranslation{sections}{se\c{c}\~{o}es}
+\ProvideDictTranslation{Section}{Se\c{c}\~{a}o}
+\ProvideDictTranslation{section}{se\c{c}\~{a}o}
+\ProvideDictTranslation{See also}{Ver tamb\'{e}m}
+\ProvideDictTranslation{see also}{ver tamb\'{e}m}
+\ProvideDictTranslation{See}{Ver}
+\ProvideDictTranslation{see}{ver}
+\ProvideDictTranslation{Sketch of Proofs}{Esboço de Demonstra\c{c}\~{o}es}
+\ProvideDictTranslation{Sketch of proofs}{Esboço de demonstra\c{c}\~{o}es}
+\ProvideDictTranslation{Sketch of Proof}{Esboço de Demonstra\c{c}\~{a}o}
+\ProvideDictTranslation{Sketch of proof}{Esboço de demonstra\c{c}\~{a}o}
+\ProvideDictTranslation{Subsections}{Subse\c{c}\~{o}es}
+\ProvideDictTranslation{subsections}{subse\c{c}\~{o}es}
+\ProvideDictTranslation{Subsection}{Subse\c{c}\~{a}o}
+\ProvideDictTranslation{subsection}{subse\c{c}\~{a}o}
+\ProvideDictTranslation{Summary}{Sum\'{a}rio}
+\ProvideDictTranslation{Tables}{Tabelas}
+\ProvideDictTranslation{tables}{tabelas}
+\ProvideDictTranslation{Table}{Tabela}
+\ProvideDictTranslation{table}{tabela}
+\ProvideDictTranslation{To}{Para}
+\ProvideDictTranslation{to}{para}
+
+\ProvideDictTranslation{Monday}{Segunda-feira}
+\ProvideDictTranslation{Tuesday}{Terça-feira}
+\ProvideDictTranslation{Wednesday}{Quarta-feira}
+\ProvideDictTranslation{Thursday}{Quinta-feira}
+\ProvideDictTranslation{Friday}{Sexta-feira}
+\ProvideDictTranslation{Saturday}{S\'{a}bado}
+\ProvideDictTranslation{Sunday}{Domingo}
+
+\ProvideDictTranslation{January}{Janeiro}
+\ProvideDictTranslation{February}{Fevereiro}
+\ProvideDictTranslation{March}{Mar\c{c}o}
+\ProvideDictTranslation{April}{Abril}
+\ProvideDictTranslation{May}{Maio}
+\ProvideDictTranslation{June}{Junho}
+\ProvideDictTranslation{July}{Julho}
+\ProvideDictTranslation{August}{Agosto}
+\ProvideDictTranslation{September}{Setembro}
+\ProvideDictTranslation{October}{Outubro}
+\ProvideDictTranslation{November}{Novembro}
+\ProvideDictTranslation{December}{Dezembro}
+
