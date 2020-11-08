@@ -1,7 +1,7 @@
-% arara: pdflatex: { shell: on, interaction: nonstopmode }
+% !arara: pdflatex: { shell: on, interaction: nonstopmode }
 % !arara: biber
-% !arara: pdflatex
-% !arara: pdflatex
+% arara: pdflatex
+% arara: pdflatex
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
 % 
@@ -30,7 +30,7 @@
 % feel free to contact me.
 % --------------------------------------------------------------------------
 \documentclass[load-preamble]{cnltx-doc}
-\usepackage[french,spanish,ngerman,english]{babel}
+\usepackage[french,brazil,spanish,ngerman,english]{babel}
 % ----------------------------------------------------------------------------
 \usepackage{imakeidx}
 % document layout and typographic features
@@ -52,6 +52,8 @@
     declaretranslationfallback,
     GetTranslation,
     GetTranslationFor,
+    ifcurrentbaselang,
+    ifcurrentlang,
     IfTranslation,
     LoadDictionary,
     LoadDictionaryFor,
@@ -98,7 +100,8 @@
 % ----------------------------------------------------------------------------
 % other packages, bibliography, index
 \usepackage{array,longtable,booktabs}
-\AfterPackage!{hyperref}{\usepackage[sort]{cleveref}}
+\usepackage{hyperref}
+\usepackage[sort]{cleveref}
 
 % ----------------------------------------------------------------------------
 % example definitions that have to be done in the preamble:
@@ -114,6 +117,8 @@
 \usepackage{bbding}
 
 \newrobustcmd\fnote[1]{\textsuperscript{#1}}
+
+\tracingmacros=1
 
 \begin{document}
 
@@ -423,12 +428,18 @@ Commands without the marker aren't expandable.
     \sinceversion{1.2}Places \meta{true} in the input stream if the current
     language is \meta{lang}.  Note: a dialect counts as a language of it's own
     here.  \cs{ifcurrentlanguage}\Marg{English} will for example be
-    \meta{false} if the current \pkg{babel} language is \code{american}.   
+    \meta{false} if the current \pkg{babel} language is \code{american}.
+  \expandable\command{ifcurrentlang}[\marg{lang}]
+    \sinceversion{1.9}The same as \cs{ifcurrentlanguage} but uses the
+    \dots\cs{else}\dots\cs*{fi} syntax.
   \expandable\command{ifcurrentbaselanguage}[\marg{lang}\marg{true}\marg{false}]
     \sinceversion{1.2}Places \meta{true} in the input stream if the current
     language is \meta{lang}.  Note: a dialect does not count as a language of
     it's own here.  If the current \pkg{babel} language is \code{american}
     then \cs{ifcurrentbaselanguage}\Marg{English} will be \meta{true}.
+  \expandable\command{ifcurrentbaselang}[\marg{lang}]
+    \sinceversion{1.9}The same as \cs{ifcurrentbaselanguage} but uses the
+    \dots\cs{else}\dots\cs*{fi} syntax.
 \end{commands}
 
 \subsection{A Small Example}
@@ -617,6 +628,7 @@ Every dictionary file \emph{must} contain the declaration
 \subsubsection{\translations' Basic Dictionaries}\label{sec:transl-basic-dict}
 \translations\ already provides a basic dictionary for the languages
 \begin{itemize}
+  \item Brazilian,
   \item Catalan,
   \item English,
   \item Dutch,
