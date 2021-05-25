@@ -110,24 +110,24 @@
 \ProvideDictTranslation{To}{Aan}
 \ProvideDictTranslation{to}{aan}
 
-\ProvideDictTranslation{Monday}{Maandag}
-\ProvideDictTranslation{Tuesday}{Dinsdag}
-\ProvideDictTranslation{Wednesday}{Woensdag}
-\ProvideDictTranslation{Thursday}{Donderdag}
-\ProvideDictTranslation{Friday}{Vr\ij dag}
-\ProvideDictTranslation{Saturday}{Zaterdag}
-\ProvideDictTranslation{Sunday}{Zondag}
+\ProvideDictTranslation{Monday}{maandag}
+\ProvideDictTranslation{Tuesday}{dinsdag}
+\ProvideDictTranslation{Wednesday}{woensdag}
+\ProvideDictTranslation{Thursday}{donderdag}
+\ProvideDictTranslation{Friday}{vr\ij dag}
+\ProvideDictTranslation{Saturday}{zaterdag}
+\ProvideDictTranslation{Sunday}{zondag}
 
-\ProvideDictTranslation{January}{Januari}
-\ProvideDictTranslation{February}{Februari}
-\ProvideDictTranslation{March}{Maart}
-\ProvideDictTranslation{April}{April}
-\ProvideDictTranslation{May}{Mei}
-\ProvideDictTranslation{June}{Juni}
-\ProvideDictTranslation{July}{Juli}
-\ProvideDictTranslation{August}{Augustus}
-\ProvideDictTranslation{September}{September}
-\ProvideDictTranslation{October}{Oktober}
-\ProvideDictTranslation{November}{November}
-\ProvideDictTranslation{December}{December}
+\ProvideDictTranslation{January}{januari}
+\ProvideDictTranslation{February}{februari}
+\ProvideDictTranslation{March}{maart}
+\ProvideDictTranslation{April}{april}
+\ProvideDictTranslation{May}{mei}
+\ProvideDictTranslation{June}{juni}
+\ProvideDictTranslation{July}{juli}
+\ProvideDictTranslation{August}{augustus}
+\ProvideDictTranslation{September}{september}
+\ProvideDictTranslation{October}{oktober}
+\ProvideDictTranslation{November}{november}
+\ProvideDictTranslation{December}{december}
 
