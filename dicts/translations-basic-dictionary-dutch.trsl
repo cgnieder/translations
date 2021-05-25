@@ -60,9 +60,9 @@
 \ProvideDictTranslation{Index}{Register}
 \ProvideDictTranslation{Introduction}{Inleiding}
 \ProvideDictTranslation{introduction}{inleiding}
-\ProvideDictTranslation{List of Figures and Tables}{L\ij st van figuren en tabellen}
-\ProvideDictTranslation{List of Figures}{L\ij st van figuren}
-\ProvideDictTranslation{List of Tables}{L\ij st van tabellen}
+\ProvideDictTranslation{List of Figures and Tables}{Figuren- en Tabellen\-l\ij st}
+\ProvideDictTranslation{List of Figures}{Figuren\-l\ij st}
+\ProvideDictTranslation{List of Tables}{Tabellen\-l\ij st}
 \ProvideDictTranslation{or}{of}
 \ProvideDictTranslation{Outline}{Indeling}
 \ProvideDictTranslation{Overview}{Overzicht}
@@ -78,7 +78,7 @@
 \ProvideDictTranslation{parts}{delen}
 \ProvideDictTranslation{Part}{Deel}
 \ProvideDictTranslation{part}{deel}
-\ProvideDictTranslation{Preface}{Woord vooraf}
+\ProvideDictTranslation{Preface}{Voorwoord}
 \ProvideDictTranslation{Proofs}{Bew\ij zen}
 \ProvideDictTranslation{proofs}{Bew\ij zen}
 \ProvideDictTranslation{Proof}{Bew\ij s}
@@ -94,10 +94,10 @@
 \ProvideDictTranslation{see also}{zie ook}
 \ProvideDictTranslation{See}{Zie}
 \ProvideDictTranslation{see}{zie}
-\ProvideDictTranslation{Sketch of Proofs}{Bew\ij sschetsen}
-\ProvideDictTranslation{Sketch of proofs}{bew\ij sschetsen}
-\ProvideDictTranslation{Sketch of Proof}{Bew\ij sschets}
-\ProvideDictTranslation{Sketch of proof}{bew\ij sschets}
+\ProvideDictTranslation{Sketch of Proofs}{Bew\ij s\-schetsen}
+\ProvideDictTranslation{Sketch of proofs}{bew\ij s\-schetsen}
+\ProvideDictTranslation{Sketch of Proof}{Bew\ij s\-schets}
+\ProvideDictTranslation{Sketch of proof}{bew\ij s\-schets}
 \ProvideDictTranslation{Subsections}{Subparagrafen}
 \ProvideDictTranslation{subsections}{subparagrafen}
 \ProvideDictTranslation{Subsection}{Subparagraaf}
