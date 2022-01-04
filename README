@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------
-the TRANSLATIONS package v1.10a - 2021/01/17
+the TRANSLATIONS package v1.10b - 2022/01/04
   internationalization of LaTeX2e packages
 
 --------------------------------------------------------------------------
@@ -7,7 +7,7 @@ Clemens Niederberger
 Web:    https://github.com/cgnieder/translations
 E-Mail: contact@mychemistry.eu
 --------------------------------------------------------------------------
-Copyright 2012--2021 Clemens Niederberger
+Copyright 2012--2022 Clemens Niederberger
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either version 1.3c

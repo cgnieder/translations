@@ -1,7 +1,7 @@
-% !arara: pdflatex: { shell: on, interaction: nonstopmode }
-% !arara: biber
-% arara: pdflatex
-% arara: pdflatex
+% arara: pdflatex: { shell: on, interaction: nonstopmode }
+% arara: biber
+% arara: pdflatex: { interaction: nonstopmode }
+% arara: pdflatex: { interaction: nonstopmode }
 % --------------------------------------------------------------------------
 % the TRANSLATIONS package
 % 
@@ -12,7 +12,7 @@
 % Web:    https://github.com/cgnieder/translations
 % E-Mail: contact@mychemistry.eu
 % --------------------------------------------------------------------------
-% Copyright 2012--2021 Clemens Niederberger
+% Copyright 2012--2022 Clemens Niederberger
 % 
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -24,8 +24,8 @@
 % 
 % The Current Maintainer of this work is Clemens Niederberger.
 % --------------------------------------------------------------------------
+\PassOptionsToPackage{french,brazil,spanish,ngerman,english}{babel}
 \documentclass[load-preamble]{cnltx-doc}
-\usepackage[french,brazil,spanish,ngerman,english]{babel}
 % ----------------------------------------------------------------------------
 \usepackage{imakeidx}
 % document layout and typographic features
