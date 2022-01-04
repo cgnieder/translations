@@ -388,8 +388,6 @@
             {\long\csdef{@trnslt@word@\detokenize{#1}@\@trnslt@dialect@of{#2}}{#3}}%
         }
         {\long\csdef{@trnslt@word@\detokenize{#1}@\@trnslt@language{#2}}{#3}}%
-      % save the <word> as <word>:
-      \csdef{@trnslt@word@\detokenize{#1}@literal}{#1}%
     }
     {\@trnslt@err@unknown@lang{#2}}%
 }
@@ -510,7 +508,7 @@
     {%
       \@trnslt@if@translation{#1}{fallback}
         {\@trnslt@translation@value{#1}{fallback}}
-        {\@trnslt@translation@value{#1}{literal}}%
+        {\detokenize{#1}}% literal
     }%
 }
 
@@ -534,7 +532,7 @@
           \@trnslt@info{Using fallback translation for `#1'}%
           \csuse{@trnslt@word@\detokenize{#1}@fallback}
         }
-        {\csuse{@trnslt@word@\detokenize{#1}@literal}}%
+        {\detokenize{#1}}% literal
     }%
 }
 
@@ -550,7 +548,7 @@
           \@trnslt@info{Using fallback translation for `#1'}%
           \@trnslt@get@lowercase{\csuse{@trnslt@word@\detokenize{#1}@fallback}}%
         }
-        {\@trnslt@get@lowercase{\csuse{@trnslt@word@\detokenize{#1}@literal}}}%
+        {\detokenize{#1}}% literal
     }%
 }
 
@@ -895,7 +893,7 @@
 \DeclareLanguageDialect{canadien}{french}
 \DeclareLanguageDialect{canadian}{english}
 \DeclareLanguageDialect{newzealand}{english}
-\DeclareLanguageDialect{nynorsk}{norsk}
+\DeclareLanguageDialect{nynorsk}{norwegian}
 \DeclareLanguageDialect{irish}{gaelic}
 \DeclareLanguageDialect{scottish}{gaelic}
 \DeclareLanguageDialect{austrian}{german}
@@ -1236,3 +1234,5 @@
 2022/01/04 v1.11    - fix issue #18
                     - undo v1.7, fixes issue #12
                     - make nynorsk a dialect of norsk, fixes issue #19
+                    - don't define the literal string as command but output it
+                      directly; fixes issue #13
