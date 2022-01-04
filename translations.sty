@@ -26,7 +26,7 @@
 % feel free to contact me.
 % --------------------------------------------------------------------------
 \newcommand*\@trnslt@date{2022/01/04}
-\newcommand*\@trnslt@version{v1.10b}
+\newcommand*\@trnslt@version{v1.11}
 \newcommand*\@trnslt@packageinfo{internationalization of LaTeX2e packages}
 
 \ProvidesPackage{translations}[%
@@ -519,9 +519,7 @@
 }
 
 \newcommand*\@trnslt@translation@value[2]{%
-  \unexpanded\expandafter\expandafter\expandafter{%
-    \csname @trnslt@word@\detokenize{#1}@#2\endcsname
-  }%
+  \csname @trnslt@word@\detokenize{#1}@#2\endcsname
 }
 
 % this is not expandable!
@@ -1235,4 +1233,5 @@
                     - add Brazilian basic dictionary
 2021/01/16 v1.10    - remove scrlfile dependency
 2021/01/16 v1.10a   - correct bug from last update
-2022/01/04 v1.10b   - fix issue #18
+2022/01/04 v1.11    - fix issue #18
+                    - undo v1.7, fixes issue #12
