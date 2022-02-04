@@ -1,0 +1,132 @@
+% --------------------------------------------------------------------------
+% the TRANSLATIONS package
+% 
+%   internationalization of LaTeX2e packages
+%
+% --------------------------------------------------------------------------
+% Clemens Niederberger
+% Web:    https://github.com/cgnieder/translations
+% E-Mail: contact@mychemistry.eu
+% --------------------------------------------------------------------------
+% Copyright 2012--2022 Clemens Niederberger
+% 
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008/05/04 or later.
+% 
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Clemens Niederberger.
+% --------------------------------------------------------------------------
+\ProvideDictionaryFor{Polish}{translations-basic-dictionary}
+
+\ProvideDictTranslation{Abstract}{Streszczenie}
+\ProvideDictTranslation{Addresses}{Adresy}
+\ProvideDictTranslation{addresses}{adresy}
+\ProvideDictTranslation{Address}{Adres}
+\ProvideDictTranslation{address}{adres}
+\ProvideDictTranslation{and}{i}
+\ProvideDictTranslation{Appendix}{Dodatek}
+\ProvideDictTranslation{Authors}{Autorzy}
+\ProvideDictTranslation{authors}{autorzy}
+\ProvideDictTranslation{Author}{Autor}
+\ProvideDictTranslation{author}{autor}
+\ProvideDictTranslation{Bibliography}{Bibliografia}
+\ProvideDictTranslation{cc}{dw.}
+\ProvideDictTranslation{Chapters}{Rozdzia\l y}
+\ProvideDictTranslation{chapters}{rozdzia\l y}
+\ProvideDictTranslation{Chapter}{Rozdzia\l}
+\ProvideDictTranslation{chapter}{rozdzia\l}
+\ProvideDictTranslation{Conclusion}{Wniosek}
+\ProvideDictTranslation{conclusion}{wniosek}
+\ProvideDictTranslation{Contents}{Spis tre\' sci}
+\ProvideDictTranslation{Continuation}{Kontynuacja}
+\ProvideDictTranslation{continuation}{kontynuacja}
+\ProvideDictTranslation{cont}{kont.}
+\ProvideDictTranslation{encl (plural)}{zał.}
+\ProvideDictTranslation{encl (singular)}{zał.}
+\ProvideDictTranslation{encl}{zał.}
+\ProvideDictTranslation{Figures}{Rysunki}
+\ProvideDictTranslation{figures}{rysunki}
+\ProvideDictTranslation{Figure}{Rysunek}
+\ProvideDictTranslation{figure}{rysunek}
+\ProvideDictTranslation{From}{Od}
+\ProvideDictTranslation{from}{od}
+\ProvideDictTranslation{Glossary}{Glosariusz}
+\ProvideDictTranslation{Index}{Skorowidz}
+\ProvideDictTranslation{Introduction}{Wprowadzenie}
+\ProvideDictTranslation{introduction}{wprowadzenie}
+\ProvideDictTranslation{List of Figures and Tables}{Spis rysunk\' ow i~tabel}
+\ProvideDictTranslation{List of Figures}{Spis rysunk\' ow}
+\ProvideDictTranslation{List of Tables}{Spis tabel}
+\ProvideDictTranslation{or}{lub}
+\ProvideDictTranslation{Outline}{Zarys}
+\ProvideDictTranslation{Overview}{Przegl\k ad}
+\ProvideDictTranslation{Pages}{Strony}
+\ProvideDictTranslation{pages}{strony}
+\ProvideDictTranslation{Page}{Strona}
+\ProvideDictTranslation{page}{strona}
+\ProvideDictTranslation{Paragraphs}{Akapity}
+\ProvideDictTranslation{paragraphs}{akapity}
+\ProvideDictTranslation{Paragraph}{Akapit}
+\ProvideDictTranslation{paragraph}{akapit}
+\ProvideDictTranslation{Parts}{Cz\k e\' sci}
+\ProvideDictTranslation{parts}{cz\k e\' sci}
+\ProvideDictTranslation{Part}{Cz\k e\' s\' c}
+\ProvideDictTranslation{part}{cz\k e\' s\' c}
+\ProvideDictTranslation{Preface}{Przedmowa}
+\ProvideDictTranslation{Proofs}{Dowody}
+\ProvideDictTranslation{proofs}{dowody}
+\ProvideDictTranslation{Proof}{Dow\'od}
+\ProvideDictTranslation{proof}{dow\'od}
+\ProvideDictTranslation{References}{Literatura}
+\ProvideDictTranslation{Related work}{Prace pokrewne}
+\ProvideDictTranslation{Related Work}{Prace pokrewne}
+\ProvideDictTranslation{Sections}{Podrozdzia\l y}
+\ProvideDictTranslation{sections}{podrozdzia\l y}
+\ProvideDictTranslation{Section}{Podrozdzia\l}
+\ProvideDictTranslation{section}{podrozdzia\l}
+\ProvideDictTranslation{See also}{Zobacz te\. z}
+\ProvideDictTranslation{see also}{zobacz te\. z}
+\ProvideDictTranslation{See}{Zobacz}
+\ProvideDictTranslation{see}{zobacz}
+\ProvideDictTranslation{Sketch of Proofs}{Szkic dowod\' ow}
+\ProvideDictTranslation{Sketch of proofs}{Szkic dowod\' ow}
+\ProvideDictTranslation{Sketch of Proof}{Szkic dowodu}
+\ProvideDictTranslation{Sketch of proof}{Szkic dowodu}
+\ProvideDictTranslation{Subsections}{Paragrafy}
+\ProvideDictTranslation{subsections}{paragrafy}
+\ProvideDictTranslation{Subsection}{Paragraf}
+\ProvideDictTranslation{subsection}{paragraf}
+\ProvideDictTranslation{Summary}{Podsumowanie}
+\ProvideDictTranslation{Tables}{Tabele}
+\ProvideDictTranslation{tables}{tabele}
+\ProvideDictTranslation{Table}{Tabela}
+\ProvideDictTranslation{table}{tabela}
+\ProvideDictTranslation{To}{Do}
+\ProvideDictTranslation{to}{do}
+
+\ProvideDictTranslation{Monday}{poniedzia\l ek}
+\ProvideDictTranslation{Tuesday}{wtorek}
+\ProvideDictTranslation{Wednesday}{\' sroda}
+\ProvideDictTranslation{Thursday}{czwartek}
+\ProvideDictTranslation{Friday}{pi\k atek}
+\ProvideDictTranslation{Saturday}{sobota}
+\ProvideDictTranslation{Sunday}{niedziela}
+
+\ProvideDictTranslation{January}{stycze\' n}
+\ProvideDictTranslation{February}{luty}
+\ProvideDictTranslation{March}{marzec}
+\ProvideDictTranslation{April}{kwiecie\' n}
+\ProvideDictTranslation{May}{maj}
+\ProvideDictTranslation{June}{czerwiec}
+\ProvideDictTranslation{July}{lipiec}
+\ProvideDictTranslation{August}{sierpie\' n}
+\ProvideDictTranslation{September}{wrzesie\' n}
+\ProvideDictTranslation{October}{pa\' zdziernik}
+\ProvideDictTranslation{November}{listopad}
+\ProvideDictTranslation{December}{grudzie\' n}
