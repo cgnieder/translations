@@ -25,10 +25,11 @@ The translations package consists of the files
  - translations.sty, translations_en.tex, translations_en.pdf,
    translations-basic-dictionary-brazil.trsl,
    translations-basic-dictionary-catalan.trsl,
-   translations-basic-dictionary-english.trsl,
    translations-basic-dictionary-dutch.trsl,
+   translations-basic-dictionary-english.trsl,
    translations-basic-dictionary-french.trsl,
    translations-basic-dictionary-german.trsl,
+   translations-basic-dictionary-polish.trsl,
    translations-basic-dictionary-spanish.trsl
  - README
 --------------------------------------------------------------------------
