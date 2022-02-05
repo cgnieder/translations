@@ -1,11 +1,11 @@
 --------------------------------------------------------------------------
-the TRANSLATIONS package v1.11 - 2022/01/04
+the TRANSLATIONS package v1.12 - 2022/02/05
   internationalization of LaTeX2e packages
 
 --------------------------------------------------------------------------
 Clemens Niederberger
 Web:    https://github.com/cgnieder/translations
-E-Mail: contact@mychemistry.eu
+E-Mail: clemens@cnltx.de
 --------------------------------------------------------------------------
 Copyright 2012--2022 Clemens Niederberger
 
@@ -22,7 +22,7 @@ This work has the LPPL maintenance status `maintained'.
 The Current Maintainer of this work is Clemens Niederberger.
 --------------------------------------------------------------------------
 The translations package consists of the files
- - translations.sty, translations_en.tex, translations_en.pdf,
+ - translations.sty, translations_manual.tex, translations_manual.pdf,
    translations-basic-dictionary-brazil.trsl,
    translations-basic-dictionary-catalan.trsl,
    translations-basic-dictionary-dutch.trsl,
