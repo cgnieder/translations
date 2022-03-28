@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{Spanish}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Resumen}
+\ProvideDictTranslation{abstract}{resumen}
 \ProvideDictTranslation{Addresses}{Direcciones}
 \ProvideDictTranslation{addresses}{direcciones}
 \ProvideDictTranslation{Address}{Direcci\'{o}n}

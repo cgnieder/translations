@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{Dutch}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Samenvatting}
+\ProvideDictTranslation{abstract}{samenvatting}
 \ProvideDictTranslation{Addresses}{Adressen}
 \ProvideDictTranslation{addresses}{adressen}
 \ProvideDictTranslation{Address}{Adres}

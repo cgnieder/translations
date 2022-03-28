@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{German}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Zusammenfassung}
+\ProvideDictTranslation{abstract}{Zusammenfassung}
 \ProvideDictTranslation{Addresses}{Adressen}
 \ProvideDictTranslation{addresses}{Adressen}
 \ProvideDictTranslation{Address}{Adresse}

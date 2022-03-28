@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{English}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Abstract}
+\ProvideDictTranslation{abstract}{abstract}
 \ProvideDictTranslation{Addresses}{Addresses}
 \ProvideDictTranslation{addresses}{addresses}
 \ProvideDictTranslation{Address}{Address}

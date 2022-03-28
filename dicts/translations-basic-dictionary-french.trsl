@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{French}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{R\'{e}sum\'{e}}
+\ProvideDictTranslation{abstract}{r\'{e}sum\'{e}}
 \ProvideDictTranslation{Addresses}{Adresses}
 \ProvideDictTranslation{addresses}{adresses}
 \ProvideDictTranslation{Address}{Adresse}

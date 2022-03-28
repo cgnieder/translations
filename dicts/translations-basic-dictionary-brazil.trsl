@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{Brazil}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Resumo}
+\ProvideDictTranslation{abstract}{resumo}
 \ProvideDictTranslation{Addresses}{Endere\c{c}os}
 \ProvideDictTranslation{addresses}{endere\c{c}os}
 \ProvideDictTranslation{Address}{Endere\c{c}o}

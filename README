@@ -1,6 +1,7 @@
 --------------------------------------------------------------------------
-the TRANSLATIONS package v1.12 - 2022/02/05
-  internationalization of LaTeX2e packages
+the TRANSLATIONS package v2.0 - 2022/03/27
+
+  internationalization of LaTeX packages
 
 --------------------------------------------------------------------------
 Clemens Niederberger
@@ -21,9 +22,10 @@ This work has the LPPL maintenance status `maintained'.
 
 The Current Maintainer of this work is Clemens Niederberger.
 --------------------------------------------------------------------------
-The translations package consists of the files
- - translations.sty, translations_manual.tex, translations_manual.pdf,
-   translations-basic-dictionary-brazil.trsl,
+The translations package consists of the files:
+ - translations.sty,
+ - translations-manual.cls, translations_manual.tex, translations_manual.pdf,
+ - translations-basic-dictionary-brazil.trsl,
    translations-basic-dictionary-catalan.trsl,
    translations-basic-dictionary-dutch.trsl,
    translations-basic-dictionary-english.trsl,

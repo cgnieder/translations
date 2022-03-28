@@ -25,6 +25,7 @@
 \ProvideDictionaryFor{Polish}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Streszczenie}
+\ProvideDictTranslation{abstract}{streszczenie}
 \ProvideDictTranslation{Addresses}{Adresy}
 \ProvideDictTranslation{addresses}{adresy}
 \ProvideDictTranslation{Address}{Adres}
