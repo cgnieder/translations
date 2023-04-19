@@ -22,7 +22,7 @@
 % 
 % The Current Maintainer of this work is Clemens Niederberger.
 % --------------------------------------------------------------------------
-\ProvideDictionaryFor{Spanish}{translations-basic-dictionary}
+\ProvideDictionaryFor{Catalan}{translations-basic-dictionary}
 
 \ProvideDictTranslation{Abstract}{Resum}
 \ProvideDictTranslation{abstract}{resum}
@@ -57,13 +57,13 @@
 \ProvideDictTranslation{figure}{figura}
 \ProvideDictTranslation{From}{Des de}
 \ProvideDictTranslation{from}{des de}
-\ProvideDictTranslation{Glossary}{Glosari}
+\ProvideDictTranslation{Glossary}{Glossari}
 \ProvideDictTranslation{Index}{\'{I}ndex}
 \ProvideDictTranslation{Introduction}{Introducci\'{o}}
 \ProvideDictTranslation{introduction}{introducci\'{o}}
-\ProvideDictTranslation{List of Figures and Tables}{Llista de Figures i Taules}
-\ProvideDictTranslation{List of Figures}{Llista de Figures}
-\ProvideDictTranslation{List of Tables}{Llista de Taules}
+\ProvideDictTranslation{List of Figures and Tables}{Llista de figures i taules}
+\ProvideDictTranslation{List of Figures}{Llista de figures}
+\ProvideDictTranslation{List of Tables}{Llista de taules}
 \ProvideDictTranslation{or}{o}
 \ProvideDictTranslation{Outline}{Esb\'os}
 \ProvideDictTranslation{Overview}{Visi\'{o} General}
@@ -86,18 +86,18 @@
 \ProvideDictTranslation{proof}{demostraci\'{o}}
 \ProvideDictTranslation{References}{Refer\`{e}ncies}
 \ProvideDictTranslation{Related work}{Treball relacionat}
-\ProvideDictTranslation{Related Work}{Treball Relacionat}
+\ProvideDictTranslation{Related Work}{Treball relacionat}
 \ProvideDictTranslation{Sections}{Seccions}
 \ProvideDictTranslation{sections}{seccions}
 \ProvideDictTranslation{Section}{Secci\'{o}}
 \ProvideDictTranslation{section}{secci\'{o}}
-\ProvideDictTranslation{See also}{Veure tamb\'{e}}
-\ProvideDictTranslation{see also}{veurr tamb\'{e}}
+\ProvideDictTranslation{See also}{Vegeu tamb\'{e}}
+\ProvideDictTranslation{see also}{vegeu tamb\'{e}}
 \ProvideDictTranslation{See}{Veure}
 \ProvideDictTranslation{see}{veure}
-\ProvideDictTranslation{Sketch of Proofs}{Esbossos de Demostracions}
+\ProvideDictTranslation{Sketch of Proofs}{Esbossos de demostracions}
 \ProvideDictTranslation{Sketch of proofs}{Esbossos de demostracions}
-\ProvideDictTranslation{Sketch of Proof}{Esb\'{o}s de Demostraci\'{o}}
+\ProvideDictTranslation{Sketch of Proof}{Esb\'{o}s de demostraci\'{o}}
 \ProvideDictTranslation{Sketch of proof}{Esb\'{o}s de demostraci\'{o}}
 \ProvideDictTranslation{Subsections}{Subseccions}
 \ProvideDictTranslation{subsections}{subseccions}
@@ -131,4 +131,3 @@
 \ProvideDictTranslation{October}{Octubre}
 \ProvideDictTranslation{November}{Novembre}
 \ProvideDictTranslation{December}{Desembre}
-
